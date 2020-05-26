@@ -1,9 +1,13 @@
-﻿using System;
+﻿using battle_ship_in_the_oo_way_submarine101;
+using System;
 
-public class Cruiser
+namespace battle_ship_in_the_oo_way_submarine101
 {
-	public Cruiser()
+	public class Cruiser : Ship
 	{
-
+		public Cruiser()
+		{
+			Name = "Cruiser";
+		}
 	}
 }
