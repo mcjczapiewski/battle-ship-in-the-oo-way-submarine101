@@ -28,6 +28,11 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
 
     public class EnemyBoard() : Ocean
     {
-        public EnemyBoard()
+        public EnemyBoard(int length, int hight, string name) : base(length, hight, name)
+        {
+            length = 5;
+            hight = 5;
+            name = "This is an enemy board";
+        }
     }
-}
+} 
