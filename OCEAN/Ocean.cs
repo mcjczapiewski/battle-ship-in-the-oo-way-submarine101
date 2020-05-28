@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using DefaultNamespace.Square
+using static DefaultNamespace.Square;
 
 namespace battle_ship_in_the_oo_way_submarine101.OCEAN
 {

@@ -6,7 +6,18 @@ namespace battle_ship_in_the_oo_way_submarine101
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Welcome in battleship!");
+            ChoosePlayer();
+            PrintBoard();
+            SetShips();
+            Shoot(); /// here loop is starting///
+            CheckIsWin();
+            MarkSquare();/// here is ending?///
+            
+            
+
+
+
         }
     }
 }
