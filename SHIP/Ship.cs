@@ -9,14 +9,13 @@ namespace battle_ship_in_the_oo_way_submarine101
         public int length;
         public bool isHorizontal;
         public bool isVertical;
-
         public int shots;
-        public int positionXY(int x, int y);
-        public bool isSink
-     
-
-        public int Hits;
-        public int positionXY(int x, int y);
+        public int x, y;
+        public int positionXY(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
         public bool isSink
         {
             get
