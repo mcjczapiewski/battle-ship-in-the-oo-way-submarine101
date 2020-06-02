@@ -8,13 +8,13 @@ namespace battle_ship_in_the_oo_way_submarine101
         public string name;
         public int length;
         public bool isHorizontal;
-        public bool isVertical;
         public int shots;
-        public int x, y;
-        public int positionXY(int x, int y)
+        /// should be able to bring value of enum but doesnt work - public Shipmark = etc... TODO ///
+        public int X, Y;
+        public int Coordinates(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            X = x;
+            Y = y;
         }
         public bool isSink
         {

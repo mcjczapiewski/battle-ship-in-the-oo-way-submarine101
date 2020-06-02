@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\SHIP"
+    "\\OCEAN",
+    "\\SHIP",
+    "\\SQUARE"
   ],
-  "SelectedNode": "\\battle-ship-in-the-oo-way-submarine101.csproj",
+  "SelectedNode": "\\OCEAN\\Ocean.cs",
   "PreviewInSolutionExplorer": false
 }
