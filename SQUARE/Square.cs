@@ -2,6 +2,7 @@ namespace DefaultNamespace
 {
     public class Square
     {
-        // this im going to fill
+        // public OccupationType OccupationType { get; set; }
+        // public Coordinates Coordinates { get; set;}
     }
 }

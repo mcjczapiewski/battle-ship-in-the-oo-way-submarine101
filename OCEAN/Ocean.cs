@@ -8,40 +8,42 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
 {
     public abstract class Ocean
     {
-        public OccupationType OccupationType { get; set; }
-        public Coordinates Coordinates { get; set;}
+        
         public int length;
-        public int hight;
+        public int height;
         public string name;
         public List<int> borders;
+        public List<int> fields;
+        
 
-        public Ocean(int length, int hight, string name, List<int> borders)
+        public Ocean(int length, int height, string name, List<int> borders, List<int> fields )
         {
             this.length = length;
-            this.hight = hight;
-            this.name = "setMyName";
+            this.height = height;
+            this.name = name;
             this.borders = borders;
+            this.fields = fields;
         }
 
-        public string StringPrinter(char c, int count)
-        {
-            return (c * count).ToString();
-        }
+        // public string StringPrinter(char c, int count)
+        // {
+        //     return (c * count).ToString();
+        // }
         
-        public void PrintOcean(int length, int hight, string name)
+        public void PrintOcean(int length, int height, string name)
         {
             Console.WriteLine(string.Format());
         }
-
+        
+        
         public void PlaceShips
         {
             get { throw new NotImplementedException(); }
             set { throw new NotImplementedException(); }
         }
-        
-        public class MyBoard() : Ocean /// MyBoard that inheritate from Ocean ///
+    public class MyBoard() : Ocean /// MyBoard that inheritate from Ocean ///
     {
-        public MyBoard(int length, int hight, string name, List<int> borders) : base(length, hight, name, borders)
+        public MyBoard(int length, int height, string name, List<int> borders) : base(length, height, name, borders)
         {
             length = 5;
             hight = 5;
