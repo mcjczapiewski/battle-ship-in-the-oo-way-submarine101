@@ -6,8 +6,8 @@ namespace DefaultNamespace
     public class Player
     {
         Player player = new Player();
-        private int mapNumber;
-        private string mapsize;
+        public static int MapSize;
+        private string _inputMapSize;
 
         public int SetMap()
         {
@@ -15,12 +15,12 @@ namespace DefaultNamespace
             do
             {
                 Console.Write("Please select map size");
-                mapsize = Console.ReadLine();
-                validatedMapSize = Int32.TryParse(mapsize, out mapNumber);
+                _inputMapSize = Console.ReadLine();
+                validatedMapSize = Int32.TryParse(_inputMapSize, out MapSize);
 
             } while (!validatedMapSize);
 
-            return mapNumber;
+            return MapSize;
 
 
         }

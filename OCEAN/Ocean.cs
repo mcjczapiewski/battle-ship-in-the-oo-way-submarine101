@@ -2,24 +2,23 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using DefaultNamespace;
 using static DefaultNamespace.Square;
 
 namespace battle_ship_in_the_oo_way_submarine101.OCEAN
 {
     public abstract class Ocean
     {
-        
-        public int length;
-        public int height;
+        public int mapSize;
         public string name;
         public List<int> borders;
         public List<int> fields;
         
 
-        public Ocean(int length, int height, string name, List<int> borders, List<int> fields )
+        public Ocean(int mapSize, string name, List<int> borders, List<int> fields )
         {
-            this.length = length;
-            this.height = height;
+            this.mapSize = Player.MapSize;
             this.name = name;
             this.borders = borders;
             this.fields = fields;
@@ -32,7 +31,7 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
         
         public void PrintOcean(int length, int height, string name)
         {
-            Console.WriteLine(string.Format());
+            Console.WriteLine();
         }
         
         
@@ -43,20 +42,18 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
         }
     public class MyBoard() : Ocean /// MyBoard that inheritate from Ocean ///
     {
-        public MyBoard(int length, int height, string name, List<int> borders) : base(length, height, name, borders)
+        public MyBoard(int mapSize, string name, List<int> borders, List<int> fields) : base(mapSize, name, borders, fields)
         {
-            length = 5;
-            hight = 5;
+            mapSize = Player.MapSize;
             name = "This is your board";
         }
     }
-
+    
     public class EnemyBoard() : Ocean
     {
-        public EnemyBoard(int length, int hight, string name, List<int> borders) : base(length, hight, name, borders)
+        public EnemyBoard(int mapSize, string name, List<int> borders, List<int>fields) : base(mapSize, name, borders, fields)
         {
-            length = 5;
-            hight = 5;
+            mapSize = Player.MapSize;
             name = "This is an enemy board";
         }
     }

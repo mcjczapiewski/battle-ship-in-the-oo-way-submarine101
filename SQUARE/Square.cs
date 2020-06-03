@@ -5,4 +5,6 @@ namespace DefaultNamespace
         // public OccupationType OccupationType { get; set; }
         // public Coordinates Coordinates { get; set;}
     }
+    public void CreateSquare()
+    Squate 
 }
