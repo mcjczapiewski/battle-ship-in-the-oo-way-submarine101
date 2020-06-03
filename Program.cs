@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using battle_ship_in_the_oo_way_submarine101.OCEAN;
 
 namespace battle_ship_in_the_oo_way_submarine101
 {
@@ -6,18 +8,18 @@ namespace battle_ship_in_the_oo_way_submarine101
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome in battleship!");
-            ChoosePlayer();
-            PrintBoard();
-            SetShips();
-            Shoot(); /// here loop is starting///
-            CheckIsWin();
-            MarkSquare();/// here is ending?///
+            while (isPlayng())
+            {
+
+                Console.WriteLine("Welcome in battleship!");
+                Player.ChoosePlayer();
+                Ocean.PrintOcean();
+                SetShips();
+                Shoot(); /// here loop is starting///
+                CheckIsWin();
+                MarkSquare(); /// here is ending?///
+            }
             
-            
-
-
-
         }
     }
 }
