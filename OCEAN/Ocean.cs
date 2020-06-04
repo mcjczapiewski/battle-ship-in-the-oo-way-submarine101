@@ -10,39 +10,47 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
 {
     public abstract class Ocean
     {
-        public int mapSize;
-        public string name;
-        public List<int> borders;
-        public List<int> fields;
-        
+        public List<Square> Fields { get; set; }
 
-        public Ocean(int mapSize, string name, List<int> borders, List<int> fields )
+        private Ocean()
         {
-            this.mapSize = Player.MapSize;
-            this.name = name;
-            this.borders = borders;
-            this.fields = fields;
+            Fields = new List<Square>();
+            int mapSize = Player.MapSize;
+            string name = "";
         }
 
-        // public string StringPrinter(char c, int count)
-        // {
-        //     return (c * count).ToString();
-        // }
-        
+        private Ocean(List<Square> fields)
+        {
+            Fields = fields;
+            for (int i = 0; i < Player.MapSize; i++)
+            {
+                for (int j = 0; j < Player.MapSize; j++)
+                {
+                    fields.Add(new Square(int i, int j));
+                }
+                
+            }
+        }
+
+        public string StringPrinter(char c, int count)
+        {
+            return (c * count).ToString();
+        }
+
         public void PrintOcean(int length, int height, string name)
         {
-            Console.WriteLine();
+            List<string> alphabet = new List<string>();
+            Console.WriteLine("   A B C D E F G H I J ");
+            
         }
-        
-        
-        public void PlaceShips
-        {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
-        }
+    }
+
+
+
+
     public class MyBoard() : Ocean /// MyBoard that inheritate from Ocean ///
     {
-        public MyBoard(int mapSize, string name, List<int> borders, List<int> fields) : base(mapSize, name, borders, fields)
+        public MyBoard(int mapSize, string name, List<int> borders, List<int> fields) : base()
         {
             mapSize = Player.MapSize;
             name = "This is your board";
@@ -51,7 +59,7 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
     
     public class EnemyBoard() : Ocean
     {
-        public EnemyBoard(int mapSize, string name, List<int> borders, List<int>fields) : base(mapSize, name, borders, fields)
+        public EnemyBoard(int mapSize, string name, List<int> borders, List<int>fields) : base()
         {
             mapSize = Player.MapSize;
             name = "This is an enemy board";
