@@ -22,13 +22,16 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
         private Ocean(List<Square> fields)
         {
             Fields = fields;
-            for (int i = 0; i < Player.MapSize; i++)
+            int i;
+            int j;
+            
+            for (i = 0; i < Player.MapSize; i++)
             {
-                for (int j = 0; j < Player.MapSize; j++)
-                {
-                    fields.Add(new Square(int i, int j));
-                }
                 
+                for (j = 0; j < Player.MapSize; j++)
+                {
+                    fields.Add(new Square(i; j)
+                }
             }
         }
 
