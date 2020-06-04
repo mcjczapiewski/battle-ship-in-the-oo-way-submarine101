@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using DefaultNamespace;
-using static DefaultNamespace.Square;
+using static battle_ship_in_the_oo_way_submarine101.SQUARE.Square;
 
 namespace battle_ship_in_the_oo_way_submarine101.OCEAN
 {
