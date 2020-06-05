@@ -51,7 +51,7 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
     
     public class EnemyBoard() : Ocean
     {
-        public EnemyBoard(int mapSize, string name, List<int> borders, List<int>fields) : base(mapSize, name, borders, fields)
+        public EnemyBoard(int mapSize, string name, List<int> borders, List<int> fields) : base(mapSize, name, borders, fields)
         {
             mapSize = Player.MapSize;
             name = "This is an enemy board";
