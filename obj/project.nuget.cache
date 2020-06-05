@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JFXeZxBvUMGierwJnbcuQTZ/W+NuuII3z04lUOYJmE3zQMhL2WqXqCyC67HKClF7TGxkSaryX3xc87pF/oTsvQ==",
+  "dgSpecHash": "pjwJ0IhJ/Lf7hlh80SjYqjOSfYd1YM/jQO3C6x/D3E/YXkQ+mWGhx8ItJGVbRhF00x5k+QTyR66VzdoF593eQA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Maciej\\Documents\\c-sharp\\CODE\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Maciej\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
-  ],
+  "projectFilePath": "/home/pat/homework/c#/battle-ship-in-the-oo-way-submarine101/battle-ship-in-the-oo-way-submarine101.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

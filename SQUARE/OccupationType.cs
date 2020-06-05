@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 using battle_ship_in_the_oo_way_submarine101;
 
 namespace battle_ship_in_the_oo_way_submarine101.SQUARE
@@ -14,15 +15,17 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
     //     Hit = 'X',
     //     Miss = 'O',
     // }
-    public class OccupationType
+    public static class OccupationType
     {
-        public char Battleship = 'B';
-        public char Cruiser = 'C';
-        public char Carrier = 'R';
-        public char Destroyer = 'D';
-        public char Submarine = 'S';
-        public char Empty = 'e';
-        public char Hit = 'X';
-        public char Miss = 'O';
+        public const char Battleship = 'B';
+        public const char Cruiser = 'C';
+        public const char Carrier = 'R';
+        public const char Destroyer = 'D';
+        public const char Submarine = 'S';
+        public const char Empty = 'e';
+        public const char Hit = 'X';
+        public const char Miss = 'O';
     }
 }
+
+
