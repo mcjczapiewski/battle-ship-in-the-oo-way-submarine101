@@ -74,14 +74,14 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     }
 
                     //Check if square is occupied
-                    var affectedPanels = Ocean.Squares.Range(InputRow, InputColumn, EndRow, EndColumn);
-                    if(affectedPanels.Any(x=>x.IsOccupied))
+                    var affectedSquares = Ocean.Squares.Range(InputRow, InputColumn, EndRow, EndColumn);
+                    if(affectedSquares.Any(x=>x.IsOccupied))
                     {
                         isOpen = true;
                         continue;
                     }
 
-                    foreach(var panel in affectedPanels)
+                    foreach(var panel in affectedSquares)
                     {
                         Square.OccupationType = ship.OccupationType;
                     }
@@ -90,7 +90,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
             }
         }
 
-        private Coordinates PlayerShot()
+        private Coordinates PlayerShoot()
         {
             /// get players input to shoot ///
         }

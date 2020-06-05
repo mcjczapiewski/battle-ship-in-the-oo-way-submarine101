@@ -6,7 +6,7 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
 {
     public class Ocean
     {
-        public List<Panel> Squares { get; set; }
+        public List<Square> Squares { get; set; }
 
         public Ocean()
         {
@@ -15,7 +15,7 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
             {
                 for (int j = 1; j <= 10; j++)
                 {
-                    Squares.Add(new Panel(i, j));
+                    Squares.Add(new Square(i, j));
                 }
             }
         }
@@ -29,7 +29,7 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
         {
             for (int ownColumn = 1; ownColumn <= 10; ownColumn++)
             {
-                Console.Write(GameBoard.Panels.At(row, ownColumn).Status + " ");
+                Console.Write(Ocean.Squares.At(row, ownColumn).Status + " ");
             }
             Console.Write("                ");
             for (int firingColumn = 1; firingColumn <= 10; firingColumn++)
