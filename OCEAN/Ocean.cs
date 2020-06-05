@@ -35,12 +35,12 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
         }
         
         
-        public void PlaceShips
+        public SHIP.PlaceShips PlaceShips
         {
             get { throw new NotImplementedException(); }
             set { throw new NotImplementedException(); }
         }
-    public class MyBoard() : Ocean /// MyBoard that inheritate from Ocean ///
+    public class MyBoard : Ocean /// MyBoard that inheritate from Ocean ///
     {
         public MyBoard(int mapSize, string name, List<int> borders, List<int> fields) : base(mapSize, name, borders, fields)
         {
@@ -49,7 +49,7 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
         }
     }
     
-    public class EnemyBoard() : Ocean
+    public class EnemyBoard : Ocean
     {
         public EnemyBoard(int mapSize, string name, List<int> borders, List<int> fields) : base(mapSize, name, borders, fields)
         {
