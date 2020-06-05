@@ -7,5 +7,6 @@ public class Cruiser : Ship
 	{
 		Name = "Cruiser";
 		Length = 3;
+		ShipEnum = Cruiser;
 	}
 }
