@@ -4,65 +4,54 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using DefaultNamespace;
-using static DefaultNamespace.Square;
+using static battle_ship_in_the_oo_way_submarine101.SQUARE.Square;
 
 namespace battle_ship_in_the_oo_way_submarine101.OCEAN
 {
     public abstract class Ocean
     {
-        public List<Square> Fields { get; set; }
+        public int mapSize;
+        public string name;
+        public List<int> borders;
+        public List<int> fields;
+        
 
-        private Ocean()
+        public Ocean(int mapSize, string name, List<int> borders, List<int> fields )
         {
-            Fields = new List<Square>();
-            int mapSize = Player.MapSize;
-            string name = "";
+            this.mapSize = Player.MapSize;
+            this.name = name;
+            this.borders = borders;
+            this.fields = fields;
         }
 
-        private Ocean(List<Square> fields)
-        {
-            Fields = fields;
-            int i;
-            int j;
-            
-            for (i = 0; i < Player.MapSize; i++)
-            {
-                
-                for (j = 0; j < Player.MapSize; j++)
-                {
-                    fields.Add(new Square(i; j)
-                }
-            }
-        }
-
-        public string StringPrinter(char c, int count)
-        {
-            return (c * count).ToString();
-        }
-
+        // public string StringPrinter(char c, int count)
+        // {
+        //     return (c * count).ToString();
+        // }
+        
         public void PrintOcean(int length, int height, string name)
         {
-            List<string> alphabet = new List<string>();
-            Console.WriteLine("   A B C D E F G H I J ");
-            
+            Console.WriteLine();
         }
-    }
-
-
-
-
-    public class MyBoard() : Ocean /// MyBoard that inheritate from Ocean ///
+        
+        
+        public SHIP.PlaceShips PlaceShips
+        {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
+        }
+    public class MyBoard : Ocean /// MyBoard that inheritate from Ocean ///
     {
-        public MyBoard(int mapSize, string name, List<int> borders, List<int> fields) : base()
+        public MyBoard(int mapSize, string name, List<int> borders, List<int> fields) : base(mapSize, name, borders, fields)
         {
             mapSize = Player.MapSize;
             name = "This is your board";
         }
     }
     
-    public class EnemyBoard() : Ocean
+    public class EnemyBoard : Ocean
     {
-        public EnemyBoard(int mapSize, string name, List<int> borders, List<int>fields) : base()
+        public EnemyBoard(int mapSize, string name, List<int> borders, List<int> fields) : base(mapSize, name, borders, fields)
         {
             mapSize = Player.MapSize;
             name = "This is an enemy board";
