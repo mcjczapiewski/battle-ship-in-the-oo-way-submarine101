@@ -32,7 +32,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                 new Carrier()
             };
             Ocean = new Ocean();
-            EnemyBoard = new EnemyBoard();
+            Ocean EnemyBoard = new EnemyBoard();
         }
 
         public void PlaceShips()
