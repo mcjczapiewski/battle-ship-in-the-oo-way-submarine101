@@ -14,7 +14,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
         {
             get
             {
-                return Ships.All(x => x.IsSunk);
+                return Ships.All(x => x.IsSink);
             }
         }
 
@@ -41,7 +41,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                 while (isOpen)
                 {
                     Console.Write("Select row:");
-                    var InputRow = Console.ReadLine();
+                    var InputRow = int.Parse(Console.ReadLine());
                     int EndRow = InputRow;
                     Console.Write("Select column:");
                     var InputColumn = int.Parse(Console.ReadLine());
@@ -49,17 +49,9 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     Console.Write("Ship will be horizontal or vertical? H/V");
                     var InputIsHorizontal = Console.ReadLine();
                     var UpperInputIsHorizontal = InputIsHorizontal.ToUpper();
-                    if (UpperInputIsHorizontal == "H")
-                    {
-                        IsHorizontal = true;
-                    }
-                    else
-                    {
-                        IsHorizontal = false;
-                    }
-                    
+                   
                     List<int> panelNumbers = new List<int>();
-                    if (IsHorizontal is true)
+                    if (UpperInputIsHorizontal == "H")
                     {
                         for (int i = 1; i < Ship.Length; i++)
                         {
@@ -82,7 +74,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     }
 
                     //Check if square is occupied
-                    var affectedPanels = GameBoard.Panels.Range(startrow, startcolumn, endrow, endcolumn);
+                    var affectedPanels = Ocean.Squares.Range(InputRow, InputColumn, EndRow, EndColumn);
                     if(affectedPanels.Any(x=>x.IsOccupied))
                     {
                         isOpen = true;
