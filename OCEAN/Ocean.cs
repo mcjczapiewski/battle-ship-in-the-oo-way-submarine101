@@ -1,61 +1,88 @@
+
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using DefaultNamespace;
-using static battle_ship_in_the_oo_way_submarine101.SQUARE.Square;
+using battle_ship_in_the_oo_way_submarine101.SQUARE;
+
 
 namespace battle_ship_in_the_oo_way_submarine101.OCEAN
+
 {
-    public abstract class Ocean
+    public class Ocean
     {
-        public int mapSize;
-        public string name;
-        public List<int> borders;
-        public List<int> fields;
-        
 
-        public Ocean(int mapSize, string name, List<int> borders, List<int> fields )
-        {
-            this.mapSize = Player.MapSize;
-            this.name = name;
-            this.borders = borders;
-            this.fields = fields;
-        }
-
-        // public string StringPrinter(char c, int count)
+        //     public Square.Square Sqr = new Square.Square();
+        //     public List<List<Square.Square>> Field;
+        //     public string Name = "";
+        //     public int MapSize = 10;
+        //    
+        //     public Ocean()
+        //     {
+        //         int i;
+        //         int j;
+        //         for (i = 0; i < 10; i++)
+        //         {
+        //             for (j = 0; j < 10; j++)
+        //             {
+        //                 Field.Add(new Sqr(i, j));
+        //             }
+        //         }
+        //     }
+        //
+        //     public string StringPrinter(char c, int count)
+        //     {
+        //         return (c * count).ToString();
+        //     }
+        //
+        // public void PrintOcean(int length, int height, string name)
         // {
-        //     return (c * count).ToString();
+        //     List<string> alphabet = new List<string>();
+        //     Console.WriteLine();
+        //     Console.WriteLine("   A B C D E F G H I J ");
+        //     foreach (var fld in Field)
+        //     {
+        //         Console.Write(Sqr.SignOnMap);
+        //     }
+        //     
         // }
         
-        public void PrintOcean(int length, int height, string name)
+
+        public static List<Square> Squares { get; set; }
+
+        public Ocean()
         {
-            Console.WriteLine();
+            Squares = new List<Square>();
+            for (int i = 1; i <= 10; i++)
+            {
+                for (int j = 1; j <= 10; j++)
+                {
+                    Squares.Add(new Square(i, j));
+                }
+            }
         }
-        
-        
-        public SHIP.PlaceShips PlaceShips
+
+        public void OutputBoards()
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
-        }
-    public class MyBoard : Ocean /// MyBoard that inheritate from Ocean ///
-    {
-        public MyBoard(int mapSize, string name, List<int> borders, List<int> fields) : base(mapSize, name, borders, fields)
-        {
-            mapSize = Player.MapSize;
-            name = "This is your board";
+            Console.WriteLine(Player.Name);
+            Console.WriteLine("Own Board:                          Firing Board:");
+            for (int row = 1; row <= 10; row++)
+
+            {
+                for (int ownColumn = 1; ownColumn <= 10; ownColumn++)
+                {
+                    Console.Write(Ocean.Squares.At(row, ownColumn).Status + " ");
+                }
+
+                Console.Write("                ");
+                for (int firingColumn = 1; firingColumn <= 10; firingColumn++)
+                {
+                    Console.Write(ShootOcean.Squares.At(row, firingColumn).Status + " ");
+                }
+
+                Console.WriteLine(Environment.NewLine);
+            }
+
+            Console.WriteLine(Environment.NewLine);
         }
     }
-    
-    public class EnemyBoard : Ocean
-    {
-        public EnemyBoard(int mapSize, string name, List<int> borders, List<int> fields) : base(mapSize, name, borders, fields)
-        {
-            mapSize = Player.MapSize;
-            name = "This is an enemy board";
-        }
-    }
-    
 }
+

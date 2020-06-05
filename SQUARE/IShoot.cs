@@ -17,19 +17,19 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
         /// <param name="Column">from user input</param>
         void SetProperMark(int Row, int Column)
         {
-            Ocean myBoard = new MyBoard();
-            Ocean enemyBoard = new EnemyBoard();
+            Ocean myBoard = new Ocean();
+            Ocean enemyBoard = new Ocean();
             // check at opponents board square type from array
-            var whatItShouldBe = enemyBoard.fields[Row, Column];
+            var whatItShouldBe = enemyBoard.Squares[row, column];
             // change mark at my board to the mark of opponent
             Square isItOccupied = new Square.IsOccupied();
             if (whatItShouldBe == OccupationType.Empty)
             {
-                myBoard.fields[Row, Column] = OccupationType.Miss;
+                myBoard.Squares[Row, Column] = OccupationType.Miss;
             }
             else if (isItOccupied)
             {
-                myBoard.fields[Row, Column] = OccupationType.Hit;
+                myBoard.Squares[Row, Column] = OccupationType.Hit;
             }
         }
 
