@@ -1,11 +1,14 @@
 ﻿using System;
 using battle_ship_in_the_oo_way_submarine101;
 
-public class Battleship : Ship
+namespace battle_ship_in_the_oo_way_submarine101.SHIP
 {
-	public Battleship()
+	public class Battleship : Ship
 	{
-		Name = "Battleship";
-		Length = 4;
+		public Battleship()
+		{
+			Name = "Battleship";
+			Length = 4;
+		}
 	}
 }

@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using battle_ship_in_the_oo_way_submarine101.SQUARE;
 
-
 namespace battle_ship_in_the_oo_way_submarine101.OCEAN
 
 {
@@ -50,6 +49,8 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
 
         public Ocean()
         {
+            // int[,] Squares = new int[10, 10];
+
             Squares = new List<Square>();
             for (int i = 1; i <= 10; i++)
             {
@@ -60,9 +61,9 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
             }
         }
 
-        public void OutputBoards()
+        public static void OutputBoards()
         {
-            Console.WriteLine(Player.Name);
+            // Console.WriteLine(Player.Name);
             Console.WriteLine("Own Board:                          Firing Board:");
             for (int row = 1; row <= 10; row++)
 
@@ -75,7 +76,7 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
                 Console.Write("                ");
                 for (int firingColumn = 1; firingColumn <= 10; firingColumn++)
                 {
-                    Console.Write(ShootOcean.Squares.At(row, firingColumn).Status + " ");
+                    Console.Write(EnemyBoard.Squares.At(row, firingColumn).Status + " ");
                 }
 
                 Console.WriteLine(Environment.NewLine);

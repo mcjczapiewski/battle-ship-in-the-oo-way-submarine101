@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.Linq;
-using battle_ship_in_the_oo_way_submarine101;
 using battle_ship_in_the_oo_way_submarine101.OCEAN;
+using battle_ship_in_the_oo_way_submarine101.SHIP;
 
 namespace battle_ship_in_the_oo_way_submarine101.PLAYER
 {
@@ -11,7 +10,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
     {
         public string Name { get; set; }
         public Ocean Ocean { get; set; }
-        public ShootOcean ShootOcean { get; set; }
+        // public EnemyBoard EnemyBoard { get; set; }
         public List<Ship> Ships { get; set; }
         public bool HasLost
         {
@@ -33,7 +32,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                 new Carrier()
             };
             Ocean = new Ocean();
-            ShootOcean = new ShootOcean();
+            EnemyBoard = new EnemyBoard();
         }
 
         public void PlaceShips()

@@ -1,19 +1,14 @@
-using battle_ship_in_the_oo_way_submarine101;
+using battle_ship_in_the_oo_way_submarine101.SQUARE;
 using System;
 
-namespace battle_ship_in_the_oo_way_submarine101
+namespace battle_ship_in_the_oo_way_submarine101.SHIP
 {
-    public class Ship
+    public abstract class Ship
     {
         public string Name;
         public int Length;
         public int Shots;
-        public  OccupationType  OccupationType {get; set;}
-        public int Coordinates(int x, int y)
-        {
-            X = x;
-            Y = y;
-        }
+        public char OccupationType();
         public bool IsSink
         {
             get

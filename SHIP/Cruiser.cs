@@ -1,12 +1,15 @@
 ﻿using System;
 using battle_ship_in_the_oo_way_submarine101;
 
-public class Cruiser : Ship
+namespace battle_ship_in_the_oo_way_submarine101.SHIP
 {
-	public Cruiser()
+	public class Cruiser : Ship
 	{
-		Name = "Cruiser";
-		Length = 3;
-		ShipEnum = Cruiser;
+		public Cruiser()
+		{
+			Name = "Cruiser";
+			Length = 3;
+			ShipEnum = Cruiser;
+		}
 	}
 }

@@ -1,11 +1,14 @@
 ﻿using System;
 using battle_ship_in_the_oo_way_submarine101;
 
-public class Carrier : Ship
+namespace battle_ship_in_the_oo_way_submarine101.SHIP
 {
-	public Carrier()
+	public class Carrier : Ship
 	{
-		Name = "Carrier";
-		Length = 5;
+		public Carrier()
+		{
+			Name = "Carrier";
+			Length = 5;
+		}
 	}
 }
