@@ -1,10 +1,12 @@
 {
   "ExpandedNodes": [
     "",
+    "\\.idea",
     "\\OCEAN",
+    "\\PLAYER",
     "\\SHIP",
     "\\SQUARE"
   ],
-  "SelectedNode": "\\OCEAN\\Ocean.cs",
+  "SelectedNode": "\\PLAYER\\Player.cs",
   "PreviewInSolutionExplorer": false
 }
