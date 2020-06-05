@@ -6,11 +6,17 @@ namespace battle_ship_in_the_oo_way_submarine101.Square
     {
         public Coordinates Coordinates { get; set; }
         public OccupationType OccupationType { get; set; }
+
+        public string SignOnMap { get; set; };
+        
         public Square(int row, int column)
         {
             Coordinates = new Coordinates(row, column);
             
             OccupationType = OccupationType.Empty;
+
+            SignOnMap = "[]";
+
         }
 
         public string Status
@@ -33,4 +39,5 @@ namespace battle_ship_in_the_oo_way_submarine101.Square
             }
         }
     }
+    
 }
