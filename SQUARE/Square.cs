@@ -30,12 +30,16 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
             }
         }
 
-        public bool IsOccupied =>
-            OccupationType == OccupationType.Battleship
-            || OccupationType == OccupationType.Carrier
-            || OccupationType == OccupationType.Cruiser
-            || OccupationType == OccupationType.Submarine
-            || OccupationType == OccupationType.Destroyer;
+        public bool IsOccupied
+        {
+            get
+            {
+                return OccupationType == OccupationType.Battleship
+                || OccupationType == OccupationType.Carrier
+                || OccupationType == OccupationType.Cruiser
+                || OccupationType == OccupationType.Submarine
+                || OccupationType == OccupationType.Destroyer;
+            }
+        }
     }
-
 }
