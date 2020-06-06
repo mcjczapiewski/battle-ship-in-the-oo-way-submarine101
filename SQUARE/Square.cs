@@ -15,7 +15,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
         public bool IsShoot;
     
         
-        public Square(int row, int column, char occupationType=Empty, bool isShoot=false)
+        public Square(int row, int column, char occupationType='e', bool isShoot=false)
         {
             this.Coordinates = new Coordinates(row, column);
             this.OccupationType = occupationType;
@@ -34,11 +34,14 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
         {
             get
             {
-                return OccupationType == OccupationType.Battleship
-                || OccupationType == OccupationType.Carrier
-                || OccupationType == OccupationType.Cruiser
-                || OccupationType == OccupationType.Submarine
-                || OccupationType == OccupationType.Destroyer;
+                if (OccupationType == 'B' ||
+                    OccupationType == 'C' ||
+                    OccupationType == 'R' ||
+                    OccupationType == 'D' ||
+                    OccupationType == 'S' ||
+                    OccupationType == 'X' ||
+                    OccupationType == 'O')
+                    return true;
             }
         }
     }

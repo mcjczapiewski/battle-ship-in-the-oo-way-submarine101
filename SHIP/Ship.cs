@@ -1,16 +1,17 @@
 using battle_ship_in_the_oo_way_submarine101.SQUARE;
 using System;
 using System.Security.Cryptography;
+using battle_ship_in_the_oo_way_submarine101.OCEAN;
 
 namespace battle_ship_in_the_oo_way_submarine101.SHIP
 {
-    public class Ship
+    public class Ship : Coordinates
     {
         public string Name;
         public int Length = 0;
         public int Shots = 0;
-        public char OccupationType
-            ;
+        public char OccupationType;
+        
 
         public bool IsSink
         {
@@ -22,7 +23,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
             set => throw new NotImplementedException();
         }
 
-        public Ship(string name, int length, int shots, char occupationType, bool isSink)
+        public Ship(string name, int length, int shots, char occupationType, bool isSink) : base()
         {
             this.Length = length;
             this.Name = name;
