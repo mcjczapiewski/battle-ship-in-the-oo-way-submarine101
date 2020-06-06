@@ -9,21 +9,24 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
     public class Ocean
     {
 
-            public Square Sqr = new Square();
-            public List<List<Square>> Field;
-            public string Name = "";
-            public int MapSize = 10;
+            public Array Field;
+            public string Name;
+            public int MapSize;
+            
            
-            public Ocean()
+            public Ocean(Array field, string name, int mapSize)
             {
-                Field field = new Field();
-                int i;
-                int j;
-                for (i = 0; i < 10; i++)
+                Field = field;
+                Name = name;
+                MapSize = mapSize;
+                
+                
+
+                for (int i = 0; i < mapSize; i++)
                 {
-                    for (j = 0; j < 10; j++)
+                    for (int j = 0; j < MapSize; j++)
                     {
-                        Field.Add(new Sqr(i, j));
+                        Field[i, j] = new Square(i,j);
                     }
                 }
             }

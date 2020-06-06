@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Runtime.Intrinsics.X86;
 using battle_ship_in_the_oo_way_submarine101.OCEAN;
 using battle_ship_in_the_oo_way_submarine101.PLAYER;
 using static battle_ship_in_the_oo_way_submarine101.SQUARE.OccupationType;
@@ -12,9 +13,8 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
 
         public Coordinates Coordinates;
         public char OccupationType;
-        public bool IsShoot;
-    
-        
+
+
         public Square(int row, int column, char occupationType='e', bool isShoot=false)
         {
             this.Coordinates = new Coordinates(row, column);
@@ -42,6 +42,18 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
                     OccupationType == 'X' ||
                     OccupationType == 'O')
                     return true;
+                return false;
+            }
+        }
+
+        public bool IsShoot
+        {
+            get
+            {
+                if (OccupationType == 'X')
+                    return true;
+                return false;
+
             }
         }
     }
