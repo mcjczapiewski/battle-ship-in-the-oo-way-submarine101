@@ -6,4 +6,10 @@
     <RootNamespace>battle_ship_in_the_oo_way_submarine101</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Colorful.Console" Version="1.2.10" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
+  </ItemGroup>
+
 </Project>

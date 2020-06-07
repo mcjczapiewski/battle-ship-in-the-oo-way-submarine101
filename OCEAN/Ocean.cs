@@ -9,14 +9,14 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
     public class Ocean
     {
 
-            public Array Field;
+            
             public string Name;
             public int MapSize;
             
            
-            public Ocean(Array field, string name, int mapSize)
+            public Ocean( string name, int mapSize)
             {
-                Field = field;
+                Square[,] Field = new Square[10,10];
                 Name = name;
                 MapSize = mapSize;
                 
