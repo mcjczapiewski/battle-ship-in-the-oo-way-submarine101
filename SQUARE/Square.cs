@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics.X86;
 using battle_ship_in_the_oo_way_submarine101.OCEAN;
 using battle_ship_in_the_oo_way_submarine101.PLAYER;
-using static battle_ship_in_the_oo_way_submarine101.SQUARE.OccupationType;
+using static battle_ship_in_the_oo_way_submarine101.SQUARE;
 
 namespace battle_ship_in_the_oo_way_submarine101.SQUARE
 {
@@ -15,9 +15,9 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
         public char OccupationType;
 
 
-        public Square(int row, int column, char occupationType='e', bool isShoot=false)
+        public Square(int CoordinateX, int CoordinateY, char occupationType='e', bool isShoot=false)
         {
-            this.Coordinates = new Coordinates(row, column);
+            this.Coordinates = new Coordinates(CoordinateX, CoordinateY);
             this.OccupationType = occupationType;
             this.IsShoot = isShoot;
         }

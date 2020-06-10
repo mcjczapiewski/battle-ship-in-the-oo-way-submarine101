@@ -15,4 +15,7 @@
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)nunit/3.12.0/build/NUnit.props" Condition="Exists('$(NuGetPackageRoot)nunit/3.12.0/build/NUnit.props')" />
   </ImportGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgAsciiArtLibrary Condition=" '$(PkgAsciiArtLibrary)' == '' ">/home/pat/.nuget/packages/asciiartlibrary/1.0.0</PkgAsciiArtLibrary>
+  </PropertyGroup>
 </Project>

@@ -26,6 +26,10 @@
   "frameworks": {
     "netcoreapp3.1": {
       "dependencies": {
+        "AsciiArtLibrary": {
+          "target": "Package",
+          "version": "[1.0.0, )"
+        },
         "Colorful.Console": {
           "target": "Package",
           "version": "[1.2.10, )"

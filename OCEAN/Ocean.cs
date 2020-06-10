@@ -1,6 +1,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
+using System.Resources;
+using System.Security.Cryptography.X509Certificates;
 using battle_ship_in_the_oo_way_submarine101.SQUARE;
 
 namespace battle_ship_in_the_oo_way_submarine101.OCEAN
@@ -8,86 +11,46 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
 {
     public class Ocean
     {
+        private string Name;
+        private int Row = 10;
+        private int Column = 10;
 
-            
-            public string Name;
-            public int MapSize;
-            
-           
-            public Ocean( string name, int mapSize)
+
+        public void Ocean1(string name, int row, int column)
             {
-                Square[,] Field = new Square[10,10];
-                Name = name;
-                MapSize = mapSize;
-                
+                Square[,] field = new Square[Row,Column];
+                this.Name = name;
+                this.Row = row;
+                this.Column = column;
+                var result = field;
                 
 
-                for (int i = 0; i < mapSize; i++)
+                for (int i = 0; i < Row; i++)
                 {
-                    for (int j = 0; j < MapSize; j++)
+                    for (int j = 0; j < Column; j++)
                     {
-                        Field[i, j] = new Square(i,j);
+                        field[i, j] = new Square(i,j);
                     }
                 }
+                
             }
         
-            public string StringPrinter(char c, int count)
-            {
-                return (c * count).ToString();
-            }
-        
-        public void PrintOcean(int length, int height, string name)
+        public string StringPrinter(char c, int count)
         {
-            List<string> alphabet = new List<string>();
-            Console.WriteLine();
-            Console.WriteLine("   A B C D E F G H I J ");
-            foreach (var fld in Field)
-            {
-                Console.Write(Sqr.SignOnMap);
-            }
-            
+            return (c * count).ToString();
         }
+
+        public class PrintOcean: Ocean
         
-    //
-    //     public static List<Square> Squares { get; set; }
-    //
-    //     public Ocean()
-    //     {
-    //         // int[,] Squares = new int[10, 10];
-    //
-    //         Squares = new List<Square>();
-    //         for (int i = 1; i <= 10; i++)
-    //         {
-    //             for (int j = 1; j <= 10; j++)
-    //             {
-    //                 Squares.Add(new Square(i, j));
-    //             }
-    //         }
-    //     }
-    //
-    //     public static void OutputBoards()
-    //     {
-    //         // Console.WriteLine(Player.Name);
-    //         Console.WriteLine("Own Board:                          Firing Board:");
-    //         for (int row = 1; row <= 10; row++)
-    //
-    //         {
-    //             for (int ownColumn = 1; ownColumn <= 10; ownColumn++)
-    //             {
-    //                 Console.Write(Ocean.Squares.At(row, ownColumn).Status + " ");
-    //             }
-    //
-    //             Console.Write("                ");
-    //             for (int firingColumn = 1; firingColumn <= 10; firingColumn++)
-    //             {
-    //                 Console.Write(EnemyBoard.Squares.At(row, firingColumn).Status + " ");
-    //             }
-    //
-    //             Console.WriteLine(Environment.NewLine);
-    //         }
-    //
-    //         Console.WriteLine(Environment.NewLine);
-    //     }
-    // }
+        {
+            public void Print(int length, int height, string name)
+            {
+                List<string> alphabet = new List<string>();
+                Console.WriteLine();
+                Console.WriteLine("   A B C D E F G H I J ");
+            }
+        }
+
+    }
 }
 
