@@ -25,11 +25,11 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
             Name = name;
             Ships = new List<Ship>()
             {
-                new Destroyer(),
-                new Submarine(),
-                new Cruiser(),
-                new Battleship(),
-                new Carrier()
+                new Ship("Destroyer", 2,0,'D', false),
+                new Ship("Carrier", 5,0,'R',false),
+                new Ship("Cruiser", 3,0,'C',false),
+                new Ship("Submarine", 3,0,'S',false),
+                new Ship("Battleship", 4,0,'B',false),
             };
             Ocean = new Ocean();
             Ocean EnemyBoard = new Ocean();
@@ -75,24 +75,24 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                         continue;
                     }
 
-                    //Check if square is occupied
-                    var affectedSquares = Ocean.Squares.Range(InputRow, InputColumn, EndRow, EndColumn);
-                    if(affectedSquares.Any(x=>x.IsOccupied))
-                    {
-                        isOpen = true;
-                        continue;
-                    }
-
-                    foreach(var Square in affectedSquares)
-                    {
-                        Square.OccupationType = ship.OccupationType;
-                    }
-                    isOpen = false;
+                    // //Check if square is occupied
+                    // var affectedSquares = Ocean.Ocean1().Range(InputRow, InputColumn, EndRow, EndColumn);
+                    // if(affectedSquares.Any(x=>x.IsOccupied))
+                    // {
+                    //     isOpen = true;
+                    //     continue;
+                    // }
+                    //
+                    // foreach(var Square in affectedSquares)
+                    // {
+                    //     Square.OccupationType = ship.OccupationType;
+                    // }
+                    // isOpen = false;
                 }
             }
         }
 
-        private Coordinates PlayerShoot()
+        private void PlayerShoot()
         {
             /// get players input to shoot ///
         }

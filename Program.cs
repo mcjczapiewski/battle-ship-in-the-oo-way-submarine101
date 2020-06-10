@@ -23,23 +23,18 @@ namespace battle_ship_in_the_oo_way_submarine101
             return false;
         }
     
-        
         static void Main(string[] args)
         {
-            Square sqr = new Square(1,2,'e', false);
-            Ocean ocean = new Ocean();
-            Console.WriteLine();
-            Console.WriteLine(ocean);
-            
-            // while (bool IsPlayng())
-            // {
-            
-                Console.WriteLine("Welcome in battleship!");
-                Console.WriteLine("Please select ship to set:\n 1. Battleship\n 2. Carrier" +
-                                  "\n 3. Cruiser \n 4. Destroyer\n 5. Submarine");
-                Console.ReadLine();
-                Console.WriteLine("Please choose:\n 1. Horizontal\n 2.Vertical");
-                Console.ReadLine();
+            // Square sqr = new Square(1,2,'e', false);
+            // Ocean ocean = new Ocean();
+         
+        
+            Console.WriteLine("Welcome in battleship!");
+            Console.WriteLine("Please select ship to set:\n 1. Battleship\n 2. Carrier" +
+                              "\n 3. Cruiser \n 4. Destroyer\n 5. Submarine");
+            Console.ReadLine();
+            Console.WriteLine("Please choose:\n 1. Horizontal\n 2.Vertical");
+            Console.ReadLine();
               
                 // SetShips();
                 // Shoot(); /// here loop is starting///

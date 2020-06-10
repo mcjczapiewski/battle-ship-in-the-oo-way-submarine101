@@ -8,10 +8,10 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
     public class Ship : Coordinates
     {
         public string Name;
-        public int Length = 0;
+        public static int Length = 0;
         public int Shots = 0;
         public char OccupationType;
-        
+
 
         public bool IsSink
         {
@@ -23,9 +23,9 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
             set => throw new NotImplementedException();
         }
 
-        public Ship(string name, int length, int shots, char occupationType, bool isSink) : base()
+        public Ship(string name, int length, int shots, char occupationType, bool isSink) : base(0,0)
         {
-            this.Length = length;
+            Ship.Length = length;
             this.Name = name;
             this.Shots = shots;
             this.OccupationType = occupationType;
@@ -38,5 +38,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
         Ship Cruiser = new Ship("Cruiser", 3,0,'C',false);
         Ship Submarine = new Ship("Submarine", 3,0,'S',false);
         Ship Battleship = new Ship("Battleship", 4,0,'B',false);
+
+      
     }
 }
