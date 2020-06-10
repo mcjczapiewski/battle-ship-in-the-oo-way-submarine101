@@ -17,9 +17,9 @@ C:/Users/igorn/Source/Repos/battle-ship-in-the-oo-way-submarine101/obj/Debug/net
 /home/pat/homework/c#/battle-ship-in-the-oo-way-submarine101/obj/Debug/netcoreapp3.1/battle-ship-in-the-oo-way-submarine101.AssemblyInfo.cs
 /home/pat/homework/c#/battle-ship-in-the-oo-way-submarine101/obj/Debug/netcoreapp3.1/battle-ship-in-the-oo-way-submarine101.dll
 /home/pat/homework/c#/battle-ship-in-the-oo-way-submarine101/obj/Debug/netcoreapp3.1/battle-ship-in-the-oo-way-submarine101.pdb
-C:\Users\Maciej\Documents\c-sharp\CODE\battle-ship-in-the-oo-way-submarine101\obj\Debug\netcoreapp3.1\battle-ship-in-the-oo-way-submarine101.csprojAssemblyReference.cache
-C:\Users\Maciej\Documents\c-sharp\CODE\battle-ship-in-the-oo-way-submarine101\obj\Debug\netcoreapp3.1\battle-ship-in-the-oo-way-submarine101.AssemblyInfoInputs.cache
-C:\Users\Maciej\Documents\c-sharp\CODE\battle-ship-in-the-oo-way-submarine101\obj\Debug\netcoreapp3.1\battle-ship-in-the-oo-way-submarine101.AssemblyInfo.cs
-C:\Users\Maciej\Documents\c-sharp\CODE\battle-ship-in-the-oo-way-submarine101\obj\Debug\netcoreapp3.1\battle-ship-in-the-oo-way-submarine101.csproj.CoreCompileInputs.cache
-C:\Users\Maciej\Documents\c-sharp\CODE\battle-ship-in-the-oo-way-submarine101\obj\Debug\netcoreapp3.1\battle-ship-in-the-oo-way-submarine101.dll
-C:\Users\Maciej\Documents\c-sharp\CODE\battle-ship-in-the-oo-way-submarine101\obj\Debug\netcoreapp3.1\battle-ship-in-the-oo-way-submarine101.pdb
+C:/Users/Maciej/Documents/c-sharp/CODE/battle-ship-in-the-oo-way-submarine101/obj/Debug/netcoreapp3.1/battle-ship-in-the-oo-way-submarine101.csprojAssemblyReference.cache
+C:/Users/Maciej/Documents/c-sharp/CODE/battle-ship-in-the-oo-way-submarine101/obj/Debug/netcoreapp3.1/battle-ship-in-the-oo-way-submarine101.AssemblyInfoInputs.cache
+C:/Users/Maciej/Documents/c-sharp/CODE/battle-ship-in-the-oo-way-submarine101/obj/Debug/netcoreapp3.1/battle-ship-in-the-oo-way-submarine101.AssemblyInfo.cs
+C:/Users/Maciej/Documents/c-sharp/CODE/battle-ship-in-the-oo-way-submarine101/obj/Debug/netcoreapp3.1/battle-ship-in-the-oo-way-submarine101.csproj.CoreCompileInputs.cache
+C:/Users/Maciej/Documents/c-sharp/CODE/battle-ship-in-the-oo-way-submarine101/obj/Debug/netcoreapp3.1/battle-ship-in-the-oo-way-submarine101.dll
+C:/Users/Maciej/Documents/c-sharp/CODE/battle-ship-in-the-oo-way-submarine101/obj/Debug/netcoreapp3.1/battle-ship-in-the-oo-way-submarine101.pdb
