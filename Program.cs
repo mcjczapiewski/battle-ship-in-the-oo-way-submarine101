@@ -1,40 +1,25 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using battle_ship_in_the_oo_way_submarine101.OCEAN;
 using battle_ship_in_the_oo_way_submarine101.SQUARE;
+using static battle_ship_in_the_oo_way_submarine101.MainLogic;
 
 namespace battle_ship_in_the_oo_way_submarine101
 {
     class Program
     {
-        private bool CheckIsWin()
+        
+        static void Main(bool isPlaying)
         {
-            return false; // MOCK!
-        }
-
-
-        private bool IsPlaying()
-        {
-            if (!CheckIsWin())
+            
+            while (isPlaying)
             {
-                return true;
+                WelcomeText()
             }
 
-            return false;
-        }
-    
-        static void Main(string[] args)
-        {
-            // Square sqr = new Square(1,2,'e', false);
-            // Ocean ocean = new Ocean();
-         
-        
-            Console.WriteLine("Welcome in battleship!");
-            Console.WriteLine("Please select ship to set:\n 1. Battleship\n 2. Carrier" +
-                              "\n 3. Cruiser \n 4. Destroyer\n 5. Submarine");
-            Console.ReadLine();
-            Console.WriteLine("Please choose:\n 1. Horizontal\n 2.Vertical");
-            Console.ReadLine();
+
+            
               
                 // SetShips();
                 // Shoot(); /// here loop is starting///
