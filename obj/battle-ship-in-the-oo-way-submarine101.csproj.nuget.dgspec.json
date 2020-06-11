@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/home/pat/homework/c#/battle-ship-in-the-oo-way-submarine101/battle-ship-in-the-oo-way-submarine101.csproj": {}
+    "C:\\Users\\igorn\\source\\repos\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj": {}
   },
   "projects": {
-    "/home/pat/homework/c#/battle-ship-in-the-oo-way-submarine101/battle-ship-in-the-oo-way-submarine101.csproj": {
+    "C:\\Users\\igorn\\source\\repos\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/pat/homework/c#/battle-ship-in-the-oo-way-submarine101/battle-ship-in-the-oo-way-submarine101.csproj",
+        "projectUniqueName": "C:\\Users\\igorn\\source\\repos\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj",
         "projectName": "battle-ship-in-the-oo-way-submarine101",
-        "projectPath": "/home/pat/homework/c#/battle-ship-in-the-oo-way-submarine101/battle-ship-in-the-oo-way-submarine101.csproj",
-        "packagesPath": "/home/pat/.nuget/packages/",
-        "outputPath": "/home/pat/homework/c#/battle-ship-in-the-oo-way-submarine101/obj/",
+        "projectPath": "C:\\Users\\igorn\\source\\repos\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj",
+        "packagesPath": "C:\\Users\\igorn\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\igorn\\source\\repos\\battle-ship-in-the-oo-way-submarine101\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/pat/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\igorn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -67,18 +69,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.2, 3.1.2]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.300/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

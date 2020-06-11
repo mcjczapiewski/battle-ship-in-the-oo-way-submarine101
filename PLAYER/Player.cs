@@ -8,6 +8,20 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
 {
     public class Player
     {
+        public static string[] GetNameFromPlayer()
+        {
+            string player1 = "";
+            string player2 = "";
+
+            Console.Write("Player 1 name: ");
+            player1 = Console.ReadLine();
+            Console.WriteLine("Ok " + player1 + ", get ready for game!");
+            Console.Write("Plater 2 name: ");
+            player2 = Console.ReadLine();
+            Console.WriteLine("Ok " + player2 + ", get ready for game!");
+            return new string[] { player1, player2 };
+        }
+
         public string Name { get; set; }
         public Ocean Ocean { get; set; }
         // public EnemyBoard EnemyBoard { get; set; }
@@ -96,5 +110,6 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
         {
             /// get players input to shoot ///
         }
+
     }
 }
