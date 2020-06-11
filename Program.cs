@@ -29,8 +29,9 @@ namespace battle_ship_in_the_oo_way_submarine101
             OutputScreen.ShowIntroScreen();
             OutputScreen.Header();
             Player.GetNameFromPlayer();
-
-
+            Console.WriteLine("Now we print boards to see how they look.");
+            Ocean.DrawBoard();
+            Console.ReadKey();
 
 
             // Square sqr = new Square(1,2,'e', false);
