@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Resources;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using battle_ship_in_the_oo_way_submarine101.SHIP;
 using battle_ship_in_the_oo_way_submarine101.SQUARE;
@@ -33,7 +34,6 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
                         field[i, j] = new Square(i,j);
                     }
                 }
-                
             }
         
         public string StringPrinter(char c, int count)
@@ -137,8 +137,19 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
                 }
                 Console.WriteLine(" ");
             }
-
+        
         }
+
+        public bool isBorder()
+        {
+            
+            if (Row > 10 && Row < 1 && Column > 10 && Column < 1)
+            {
+                return true;
+            }
+
+            return false;
+        }    
     }
 }
 
