@@ -11,45 +11,9 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
 {
     public class Ocean
     {
-        private string Name;
-        private int Row = 10;
-        private int Column = 10;
+        public const int XSize = 10;
+        public const int YSize = 10;
 
-
-        public void Ocean1(string name, int row, int column)
-            {
-                Square[,] field = new Square[Row,Column];
-                this.Name = name;
-                this.Row = row;
-                this.Column = column;
-                var result = field;
-                
-
-                for (int i = 0; i < Row; i++)
-                {
-                    for (int j = 0; j < Column; j++)
-                    {
-                        field[i, j] = new Square(i,j);
-                    }
-                }
-                
-            }
-        
-        public string StringPrinter(char c, int count)
-        {
-            return (c * count).ToString();
-        }
-
-        public class PrintOcean: Ocean
-        
-        {
-            public void Print(int length, int height, string name)
-            {
-                List<string> alphabet = new List<string>();
-                Console.WriteLine();
-                Console.WriteLine("   A B C D E F G H I J ");
-            }
-        }
         static string NumberToLetter(int number)
         {
             string result = "";
@@ -114,8 +78,10 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
                 Console.Write(NumberToLetter(x));
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("|");
+                //my board
                 for (int y = 1; y <=10; y++)
                 {
+                    //instead of empty character, there will be more code for square status
                     Console.Write(" ");
                     Console.Write("|");
                 }
@@ -124,8 +90,10 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
                 Console.Write(NumberToLetter(x));
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("|");
+                //shooting board
                 for (int y = 1; y <= 10; y++)
                 {
+                    //instead of empty character there will be mroe code for square status
                     Console.Write(" ");
                     Console.Write("|");
                 }

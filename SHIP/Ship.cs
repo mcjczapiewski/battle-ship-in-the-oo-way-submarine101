@@ -2,43 +2,45 @@ using battle_ship_in_the_oo_way_submarine101.SQUARE;
 using System;
 using System.Security.Cryptography;
 using battle_ship_in_the_oo_way_submarine101.OCEAN;
+using System.Linq;
 
 namespace battle_ship_in_the_oo_way_submarine101.SHIP
 {
-    public class Ship : Coordinates
+    public class Ship
     {
+        public Ships Ships;
         public string Name;
-        public static int Length = 0;
-        public int Shots = 0;
+        public int Life;
+        public int Shots;
         public char OccupationType;
-
+        public Coordinates[] OceanPositions;
 
         public bool IsSink
         {
             get
             {
-                return Shots >= Length;
-
+                return Shots >= Life;
             }
-            set => throw new NotImplementedException();
         }
 
-        public Ship(string name, int length, int shots, char occupationType, bool isSink) : base(0,0)
+        public Ship(Ships ships, int lifes)
         {
-            Ship.Length = length;
-            this.Name = name;
-            this.Shots = shots;
-            this.OccupationType = occupationType;
-            this.Shots = shots;
-            this.IsSink = isSink;
-
+            Ships = ships;
+            Life = lifes;
+            OceanPositions = new Coordinates[lifes];
         }
-        Ship Destroyer = new Ship("Destroyer", 2,0,'D', false);
-        Ship Carrier = new Ship("Carrier", 5,0,'R',false);
-        Ship Cruiser = new Ship("Cruiser", 3,0,'C',false);
-        Ship Submarine = new Ship("Submarine", 3,0,'S',false);
-        Ship Battleship = new Ship("Battleship", 4,0,'B',false);
-
-      
+        public GameStatus ShootingShip(Coordinates position)
+        {
+            if (OceanPositions.Contains(position))
+            {
+                Life--;
+                if (Life == 0)
+                {
+                    return GameStatus.HitAndSunk;
+                }
+                return GameStatus.Hit;
+            }
+            return GameStatus.Miss;
+        }
     }
 }
