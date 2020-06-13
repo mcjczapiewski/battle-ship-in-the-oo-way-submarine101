@@ -15,8 +15,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
         
         void SetProperMark(int Row, int Column) 
         {
-            Ocean myBoard = new Ocean();
-            Ocean enemyBoard = new Ocean();
+            
             
             // check at opponents board square type from array
             var whatItShouldBe = 
