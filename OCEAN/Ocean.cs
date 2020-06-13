@@ -18,7 +18,7 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
         private int Column = 10;
 
 
-        public void Ocean1(string name, int row, int column)
+        public Ocean(string name, int row, int column)
             {
                 Square[,] field = new Square[Row,Column];
                 this.Name = name;
@@ -34,8 +34,8 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
                         field[i, j] = new Square(i,j);
                     }
                 }
-            }
-        
+            
+
         public string StringPrinter(char c, int count)
         {
             return (c * count).ToString();
