@@ -1,9 +1,9 @@
-
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Resources;
 using System.Security.Cryptography.X509Certificates;
+using battle_ship_in_the_oo_way_submarine101.SHIP;
 using battle_ship_in_the_oo_way_submarine101.SQUARE;
 
 namespace battle_ship_in_the_oo_way_submarine101.OCEAN
@@ -13,6 +13,7 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
     {
         public const int XSize = 10;
         public const int YSize = 10;
+
 
         static string NumberToLetter(int number)
         {

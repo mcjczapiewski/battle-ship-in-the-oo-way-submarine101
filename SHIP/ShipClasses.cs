@@ -11,15 +11,16 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
             switch (type)
             {
                 case Ships.Destroyer:
-                    return new Ship(Ships.Destroyer, 2);
+                    return new Ship(Ships.Destroyer, 2, "D");
                 case Ships.Cruiser:
-                    return new Ship(Ships.Cruiser, 3);
+                    return new Ship(Ships.Cruiser, 3, "C");
                 case Ships.Submarine:
-                    return new Ship(Ships.Submarine, 3);
+                    return new Ship(Ships.Submarine, 3, "S");
                 case Ships.Battleship:
-                    return new Ship(Ships.Battleship, 4);
+                    return new Ship(Ships.Battleship, 4, "B");
                 default:
-                    return new Ship(Ships.Carrier, 5);
+                    return new Ship(Ships.Carrier, 5, "R");
             }
+        }
     }
 }
