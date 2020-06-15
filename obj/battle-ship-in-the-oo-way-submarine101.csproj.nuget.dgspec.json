@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\igorn\\source\\repos\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj": {}
+    "/home/pat/homework/c#/battle-ship-in-the-oo-way-submarine101/battle-ship-in-the-oo-way-submarine101.csproj": {}
   },
   "projects": {
-    "C:\\Users\\igorn\\source\\repos\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj": {
+    "/home/pat/homework/c#/battle-ship-in-the-oo-way-submarine101/battle-ship-in-the-oo-way-submarine101.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\igorn\\source\\repos\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj",
+        "projectUniqueName": "/home/pat/homework/c#/battle-ship-in-the-oo-way-submarine101/battle-ship-in-the-oo-way-submarine101.csproj",
         "projectName": "battle-ship-in-the-oo-way-submarine101",
-        "projectPath": "C:\\Users\\igorn\\source\\repos\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj",
-        "packagesPath": "C:\\Users\\igorn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\igorn\\source\\repos\\battle-ship-in-the-oo-way-submarine101\\obj\\",
+        "projectPath": "/home/pat/homework/c#/battle-ship-in-the-oo-way-submarine101/battle-ship-in-the-oo-way-submarine101.csproj",
+        "packagesPath": "/home/pat/.nuget/packages/",
+        "outputPath": "/home/pat/homework/c#/battle-ship-in-the-oo-way-submarine101/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\igorn\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/pat/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -37,28 +35,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "dependencies": {
-            "Colorful.Console": {
-              "target": "Package",
-              "version": "[1.2.10, )"
-            },
-            "Markdig": {
-              "target": "Package",
-              "version": "[0.20.0, )"
-            },
-            "Markdown": {
-              "target": "Package",
-              "version": "[2.2.1, )"
-            },
-            "NUnit": {
-              "target": "Package",
-              "version": "[3.12.0, )"
-            },
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[12.0.3, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -69,12 +45,18 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.2, 3.1.2]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.300/RuntimeIdentifierGraph.json"
         }
       }
     }
