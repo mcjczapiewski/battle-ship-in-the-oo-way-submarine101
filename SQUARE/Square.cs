@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics.X86;
 using battle_ship_in_the_oo_way_submarine101.OCEAN;
 using battle_ship_in_the_oo_way_submarine101.PLAYER;
+using battle_ship_in_the_oo_way_submarine101.SHIP;
 using battle_ship_in_the_oo_way_submarine101.SQUARE;
 
 namespace battle_ship_in_the_oo_way_submarine101.SQUARE
@@ -12,24 +13,19 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
     {
 
         public Coordinates Coordinates;
-        public char OccupationType;
+        public bool isShoot;
 
-
-        public Square(int Row, int Column, char occupationType='e', bool isShoot=false)
-        {
-            this.Coordinates = new Coordinates(Row, Column);
-            this.OccupationType = occupationType;
-            this.IsShoot = isShoot;
-        }
-        
-        public string Status
+        public char OccupationType
         {
             get
             {
-                return OccupationType.ToString();
+                return OccupationType;
             }
+            set
+            {
+                
+            };
         }
-
         public bool IsOccupied
         {
             get
@@ -46,6 +42,24 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
                     return false;
                 return false;
             }
+
+
+        public Square(int row, int column)
+        {
+            this.Coordinates = new Coordinates(row, column);
+            char occupationType;
+            this.IsShoot = isShoot;
+        }
+        
+        public string Status
+        {
+            get
+            {
+                return OccupationType.ToString();
+            }
+        }
+
+        
         }
 
         public bool IsShoot
@@ -60,14 +74,6 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
             set => throw new NotImplementedException();
         }
 
-        public void CheckOccupation()
-        {
-            throw new NotImplementedException();
-        }
-        
-        public void HitThatShip()
-        {
-            throw new NotImplementedException();
-        }
+     
     }
 }

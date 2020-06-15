@@ -2,6 +2,7 @@
 using battle_ship_in_the_oo_way_submarine101.OCEAN;
 using battle_ship_in_the_oo_way_submarine101.SHIP;
 using static battle_ship_in_the_oo_way_submarine101.OCEAN.Ocean;
+using static battle_ship_in_the_oo_way_submarine101.SQUARE.Square;
 
 namespace battle_ship_in_the_oo_way_submarine101.SQUARE
 {
