@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using DefaultNamespace;
+using battle_ship_in_the_oo_way_submarine101;
 
 namespace battle_ship_in_the_oo_way_submarine101.SHIP
 {
@@ -10,7 +10,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
         public static Ship ShipBuild(ShipEnum Ship)
         {
             switch (Ship)
-            {
+            {  
                 case ShipEnum.Destroyer:
                     return new Ship(ShipEnum.Destroyer, 2);
                 case ShipEnum.Submarine:
