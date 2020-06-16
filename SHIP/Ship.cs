@@ -16,7 +16,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                 return Life == 0;
             }
         }
-        public Ship(ShipEnum shipType, int life )
+        public Ship(ShipEnum shipType, int life)
         {
             ShipType = shipType;
             Life = life;
