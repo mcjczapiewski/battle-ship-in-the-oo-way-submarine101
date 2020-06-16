@@ -1,4 +1,5 @@
 using battle_ship_in_the_oo_way_submarine101.OCEAN;
+using System.Collections.Generic;
 
 namespace battle_ship_in_the_oo_way_submarine101.SQUARE
 {
@@ -23,9 +24,9 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
             IsItFree = isItFree;
         }
 
-        public void UpdateOccupationToShip(int coordX,
+        public static void UpdateOccupationToShip(int coordX,
                                 int coordY,
-                                string tableName)
+                                List<List<string>> tableName)
         {
             Square square = Ocean.tableName[coordX][coordY];
             square.Sign = "S"; // S for Ship
