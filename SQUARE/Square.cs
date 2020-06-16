@@ -1,29 +1,49 @@
-using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Runtime.Intrinsics.X86;
-using System.Security.Cryptography.X509Certificates;
 using battle_ship_in_the_oo_way_submarine101.OCEAN;
-using battle_ship_in_the_oo_way_submarine101.PLAYER;
-using battle_ship_in_the_oo_way_submarine101.SHIP;
-using battle_ship_in_the_oo_way_submarine101.SQUARE;
 
 namespace battle_ship_in_the_oo_way_submarine101.SQUARE
 {
     public class Square
-    { // można wyrzucić - na potrzeby testu ponizszy blok kodu
-        
-        private int CoordX;
-        private int CoordY;
-        public char Sign;
+    {
+        public int CoordX;
+        public int CoordY;
+        public string Sign;
+        public bool AlreadyShooted;
+        public bool IsItFree;
 
-        public Square(int coordX, int coordY, char sign='W')
+        public Square(int coordX,
+                      int coordY,
+                      string sign = " ",
+                      bool alreadyShooted = false,
+                      bool isItFree = true)
         {
-            this.Sign = sign;
-            this.CoordX = coordX;
-            this.CoordY = coordY;
+            CoordX = coordX;
+            CoordY = coordY;
+            Sign = sign;
+            AlreadyShooted = alreadyShooted;
+            IsItFree = isItFree;
         }
 
-        
+        public void UpdateOccupationToShip(int coordX,
+                                int coordY,
+                                string tableName)
+        {
+            Square square = Ocean.tableName[coordX][coordY];
+            square.Sign = "S"; // S for Ship
+        }
+
+        public void Shoot(int coordX,
+                          int coordY,
+                          string tableName)
+        {
+            Square square = Ocean.tableName[coordX][coordY];
+            if (square.Sign == "S")
+            {
+                square.Sign = "X";
+            }
+            else
+            {
+                square.Sign = "O";
+            }
+        }
     }
 }
