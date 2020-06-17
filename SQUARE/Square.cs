@@ -1,13 +1,10 @@
 using battle_ship_in_the_oo_way_submarine101.OCEAN;
-using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 
 namespace battle_ship_in_the_oo_way_submarine101.SQUARE
 {
     public class Square
     {
-        public int CoordX;
+        public static int CoordX { get; set; }
         public int CoordY;
         public string Sign;
         public bool AlreadyShooted;
