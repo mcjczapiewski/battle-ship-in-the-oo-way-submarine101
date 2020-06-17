@@ -9,9 +9,9 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
         public string Name;
         public int Life;
         public bool IsHorizontal;
-        public bool IsSunk 
-        { 
-            get 
+        public bool IsSunk
+        {
+            get
             {
                 return Life == 0;
             }
@@ -30,7 +30,6 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                 //check if there is no other ship?
                 Square.UpdateOccupationToShip(coordX, i);
         }
-
         public void PlaceShipVertical(int coordX, int coordY, Ship newShip)
         {
             int maxX = coordX + newShip.Life;
@@ -39,6 +38,17 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                 //check if coordinates is valid
                 //check if there is no other ship?
                 Square.UpdateOccupationToShip(i, coordY);
+        }
+        public void PlaceShip(PlayerChoicesShip playerChoices)
+        {
+            Ship newShip = ShipBuilder.ShipBuild(playerChoices.ShipType);
+            switch (playerChoices.Direction)
+            {
+                case DirectionsEnum.Horizontal:
+                    return PlaceShipHorizontal(coordX, coordY, newShip);
+                default:
+                    return PlaceShipVertical(coordX, coordY, newShip);
+            }
         }
     }
 }
