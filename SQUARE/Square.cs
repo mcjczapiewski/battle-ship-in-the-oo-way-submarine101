@@ -28,7 +28,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
                                 int coordY,
                                 List<List<string>> tableName)
         {
-            Square square = Ocean.tableName[coordX][coordY];
+            Square square = Ocean.arrayOfSquares[coordX][coordY];
             square.Sign = "S"; // S for Ship
         }
 
@@ -36,7 +36,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
                           int coordY,
                           string tableName)
         {
-            Square square = Ocean.tableName[coordX][coordY];
+            Square square = Ocean.arrayOfSquares[coordX][coordY];
             if (square.Sign == "S")
             {
                 square.Sign = "X";
