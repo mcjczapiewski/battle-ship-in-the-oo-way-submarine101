@@ -1,4 +1,7 @@
 using battle_ship_in_the_oo_way_submarine101.OCEAN;
+using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace battle_ship_in_the_oo_way_submarine101.SQUARE
 {
@@ -23,19 +26,18 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
             IsItFree = isItFree;
         }
 
-        public void UpdateOccupationToShip(int coordX,
-                                int coordY,
-                                string tableName)
+        public static void UpdateOccupationToShip(int coordX,
+                                int coordY)
         {
-            Square square = Ocean.tableName[coordX][coordY];
-            square.Sign = "S"; // S for Ship
+            Square square = Ocean.arrayOfSquares[coordX, coordY];
+            square.Sign = "S";
+            square.IsItFree = false;
         }
 
-        public void Shoot(int coordX,
-                          int coordY,
-                          string tableName)
+        public static void Shoot(int coordX,
+                          int coordY)
         {
-            Square square = Ocean.tableName[coordX][coordY];
+            Square square = Ocean.arrayOfSquares[coordX, coordY];
             if (square.Sign == "S")
             {
                 square.Sign = "X";
