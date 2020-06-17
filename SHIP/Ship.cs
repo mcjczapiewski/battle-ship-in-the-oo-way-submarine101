@@ -9,8 +9,6 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
         public string Name;
         public int Life;
         public bool IsHorizontal;
-        public int CoordX;
-        public int CoordY;
         public bool IsSunk 
         { 
             get 
@@ -18,12 +16,10 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                 return Life == 0;
             }
         }
-        public Ship(ShipEnum shipType, int life, int coordX, int coordY)
+        public Ship(ShipEnum shipType, int life)
         {
             ShipType = shipType;
             Life = life;
-            CoordX = coordX;
-            CoordY = coordY;
         }
         public void PlaceShipHorizontal(int coordX, int coordY, Ship newShip)
         {
