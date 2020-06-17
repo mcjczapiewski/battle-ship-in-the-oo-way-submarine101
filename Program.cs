@@ -1,4 +1,5 @@
 ﻿using battle_ship_in_the_oo_way_submarine101.OCEAN;
+using battle_ship_in_the_oo_way_submarine101.SQUARE;
 using System;
 
 namespace battle_ship_in_the_oo_way_submarine101
@@ -9,9 +10,9 @@ namespace battle_ship_in_the_oo_way_submarine101
         {
             Ocean ocean = new Ocean("XD");
             Ocean.PrintBoard();
-            SQUARE.Square.UpdateOccupationToShip(2, 2);
+            Square.UpdateOccupationToShip(2, 2);
             Ocean.PrintBoard();
-            SQUARE.Square.Shoot(2, 3);
+            Square.Shoot(2, 3);
             Ocean.PrintBoard();
         }
     }
