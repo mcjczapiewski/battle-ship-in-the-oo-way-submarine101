@@ -1,4 +1,5 @@
 using System;
+using battle_ship_in_the_oo_way_submarine101.SQUARE;
 
 namespace battle_ship_in_the_oo_way_submarine101.SHIP
 {
@@ -8,7 +9,8 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
         public string Name;
         public int Life;
         public bool IsHorizontal;
-        //public coordinates
+        public int CoordX;
+        public int CoordY;
         public bool IsSunk 
         { 
             get 
@@ -16,19 +18,31 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                 return Life == 0;
             }
         }
-        public Ship(ShipEnum shipType, int life)
+        public Ship(ShipEnum shipType, int life, int coordX, int coordY)
         {
             ShipType = shipType;
             Life = life;
+            CoordX = coordX;
+            CoordY = coordY;
         }
-        public void PlaceShipHorizontal()
+        public void PlaceShipHorizontal(int coordX, int coordY, Ship newShip)
         {
-            throw new NotImplementedException();
+            int maxY = coordY + newShip.Life;
+
+            for (int i = coordY; i < maxY; i++)
+                //check if coordinates is valid
+                //check if there is no other ship?
+                Square.UpdateOccupationToShip(coordX, i);
         }
 
-        public void PlaceShipVertical()
+        public void PlaceShipVertical(int coordX, int coordY, Ship newShip)
         {
-            throw new NotImplementedException();
+            int maxX = coordX + newShip.Life;
+
+            for (int i = coordX; i < maxX; i++)
+                //check if coordinates is valid
+                //check if there is no other ship?
+                Square.UpdateOccupationToShip(i, coordY);
         }
     }
 }
