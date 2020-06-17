@@ -11,6 +11,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
         {
             switch (Ship)
             {  
+
                 case ShipEnum.Destroyer:
                     return new Ship(ShipEnum.Destroyer, 2);
                 case ShipEnum.Submarine:
@@ -24,4 +25,6 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
             }
         }
     }
+
 }
+
