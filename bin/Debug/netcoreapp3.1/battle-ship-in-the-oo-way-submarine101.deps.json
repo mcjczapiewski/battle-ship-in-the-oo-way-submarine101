@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v3.1": {
       "battle-ship-in-the-oo-way-submarine101/1.0.0": {
 <<<<<<< HEAD
+<<<<<<< HEAD
         "dependencies": {
           "Colorful.Console": "1.2.10",
           "Markdig": "0.20.0",
@@ -371,6 +372,11 @@
           "battle-ship-in-the-oo-way-submarine101.dll": {}
         }
 >>>>>>> 52c45c3107d7a5b8db32802634009446381fdfa5
+=======
+        "runtime": {
+          "battle-ship-in-the-oo-way-submarine101.dll": {}
+        }
+>>>>>>> 86abcf90496af3b82598feffc3389056f898bc19
       }
     }
   },
@@ -379,6 +385,7 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+<<<<<<< HEAD
 <<<<<<< HEAD
     },
     "Colorful.Console/1.2.10": {
@@ -648,6 +655,8 @@
       "hashPath": "system.threading.tasks.4.0.11.nupkg.sha512"
 =======
 >>>>>>> 52c45c3107d7a5b8db32802634009446381fdfa5
+=======
+>>>>>>> 86abcf90496af3b82598feffc3389056f898bc19
     }
   }
 }
