@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace battle_ship_in_the_oo_way_submarine101.PLAYER
@@ -11,6 +10,13 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
         public Player(string name)
         {
             Name = name;
+        }
+
+        public static string GetTheInput(string message)
+        {
+            Console.WriteLine(message);
+            Console.Write("> ");
+            return Console.ReadLine();
         }
 
         public static void PlayerMove()
@@ -54,6 +60,31 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
             return (coordX, coordY);
         }
 
+        private static bool ShipDirection()
+        {
+            bool direction = false;
+            bool validInput = false;
+            string userInput = "";
+
+            while (!validInput)
+            {
+                userInput = GetTheInput("Do you want to place ship horizontal (h) " +
+                    "or vertical (v)?").ToLower();
+                if (userInput.Length > 1
+                    || (userInput != "h" && userInput != "v"))
+                {
+                    continue;
+                }
+                validInput = true;
+            }
+            if (userInput == "h")
+            {
+                direction = true;
+                return direction;
+            }
+            return direction;
+        }
+
         private static int ShipLength()
         {
             int shipLength = 0;
@@ -76,39 +107,6 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                 }
             }
             return shipLength;
-        }
-
-        private static bool ShipDirection()
-        {
-            bool direction = false;
-            bool validInput = false;
-            string userInput = "";
-
-            while (!validInput)
-            {
-                userInput = GetTheInput("Do you want to place ship horizontal (h) " +
-                    "or vertical (v)?").ToLower();
-                if (userInput.Length > 1
-                    || (userInput != "h" && userInput != "v"))
-                {
-                    continue;
-                }
-                validInput = true;
-                
-            }
-            if (userInput == "h")
-            {
-                direction = true;
-                return direction;
-            }
-            return direction;
-        }
-
-        public static string GetTheInput(string message)
-        {
-            Console.WriteLine(message);
-            Console.Write("> ");
-            return Console.ReadLine();
         }
     }
 }
