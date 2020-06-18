@@ -1,52 +1,45 @@
-using System;
-using battle_ship_in_the_oo_way_submarine101.SQUARE;
-
 using battle_ship_in_the_oo_way_submarine101.SQUARE;
 
 namespace battle_ship_in_the_oo_way_submarine101.SHIP
 {
     public class Ship
     {
-        public ShipEnum ShipType;
-        public string Name;
-        public int Life;
         public bool IsHorizontal;
+        public int Life;
+        public string Name;
+        public ShipEnum ShipType;
 
-        public bool IsSunk
-        {
-            get
-
-            {
-                return Life == 0;
-            }
-        }
         public Ship(ShipEnum shipType, int life)
         {
             ShipType = shipType;
             Life = life;
         }
 
+        public bool IsSunk => Life == 0;
+
         public void PlaceShipHorizontal(int coordX, int coordY, Ship newShip)
         {
-            int maxY = coordY + newShip.Life;
+            var maxY = coordY + newShip.Life;
 
-            for (int i = coordY; i < maxY; i++)
+            for (var i = coordY; i < maxY; i++)
                 //check if coordinates is valid
                 //check if there is no other ship?
                 Square.UpdateOccupationToShip(coordX, i);
         }
+
         public void PlaceShipVertical(int coordX, int coordY, Ship newShip)
         {
-            int maxX = coordX + newShip.Life;
-            
-            for (int i = coordX; i < maxX; i++)
+            var maxX = coordX + newShip.Life;
+
+            for (var i = coordX; i < maxX; i++)
                 //check if coordinates is valid
                 //check if there is no other ship?
                 Square.UpdateOccupationToShip(i, coordY);
         }
+
         public void PlaceShip(PlayerChoicesShip playerChoices)
         {
-            Ship newShip = ShipBuilder.ShipBuild(playerChoices.ShipType);
+            var newShip = ShipBuilder.ShipBuild(playerChoices.ShipType);
             switch (playerChoices.Direction)
             {
                 case DirectionsEnum.Horizontal:
@@ -54,7 +47,6 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                 default:
                     return PlaceShipVertical(coordX, coordY, newShip);
             }
-
         }
     }
 }
