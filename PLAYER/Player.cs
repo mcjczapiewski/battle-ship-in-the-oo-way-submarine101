@@ -24,7 +24,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                                 direction);
         }
 
-        public static (int coordX, int coordY) GetTheCoords()
+        private static (int coordX, int coordY) GetTheCoords()
         {
             int coordX = 0;
             int coordY = 0;
@@ -35,9 +35,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
 
             while (!validInput)
             {
-                Console.WriteLine("Give XY");
-                Console.Write("> ");
-                string userInput = Console.ReadLine();
+                string userInput = GetTheInput("Give XY as letter + number:");
                 if (userInput.Length > 3)
                 {
                     continue;
@@ -52,14 +50,11 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     validInput = false;
                     continue;
                 }
-
-                //Console.ReadKey();
             }
-
             return (coordX, coordY);
         }
 
-        public static int ShipLength()
+        private static int ShipLength()
         {
             int shipLength = 0;
             bool validInput = false;
@@ -67,9 +62,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
 
             while (!validInput)
             {
-                Console.WriteLine("Set ship length:");
-                Console.Write("> ");
-                string userInput = Console.ReadLine();
+                string userInput = GetTheInput("Set ship length:");
                 if (userInput.Length > 1)
                 {
                     continue;
@@ -81,14 +74,11 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     Console.WriteLine("The ship has unavailable length.");
                     continue;
                 }
-
-                //Console.ReadKey();
             }
-
             return shipLength;
         }
 
-        public static bool ShipDirection()
+        private static bool ShipDirection()
         {
             bool direction = false;
             bool validInput = false;
@@ -96,9 +86,8 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
 
             while (!validInput)
             {
-                Console.WriteLine("Do you want to place ship horizontal (h) or vertical (v)?");
-                Console.Write("> ");
-                userInput = Console.ReadLine().ToLower();
+                userInput = GetTheInput("Do you want to place ship horizontal (h) " +
+                    "or vertical (v)?").ToLower();
                 if (userInput.Length > 1
                     || (userInput != "h" && userInput != "v"))
                 {
@@ -113,6 +102,13 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                 return direction;
             }
             return direction;
+        }
+
+        public static string GetTheInput(string message)
+        {
+            Console.WriteLine(message);
+            Console.Write("> ");
+            return Console.ReadLine();
         }
     }
 }
