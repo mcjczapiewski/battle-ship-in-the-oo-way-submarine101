@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace battle_ship_in_the_oo_way_submarine101.PLAYER
@@ -6,10 +7,20 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
     public class Player
     {
         public string Name;
+        public Dictionary<int, int> Ships;
 
         public Player(string name)
         {
             Name = name;
+            Dictionary<int, int> ships = new Dictionary<int, int>
+            {
+                // lengthOfShip, availableShipsOfThatLength
+                { 2, 1 },
+                { 3, 2 },
+                { 4, 1 },
+                { 5, 1 }
+            };
+            Ships = ships;
         }
 
         public static string GetTheInput(string message)
@@ -19,10 +30,16 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
             return Console.ReadLine();
         }
 
-        public static void PlayerMove()
+        public static Player CreateNewPlayer()
+        {
+            string userInput = GetTheInput("Type in your name:");
+            return new Player(userInput);
+        }
+
+        public static void PlayerMove(Player player)
         {
             var coordinates = GetTheCoords();
-            int shipLength = ShipLength();
+            int shipLength = ShipLength(player.Ships);
             bool direction = ShipDirection();
             SHIP.Ship.PlaceShip(coordinates.coordX,
                                 coordinates.coordY,
@@ -85,8 +102,9 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
             return direction;
         }
 
-        private static int ShipLength()
+        private static int ShipLength(Dictionary<int, int> availableShips)
         {
+            Dictionary<int, int> remainingShips = availableShips;
             int shipLength = 0;
             bool validInput = false;
             var lengthRange = Enumerable.Range(2, 4);
@@ -99,14 +117,19 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     continue;
                 }
                 validInput = int.TryParse(userInput, out shipLength);
-                if (!lengthRange.Contains(shipLength))
+                if (!lengthRange.Contains(shipLength) || remainingShips[shipLength] == 0)
                 {
                     validInput = false;
                     Console.WriteLine("The ship has unavailable length.");
                     continue;
                 }
+                else if (remainingShips[shipLength] > 0)
+                {
+                    remainingShips[shipLength]--;
+                    return shipLength;
+                }
             }
-            return shipLength;
+            return 0;
         }
     }
 }

@@ -4,7 +4,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
 {
     public class Square
     {
-        public static int CoordX { get; set; }
+        public int CoordX;
         public int CoordY;
         public string Sign;
         public bool AlreadyShooted;
