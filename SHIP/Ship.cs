@@ -9,13 +9,22 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
         public string Name;
         public ShipEnum ShipType;
 
+
+        public bool IsSunk
+        {
+            get
+            {
+                return Life == 0;
+            }
+        }
+
+
         public Ship(ShipEnum shipType, int life)
         {
             ShipType = shipType;
             Life = life;
         }
 
-        public bool IsSunk => Life == 0;
 
         public void PlaceShipHorizontal(int coordX, int coordY, Ship newShip)
         {
@@ -27,7 +36,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                 Square.UpdateOccupationToShip(coordX, i);
         }
 
-        public void PlaceShipVertical(int coordX, int coordY, Ship newShip)
+        public static void PlaceShipVertical(int coordX, int coordY, Ship newShip)
         {
             var maxX = coordX + newShip.Life;
 

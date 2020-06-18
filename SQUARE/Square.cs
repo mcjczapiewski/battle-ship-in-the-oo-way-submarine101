@@ -1,9 +1,15 @@
+
+using battle_ship_in_the_oo_way_submarine101.OCEAN;
+
+
 namespace battle_ship_in_the_oo_way_submarine101.SQUARE
 {
     public class Square
     {
         public bool AlreadyShooted;
         public int CoordX;
+
+
         public int CoordY;
         public bool IsItFree;
         public string Sign;
@@ -24,7 +30,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
         public static void UpdateOccupationToShip(int coordX,
             int coordY)
         {
-            var square = Ocean.Ocean.arrayOfSquares[coordX, coordY];
+            var square = Ocean.arrayOfSquares[coordX, coordY];
             square.Sign = "S";
             square.IsItFree = false;
         }
@@ -32,7 +38,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
         public static void Shoot(int coordX,
             int coordY)
         {
-            var square = Ocean.Ocean.arrayOfSquares[coordX, coordY];
+            var square = Ocean.arrayOfSquares[coordX, coordY];
 
             if (square.Sign == "S")
                 square.Sign = "X";
