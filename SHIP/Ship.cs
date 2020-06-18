@@ -1,14 +1,16 @@
+using System;
+using battle_ship_in_the_oo_way_submarine101.OCEAN;
 using battle_ship_in_the_oo_way_submarine101.SQUARE;
 
 namespace battle_ship_in_the_oo_way_submarine101.SHIP
 {
     public class Ship
     {
-        public bool IsHorizontal;
-        public int Life;
-        public string Name;
-        public ShipEnum ShipType;
 
+        public string Name;
+        public int Life;
+        public int CoordX;
+        public int CoordY;
 
         public bool IsSunk
         {
@@ -18,13 +20,12 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
             }
         }
 
-
         public Ship(ShipEnum shipType, int life)
-        {
-            ShipType = shipType;
-            Life = life;
-        }
 
+        {
+            
+            this.Life = life;
+        }
 
         public void PlaceShipHorizontal(int coordX, int coordY, Ship newShip)
         {
@@ -46,16 +47,50 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                 Square.UpdateOccupationToShip(i, coordY);
         }
 
-        public void PlaceShip(PlayerChoicesShip playerChoices)
+        public static void PlaceShipHorizontal(int coordX, int coordY, int life)
         {
-            var newShip = ShipBuilder.ShipBuild(playerChoices.ShipType);
-            switch (playerChoices.Direction)
+            Square square = Ocean.arrayOfSquares[coordX, coordY];
+            int maxY = coordY + life;
+            if (square.IsItFree == true)
             {
-                case DirectionsEnum.Horizontal:
-                    return PlaceShipHorizontal(coordX, coordY, newShip);
-                default:
-                    return PlaceShipVertical(coordX, coordY, newShip);
+                for (int i = coordY; i < maxY; i++)
+
+                    //check if coordinates is valid
+
+                    Square.UpdateOccupationToShip(coordX, i);
+            }
+            else
+            {
+                Console.Write("Cant place there is ship");
             }
         }
+        public static void PlaceShipVertical(int coordX, int coordY, int life)
+        {
+            Square square = Ocean.arrayOfSquares[coordX, coordY];
+            int maxX = coordX + life;
+            if (square.IsItFree == true)
+            {
+                for (int i = coordX; i < maxX; i++)
+                    //check if coordinates is valid
+                    Square.UpdateOccupationToShip(i, coordY);
+            }
+            else
+            {
+                Console.Write("Cant place there is ship");
+            }
+        }
+        public static void PlaceShip(int coordX, int coordY, int life, bool Horizontal)
+        {
+            if (Horizontal == true)
+
+            {
+                PlaceShipHorizontal(coordX, coordY, life);
+            }
+            else
+            {
+                PlaceShipVertical(coordX, coordY, life);
+            }
+        }
+
     }
 }

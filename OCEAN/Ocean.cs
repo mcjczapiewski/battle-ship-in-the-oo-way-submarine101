@@ -27,7 +27,7 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
         {
             Ocean ocean = new Ocean("Board");
             Console.WriteLine(ocean.Name);
-            Console.WriteLine("   A B C D E F G H I J");
+            Console.WriteLine("   A  B  C  D  E  F  G  H  I  J ");
             for (CoordY = 0; CoordY < 10; CoordY++)
             {
                 Console.Write(CoordY + 1);

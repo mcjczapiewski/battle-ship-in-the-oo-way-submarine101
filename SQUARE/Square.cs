@@ -16,7 +16,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
 
         public Square(int coordX,
             int coordY,
-            string sign = " ",
+            string sign = ". ",
             bool alreadyShooted = false,
             bool isItFree = true)
         {
