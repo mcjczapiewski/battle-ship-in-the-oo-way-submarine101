@@ -11,14 +11,15 @@ namespace battle_ship_in_the_oo_way_submarine101
     {
         static void Main(string[] args)
         {
-            Ocean ocean = new Ocean("XD");
+            Ocean EnemyBoard = new Ocean("Enemy Board");
+            Ocean MyBoard = new Ocean("My board");
             Ship ship1 = new Ship("Destroyer", 2);
             MainLogic.Test();
-            Ocean.PrintBoard();
-            // Ocean.PrintBoard();
+            Ocean.PrintBoard(EnemyBoard);
+            Ocean.PrintBoard(MyBoard);
             // //Square.UpdateOccupationToShip(2, 2);
             Ship.PlaceShip(1, 2, ship1.Life, true);
-            Ocean.PrintBoard();
+            
             // Ocean.PrintBoard();
             // Console.Read();
             // Square.Shoot(2, 3);

@@ -14,7 +14,7 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
         static int CoordY;
 
         public static Square[,] arrayOfSquares = new Square[10, 10];
-        public static Square[,] arrayOfSq = new Square[10, 10];
+        
         public Ocean(string name)
         {
             if (name != null) Name = name;
@@ -28,11 +28,10 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
             }
         }
 
-        public static void PrintBoard()
-        {
-            //Square square = new Square(CoordX, CoordY);
-
-            //Console.WriteLine(ocean.Name);
+        public static void PrintBoard(Ocean ocean)
+        
+        {   
+            Console.WriteLine("    " + ocean.Name);
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("   A  B  C  D  E  F  G  H  I  J");
             Console.ForegroundColor = ConsoleColor.White;
@@ -59,6 +58,8 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
 
             //Console.WriteLine(square.Sign);
         }
+        
+        
         public static void DrawBoard()
         {
             Ocean ocean = new Ocean("a");
@@ -110,11 +111,16 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
 
             
         }
+     
+        public static bool IsItBorder()
+        {
+            if (CoordX < 0 && CoordX >10)
+            {
+                if (CoordY < 0 && CoordY > 10)
+                    return true;
+            }
 
-        
-        // public static bool Borders()
-        // {
-        //     
-        // }
+            return false;
+        }
     }
 }
