@@ -17,7 +17,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                 return Life == 0;
             }
         }
-        public Ship( string name, int life)
+        public Ship(string name, int life)
         {
             this.Name = name;
             this.Life = life;
@@ -39,7 +39,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
 
                     //check if coordinates is valid
 
-                    Square.UpdateOccupationToShip(coordX, i);
+                    Square.UpdateOccupationToShip(i, coordY);
             }
             else
             {
@@ -54,7 +54,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
             {
                 for (int i = coordX; i < maxX; i++)
                     //check if coordinates is valid
-                    Square.UpdateOccupationToShip(i, coordY);
+                    Square.UpdateOccupationToShip(coordX, i);
             }
             else
             {

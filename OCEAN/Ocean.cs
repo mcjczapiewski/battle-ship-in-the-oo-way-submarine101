@@ -1,20 +1,17 @@
-﻿
+﻿using battle_ship_in_the_oo_way_submarine101.SQUARE;
 using System;
-using System.Reflection.Metadata;
-using System.Security.Cryptography.X509Certificates;
-using battle_ship_in_the_oo_way_submarine101.SQUARE;
-
 
 namespace battle_ship_in_the_oo_way_submarine101.OCEAN
 {
     public class Ocean
     {
         private string Name;
-        static int CoordX;
-        static int CoordY;
+        private static int CoordX;
+        private static int CoordY;
 
         public static Square[,] arrayOfSquares = new Square[10, 10];
         public static Square[,] arrayOfSq = new Square[10, 10];
+
         public Ocean(string name)
         {
             if (name != null) Name = name;
@@ -40,20 +37,17 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
                 Console.Write(CoordY + 1);
                 if (CoordY != 9)
                 {
-                     Console.Write(" ");
+                    Console.Write(" ");
                 }
-                
+
                 for (CoordX = 0; CoordX < 10; CoordX++)
                 {
-                    
                     Console.Write(" " + arrayOfSquares[CoordX, CoordY].Sign);
-                    
                 }
                 Console.WriteLine();
             }
 
-                //Console.WriteLine(square.Sign);
+            //Console.WriteLine(square.Sign);
         }
-
     }
 }
