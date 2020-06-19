@@ -19,14 +19,9 @@ namespace battle_ship_in_the_oo_way_submarine101
             
 
             new Ocean("XD");
-            Ocean.PrintBoard();
+            Ocean.PrintBoard("XD");
             Square.UpdateOccupationToShip(2, 2);
             Player player1 = Player.CreateNewPlayer();
-            Player.PlayerMove(player1);
-            Ocean.PrintBoard();
-            Player.PlayerMove(player1);
-            Ocean.PrintBoard();
-            Console.ReadKey();
 
         }
     }
