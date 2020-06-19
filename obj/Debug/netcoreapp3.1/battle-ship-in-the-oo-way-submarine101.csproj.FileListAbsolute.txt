@@ -47,16 +47,3 @@ C:/Users/Maciej/Documents/c-sharp/CODE/battle-ship-in-the-oo-way-submarine101/bi
 C:/Users/Maciej/Documents/c-sharp/CODE/battle-ship-in-the-oo-way-submarine101/bin/Debug/netcoreapp3.1/battle-ship-in-the-oo-way-submarine101.pdb
 C:/Users/Maciej/Documents/c-sharp/CODE/battle-ship-in-the-oo-way-submarine101/obj/Debug/netcoreapp3.1/battle-ship-in-the-oo-way-submarine101.genruntimeconfig.cache
 >>>>>>> 52c45c3107d7a5b8db32802634009446381fdfa5
-C:\Users\igorn\source\repos\battle-ship-in-the-oo-way-submarine101\bin\Debug\netcoreapp3.1\battle-ship-in-the-oo-way-submarine101.exe
-C:\Users\igorn\source\repos\battle-ship-in-the-oo-way-submarine101\bin\Debug\netcoreapp3.1\battle-ship-in-the-oo-way-submarine101.deps.json
-C:\Users\igorn\source\repos\battle-ship-in-the-oo-way-submarine101\bin\Debug\netcoreapp3.1\battle-ship-in-the-oo-way-submarine101.runtimeconfig.json
-C:\Users\igorn\source\repos\battle-ship-in-the-oo-way-submarine101\bin\Debug\netcoreapp3.1\battle-ship-in-the-oo-way-submarine101.runtimeconfig.dev.json
-C:\Users\igorn\source\repos\battle-ship-in-the-oo-way-submarine101\bin\Debug\netcoreapp3.1\battle-ship-in-the-oo-way-submarine101.dll
-C:\Users\igorn\source\repos\battle-ship-in-the-oo-way-submarine101\bin\Debug\netcoreapp3.1\battle-ship-in-the-oo-way-submarine101.pdb
-C:\Users\igorn\source\repos\battle-ship-in-the-oo-way-submarine101\obj\Debug\netcoreapp3.1\battle-ship-in-the-oo-way-submarine101.csprojAssemblyReference.cache
-C:\Users\igorn\source\repos\battle-ship-in-the-oo-way-submarine101\obj\Debug\netcoreapp3.1\battle-ship-in-the-oo-way-submarine101.AssemblyInfoInputs.cache
-C:\Users\igorn\source\repos\battle-ship-in-the-oo-way-submarine101\obj\Debug\netcoreapp3.1\battle-ship-in-the-oo-way-submarine101.AssemblyInfo.cs
-C:\Users\igorn\source\repos\battle-ship-in-the-oo-way-submarine101\obj\Debug\netcoreapp3.1\battle-ship-in-the-oo-way-submarine101.csproj.CoreCompileInputs.cache
-C:\Users\igorn\source\repos\battle-ship-in-the-oo-way-submarine101\obj\Debug\netcoreapp3.1\battle-ship-in-the-oo-way-submarine101.dll
-C:\Users\igorn\source\repos\battle-ship-in-the-oo-way-submarine101\obj\Debug\netcoreapp3.1\battle-ship-in-the-oo-way-submarine101.pdb
-C:\Users\igorn\source\repos\battle-ship-in-the-oo-way-submarine101\obj\Debug\netcoreapp3.1\battle-ship-in-the-oo-way-submarine101.genruntimeconfig.cache

@@ -1,3 +1,4 @@
+using System;
 using battle_ship_in_the_oo_way_submarine101.OCEAN;
 
 namespace battle_ship_in_the_oo_way_submarine101.SQUARE
@@ -12,7 +13,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
 
         public Square(int coordX,
                       int coordY,
-                      string sign = " ",
+                      string sign = ". ",
                       bool alreadyShooted = false,
                       bool isItFree = true)
         {
@@ -27,7 +28,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
                                 int coordY)
         {
             Square square = Ocean.arrayOfSquares[coordX, coordY];
-            square.Sign = "S";
+            square.Sign = "S "; // please leave this space after sign
             square.IsItFree = false;
         }
 
@@ -35,13 +36,15 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
                           int coordY)
         {
             Square square = Ocean.arrayOfSquares[coordX, coordY];
-            if (square.Sign == "S")
+            if (square.Sign == "S ") // please leave this space after sign
             {
-                square.Sign = "X";
+                Console.ForegroundColor = ConsoleColor.Red;
+                square.Sign = "X ";// please leave this space after sign
+                Console.ForegroundColor = ConsoleColor.White;
             }
             else
             {
-                square.Sign = "O";
+                square.Sign = "O ";// please leave this space after sign
             }
         }
     }
