@@ -27,9 +27,13 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
 
         public static (Player, Ocean, Ocean) CreateNewPlayer()
         {
+            Square[,] ArrayOfSquares = new Square[10, 10];
+            Square[,] EmptyArrayOfSquares = new Square[10, 10];
             string userInput = GetTheInput("Type in your name:");
-            Ocean playerBoard = new Ocean($"{userInput} Board");
-            Ocean emptyPlayerBoard = new Ocean($"Empty {userInput} Board");
+            Ocean playerBoard = new Ocean($"{userInput} Board",
+                                          ArrayOfSquares);
+            Ocean emptyPlayerBoard = new Ocean($"Empty {userInput} Board",
+                                               EmptyArrayOfSquares);
             return (new Player(userInput), playerBoard, emptyPlayerBoard);
         }
 
@@ -39,15 +43,39 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
             Console.Write("> ");
             return Console.ReadLine();
         }
-        public static void PlayerMove(Player player)
+        public static void PlayerMove(Player player,
+                                      Ocean playerBoard,
+                                      Ocean enemyEmptyBoard,
+                                      Ocean enemyShipsBoard)
         {
-            var (coordX, coordY) = GetTheCoords();
-            int shipLength = ShipLength(player.Ships);
-            bool direction = ShipDirection();
-            SHIP.Ship.PlaceShip(coordX,
-                                coordY,
-                                shipLength,
-                                direction);
+            if (player.Ships.Count != 0)
+            {
+                bool placed;
+                do
+                {
+                    var (coordX, coordY) = GetTheCoords();
+                    int shipLength = ShipLength(player.Ships);
+                    bool direction = ShipDirection();
+                    placed = SHIP.Ship.PlaceShip(coordX,
+                                        coordY,
+                                        shipLength,
+                                        direction,
+                                        playerBoard.ArrayOfSquares);
+                } while (placed is false);
+            }
+            else
+            {
+                bool wasItHit;
+                do
+                {
+                    var (coordX, coordY) = GetTheCoords();
+                    wasItHit = Square.Shoot(coordX,
+                                 coordY,
+                                 enemyEmptyBoard.ArrayOfSquares,
+                                 enemyShipsBoard.ArrayOfSquares);
+                    Ocean.PrintBoard(enemyEmptyBoard);
+                } while (wasItHit is true);
+            }
         }
 
         private static (int coordX, int coordY) GetTheCoords()
@@ -62,7 +90,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
             while (!validInput)
             {
                 string userInput = GetTheInput("Give XY as letter + number:");
-                if (userInput.Length > 3)
+                if (userInput.Length > 3 || userInput.Length < 2)
                 {
                     continue;
                 }
@@ -119,7 +147,9 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     continue;
                 }
                 validInput = int.TryParse(userInput, out int shipLength);
-                if (!lengthRange.Contains(shipLength) || remainingShips[shipLength] == 0)
+                if (!remainingShips.ContainsKey(shipLength)
+                    || !lengthRange.Contains(shipLength)
+                    || remainingShips[shipLength] == 0)
                 {
                     validInput = false;
                     Console.WriteLine("The ship has unavailable length.");
@@ -128,6 +158,10 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                 else if (remainingShips[shipLength] > 0)
                 {
                     remainingShips[shipLength]--;
+                    if (remainingShips[shipLength] == 0)
+                    {
+                        remainingShips.Remove(shipLength);
+                    }
                     return shipLength;
                 }
             }
