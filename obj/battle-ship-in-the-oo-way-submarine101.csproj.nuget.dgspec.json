@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Maciej\\Documents\\c-sharp\\CODE\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj": {}
+    "C:\\Users\\igorn\\source\\repos\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Maciej\\Documents\\c-sharp\\CODE\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj": {
+    "C:\\Users\\igorn\\source\\repos\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Maciej\\Documents\\c-sharp\\CODE\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj",
+        "projectUniqueName": "C:\\Users\\igorn\\source\\repos\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj",
         "projectName": "battle-ship-in-the-oo-way-submarine101",
-        "projectPath": "C:\\Users\\Maciej\\Documents\\c-sharp\\CODE\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj",
-        "packagesPath": "C:\\Users\\Maciej\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Maciej\\Documents\\c-sharp\\CODE\\battle-ship-in-the-oo-way-submarine101\\obj\\",
+        "projectPath": "C:\\Users\\igorn\\source\\repos\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj",
+        "packagesPath": "C:\\Users\\igorn\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\igorn\\source\\repos\\battle-ship-in-the-oo-way-submarine101\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Maciej\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\igorn\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -47,12 +47,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.2, 3.1.2]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"

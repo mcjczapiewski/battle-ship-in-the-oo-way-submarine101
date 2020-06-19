@@ -1,6 +1,7 @@
 # Battleship in the OOP way
-///patipati///
+
 ## The story
+
 
 ## Specification
 
