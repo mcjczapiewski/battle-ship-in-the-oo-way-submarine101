@@ -29,35 +29,25 @@ namespace battle_ship_in_the_oo_way_submarine101.UTILS
             switch (number)
             {
                 case 1:
-                    result = "A";
-                    break;
+                    return "A";
                 case 2:
-                    result = "B";
-                    break;
+                    return "B";
                 case 3:
-                    result = "C";
-                    break;
+                    return "C";
                 case 4:
-                    result = "D";
-                    break;
+                    return "D";
                 case 5:
-                    result = "E";
-                    break;
+                    return "E";
                 case 6:
-                    result = "F";
-                    break;
+                    return "F";
                 case 7:
-                    result = "G";
-                    break;
+                    return "G";
                 case 8:
-                    result = "H";
-                    break;
+                    return "H";
                 case 9:
-                    result = "I";
-                    break;
+                    return "I";
                 case 10:
-                    result = "J";
-                    break;
+                    return "J";
                 default:
                     break;
             }

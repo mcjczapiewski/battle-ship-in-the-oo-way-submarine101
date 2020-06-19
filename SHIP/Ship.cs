@@ -33,30 +33,57 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
         {
             Square square = Ocean.arrayOfSquares[coordX, coordY];
             int maxY = coordY + life;
-            if (square.IsItFree == true)
+            bool allFree = true;
+            if (maxY > 0 && maxY < 10)
             {
-                for (int i = coordY; i < maxY; i++)
-
-                    //check if coordinates is valid
-
-                    Square.UpdateOccupationToShip(i, coordY);
+                for (int i = coordX; i < maxY; i++)
+                {
+                    if (square.IsItFree != true)
+                    {
+                        allFree = false;
+                        break;
+                    }
+                }
+                if (allFree == true)
+                {
+                    for (int j = coordX; j < maxY; j++)
+                    {
+                        Square.UpdateOccupationToShip(j, coordY);
+                    }
+                }
+                //check if coordinates is valid
+                else
+                {
+                    Console.Write("Cant place there is ship");
+                }
             }
             else
             {
-                Console.Write("Cant place there is ship");
+                Console.Write("Cant place, border");
             }
         }
+
         public static void PlaceShipVertical(int coordX, int coordY, int life)
         {
             Square square = Ocean.arrayOfSquares[coordX, coordY];
             int maxX = coordX + life;
-            for (int i = coordX; i < maxX; i++)
+            bool allFree = true;
+            if (maxX > 0 && maxX < 10)
             {
-                if (square.IsItFree == true)
+                for (int i = coordX; i < maxX; i++)
+                {
+                    if (square.IsItFree == true)
+                    {
+                        allFree = false;
+                        break;
+                    }
+                }
+                if (allFree == true)
                 {
                     for (int j = coordX; j < maxX; j++)
-                        //check if coordinates is valid
-                        Square.UpdateOccupationToShip(coordX, i);
+                    {
+                        Square.UpdateOccupationToShip(coordX, j);
+                    }
                 }
                 else
                 {
@@ -64,6 +91,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                 }
             }
         }
+
         public static void PlaceShip(int coordX, int coordY, int life, bool Horizontal)
         {
             if (Horizontal == true)
