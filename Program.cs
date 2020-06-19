@@ -3,6 +3,7 @@ using battle_ship_in_the_oo_way_submarine101.PLAYER;
 using battle_ship_in_the_oo_way_submarine101.SHIP;
 using battle_ship_in_the_oo_way_submarine101.SQUARE;
 using System;
+using static battle_ship_in_the_oo_way_submarine101.MainLogic;
 
 namespace battle_ship_in_the_oo_way_submarine101
 {
@@ -10,39 +11,19 @@ namespace battle_ship_in_the_oo_way_submarine101
     {
         static void Main(string[] args)
         {
-            Ocean ocean = new Ocean("XD");
+            Ocean EnemyBoard = new Ocean("Enemy Board");
+            Ocean MyBoard = new Ocean("My board");
             Ship ship1 = new Ship("Destroyer", 2);
-            Ship ship2 = new Ship("Submarine", 5);
-            //Ocean.DrawBoard();
-            //Ship.PlaceShip(2, 2, ship1.Life, true);
-            //Ocean.DrawBoard();
-            Ocean.PrintBoard();
+            MainLogic.Test();
+            Ocean.PrintBoard(EnemyBoard);
+            Ocean.PrintBoard(MyBoard);
             // //Square.UpdateOccupationToShip(2, 2);
-            Ship.PlaceShip(1, 2, ship1.Life, false);
-            Console.WriteLine(" ");
-            Ocean.PrintBoard();
-            Ship.PlaceShip(1, 2, ship2.Life, true);
-            Ocean.PrintBoard();
+            Ship.PlaceShip(1, 2, ship1.Life, true);
+            
+            // Ocean.PrintBoard();
             // Console.Read();
             // Square.Shoot(2, 3);
             // Ocean.PrintBoard();
         }
     }
 }
-//{
-//    internal class Program
-//    {
-//        private static void Main()
-//        {
-//            new Ocean("XD");
-//            Ocean.PrintBoard("test");
-//            Square.UpdateOccupationToShip(2, 2);
-//            Player player1 = Player.CreateNewPlayer();
-//            Player.PlayerMove(player1);
-//            Ocean.PrintBoard("test");
-//            Player.PlayerMove(player1);
-//            Ocean.PrintBoard("test");
-//            Console.ReadKey();
-//        }
-//    }
-//}

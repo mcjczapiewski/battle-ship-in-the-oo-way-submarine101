@@ -36,11 +36,11 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
                           int coordY)
         {
             Square square = Ocean.arrayOfSquares[coordX, coordY];
+            
             if (square.Sign == "S ") // please leave this space after sign
             {
-                Console.ForegroundColor = ConsoleColor.Red;
                 square.Sign = "X ";// please leave this space after sign
-                Console.ForegroundColor = ConsoleColor.White;
+                
             }
             else
             {
