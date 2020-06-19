@@ -12,9 +12,9 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
         private string Name;
         static int CoordX;
         static int CoordY;
-        public static Square[,] arrayOfSquares = new Square[10, 10];
+        public Square[,] ArrayOfSquares = new Square[10, 10];
         
-        public Ocean(string name)
+        public Ocean(string name, Square[,] arrayOfSquares)
         {
             if (name != null) Name = name;
 
@@ -25,6 +25,8 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
                     arrayOfSquares[CoordX, CoordY] = new Square(CoordX, CoordY);
                 }
             }
+            this.ArrayOfSquares = arrayOfSquares;
+
         }
 
         public static void PrintBoard(Ocean ocean)
@@ -46,8 +48,8 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
                 Console.ForegroundColor = ConsoleColor.White;
                 for (CoordX = 0; CoordX < 10; CoordX++)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    Console.Write(" " + arrayOfSquares[CoordX, CoordY].Sign);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write(" " + ocean.ArrayOfSquares[CoordX, CoordY].Sign);
                     Console.ForegroundColor = ConsoleColor.White;
 
                 }
@@ -58,57 +60,57 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
             //Console.WriteLine(square.Sign);
         }
         
-        public static void DrawBoard()
-        {
-            Ocean ocean = new Ocean("a");
-            Console.WriteLine("          Your Board:                                    Firing Board:");
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("  ");
-            for (int CoordY = 1; CoordY <= 10; CoordY++)
-            {
-                Console.Write(" " + CoordY);
-                Console.Write(" ");
-            }
-            Console.Write("                    ");
-            for (int CoordY = 1; CoordY <= 10; CoordY++)
-            {
-                Console.Write(" ");
-                Console.Write(" " + CoordY);
-            }
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.White;
-            for (int CoordX = 1; CoordX <=10; CoordX++)
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write(Utils.NumberToLetter(CoordX)+ " ");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("|");
-                //my board
-                for (int CoordY = 1; CoordY <=10; CoordY++)
-                {
-                    //instead of empty character, there will be more code for square status
-                    Console.Write(arrayOfSquares[CoordX-1, CoordY-1].Sign);
-                    Console.Write("|");
-                }
-                Console.Write("                   ");
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write(Utils.NumberToLetter(CoordX)+ " ");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("|");
-                //shooting board
-                for (int CoordY = 1; CoordY <= 10; CoordY++)
-                {
-                    //instead of empty character there will be mroe code for square status
+        //public static void DrawBoard()
+        //{
+        //    Ocean ocean = new Ocean("a");
+        //    Console.WriteLine("          Your Board:                                    Firing Board:");
+        //    Console.ForegroundColor = ConsoleColor.Yellow;
+        //    Console.Write("  ");
+        //    for (int CoordY = 1; CoordY <= 10; CoordY++)
+        //    {
+        //        Console.Write(" " + CoordY);
+        //        Console.Write(" ");
+        //    }
+        //    Console.Write("                    ");
+        //    for (int CoordY = 1; CoordY <= 10; CoordY++)
+        //    {
+        //        Console.Write(" ");
+        //        Console.Write(" " + CoordY);
+        //    }
+        //    Console.WriteLine();
+        //    Console.ForegroundColor = ConsoleColor.White;
+        //    for (int CoordX = 1; CoordX <=10; CoordX++)
+        //    {
+        //        Console.ForegroundColor = ConsoleColor.Yellow;
+        //        Console.Write(Utils.NumberToLetter(CoordX)+ " ");
+        //        Console.ForegroundColor = ConsoleColor.White;
+        //        Console.Write("|");
+        //        //my board
+        //        for (int CoordY = 1; CoordY <=10; CoordY++)
+        //        {
+        //            //instead of empty character, there will be more code for square status
+        //            Console.Write(arrayOfSquares[CoordX-1, CoordY-1].Sign);
+        //            Console.Write("|");
+        //        }
+        //        Console.Write("                   ");
+        //        Console.ForegroundColor = ConsoleColor.Yellow;
+        //        Console.Write(Utils.NumberToLetter(CoordX)+ " ");
+        //        Console.ForegroundColor = ConsoleColor.White;
+        //        Console.Write("|");
+        //        //shooting board
+        //        for (int CoordY = 1; CoordY <= 10; CoordY++)
+        //        {
+        //            //instead of empty character there will be mroe code for square status
                    
-                    Console.Write(arrayOfSquares[CoordX-1, CoordY-1].Sign);
+        //            Console.Write(arrayOfSquares[CoordX-1, CoordY-1].Sign);
                     
-                    Console.Write("|");
-                }
-                Console.WriteLine(" ");
-            }
+        //            Console.Write("|");
+        //        }
+        //        Console.WriteLine(" ");
+        //    }
 
             
-        }
+        //}
     
     }
 }

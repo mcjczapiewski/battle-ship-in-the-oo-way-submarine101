@@ -12,8 +12,8 @@ namespace battle_ship_in_the_oo_way_submarine101
         static void Main(string[] args)
         {
             
-            MainLogic.Logic(1);
-            MainLogic.Test();
+            MainLogic.Logic();
+            MainLogic.AsciiArt();
 
         }
     }

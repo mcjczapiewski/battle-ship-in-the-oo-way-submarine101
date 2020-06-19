@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using battle_ship_in_the_oo_way_submarine101.SQUARE;
+using battle_ship_in_the_oo_way_submarine101.OCEAN;
 
 namespace battle_ship_in_the_oo_way_submarine101.PLAYER
 {
@@ -14,7 +16,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
             Name = name;
             Dictionary<int, int> ships = new Dictionary<int, int>
             {
-                // lengthOfShip, availableShipsOfThatLength
+                // { lengthOfShip, availableShipsOfThatLength }
                 { 2, 1 },
                 { 3, 2 },
                 { 4, 1 },
@@ -23,26 +25,27 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
             Ships = ships;
         }
 
+        public static (Player, Ocean, Ocean) CreateNewPlayer()
+        {
+            string userInput = GetTheInput("Type in your name:");
+            Ocean playerBoard = new Ocean($"{userInput} Board");
+            Ocean emptyPlayerBoard = new Ocean($"Empty {userInput} Board");
+            return (new Player(userInput), playerBoard, emptyPlayerBoard);
+        }
+
         public static string GetTheInput(string message)
         {
             Console.WriteLine(message);
             Console.Write("> ");
             return Console.ReadLine();
         }
-
-        public static Player CreateNewPlayer()
-        {
-            string userInput = GetTheInput("Type in your name:");
-            return new Player(userInput);
-        }
-
         public static void PlayerMove(Player player)
         {
-            var coordinates = GetTheCoords();
+            var (coordX, coordY) = GetTheCoords();
             int shipLength = ShipLength(player.Ships);
             bool direction = ShipDirection();
-            SHIP.Ship.PlaceShip(coordinates.coordX,
-                                coordinates.coordY,
+            SHIP.Ship.PlaceShip(coordX,
+                                coordY,
                                 shipLength,
                                 direction);
         }
@@ -105,7 +108,6 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
         private static int ShipLength(Dictionary<int, int> availableShips)
         {
             Dictionary<int, int> remainingShips = availableShips;
-            int shipLength = 0;
             bool validInput = false;
             var lengthRange = Enumerable.Range(2, 4);
 
@@ -116,7 +118,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                 {
                     continue;
                 }
-                validInput = int.TryParse(userInput, out shipLength);
+                validInput = int.TryParse(userInput, out int shipLength);
                 if (!lengthRange.Contains(shipLength) || remainingShips[shipLength] == 0)
                 {
                     validInput = false;
