@@ -45,34 +45,34 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
 
             //Console.WriteLine(square.Sign);
         }
-
-        public static string UpperRow(Ocean ocean)
-        {
-            ocean = new Ocean("Board");
-            var firstRow = "   A  B  C  D  E  F  G  H  I  J ";
-
-            return firstRow + Body();
-        }
-
-        private static string Body()
-        {
-            for (CoordY = 0; CoordY < 10; CoordY++)
-            {
-                Console.Write("    " + CoordY + 1);
-                
-                for (CoordX = 0; CoordX < 10; CoordX++)
-                {
-                    if (CoordY != 9)
-                    {
-                        Console.WriteLine("    ");
-                    }
-
-                    Console.Write(" " + arrayOfSquares[CoordX, CoordY].Sign);
-                }
-            }
-
-            return Body();
-        }
+        //
+        // public static string UpperRow(Ocean ocean)
+        // {
+        //     ocean = new Ocean("Board");
+        //     var firstRow = "   A  B  C  D  E  F  G  H  I  J ";
+        //
+        //     return firstRow + Body();
+        // }
+        //
+        // private static string Body()
+        // {
+        //     for (CoordY = 0; CoordY < 10; CoordY++)
+        //     {
+        //         Console.Write("    " + CoordY + 1);
+        //         
+        //         for (CoordX = 0; CoordX < 10; CoordX++)
+        //         {
+        //             if (CoordY != 9)
+        //             {
+        //                 Console.WriteLine("    ");
+        //             }
+        //
+        //             Console.Write(" " + arrayOfSquares[CoordX, CoordY].Sign);
+        //         }
+        //     }
+        //
+        //     return Body();
+        // }
         //
         // public bool IsItBorder()
         // {
