@@ -3,6 +3,7 @@ using battle_ship_in_the_oo_way_submarine101.PLAYER;
 using battle_ship_in_the_oo_way_submarine101.SHIP;
 using battle_ship_in_the_oo_way_submarine101.SQUARE;
 using System;
+using static battle_ship_in_the_oo_way_submarine101.MainLogic;
 
 namespace battle_ship_in_the_oo_way_submarine101
 {
@@ -12,10 +13,12 @@ namespace battle_ship_in_the_oo_way_submarine101
         {
             Ocean ocean = new Ocean("XD");
             Ship ship1 = new Ship("Destroyer", 2);
-            Ocean.DrawBoard();
+            MainLogic.Test();
+            Ocean.PrintBoard();
             // Ocean.PrintBoard();
             // //Square.UpdateOccupationToShip(2, 2);
-            // Ship.PlaceShip(1, 2, ship1.Life, true);
+            Ship.PlaceShip(1, 2, ship1.Life, true);
+            Ocean.PrintBoard();
             // Ocean.PrintBoard();
             // Console.Read();
             // Square.Shoot(2, 3);
@@ -23,20 +26,3 @@ namespace battle_ship_in_the_oo_way_submarine101
         }
     }
 }
-//{
-//    internal class Program
-//    {
-//        private static void Main()
-//        {
-//            new Ocean("XD");
-//            Ocean.PrintBoard("test");
-//            Square.UpdateOccupationToShip(2, 2);
-//            Player player1 = Player.CreateNewPlayer();
-//            Player.PlayerMove(player1);
-//            Ocean.PrintBoard("test");
-//            Player.PlayerMove(player1);
-//            Ocean.PrintBoard("test");
-//            Console.ReadKey();
-//        }
-//    }
-//}
