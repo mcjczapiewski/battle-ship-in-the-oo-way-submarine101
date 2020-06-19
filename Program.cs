@@ -1,9 +1,9 @@
-
 using battle_ship_in_the_oo_way_submarine101.OCEAN;
 using battle_ship_in_the_oo_way_submarine101.SQUARE;
 using battle_ship_in_the_oo_way_submarine101.SHIP;
-using System;
 using battle_ship_in_the_oo_way_submarine101.PLAYER;
+using System;
+
 
 
 namespace battle_ship_in_the_oo_way_submarine101
@@ -12,16 +12,10 @@ namespace battle_ship_in_the_oo_way_submarine101
     {
         private static void Main()
         {
-
-            Ocean ocean = new Ocean("XD");
-
-            Console.WriteLine(Ocean.NewMethodPrinting(ocean));
-            
-
+            Ocean ocean = new Ocean("NewOcean");
+            Ocean.PrintBoard(ocean.Name);
             new Ocean("XD");
             Ocean.PrintBoard("XD");
-            Square.UpdateOccupationToShip(2, 2);
-            Player player1 = Player.CreateNewPlayer();
 
         }
     }

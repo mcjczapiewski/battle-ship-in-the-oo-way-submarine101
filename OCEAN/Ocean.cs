@@ -7,9 +7,9 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
 {
     public class Ocean
     {
-        private string Name;
-        private static int CoordX;
-        private static int CoordY;
+        public string Name;
+        public static int CoordX;
+        public static int CoordY;
         public static Square[,] arrayOfSquares = new Square[10, 10];
         
 

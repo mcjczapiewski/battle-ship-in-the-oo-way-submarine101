@@ -7,15 +7,15 @@
             switch (Ship)
             {
                 case ShipEnum.Destroyer:
-                    return new Ship(ShipEnum.Destroyer, 2);
+                    return new Ship("Destroyer", 2);
                 case ShipEnum.Submarine:
-                    return new Ship(ShipEnum.Submarine, 3);
+                    return new Ship("Submarine", 3);
                 case ShipEnum.Cruiser:
-                    return new Ship(ShipEnum.Cruiser, 3);
+                    return new Ship("Cruiser", 3);
                 case ShipEnum.Battleship:
-                    return new Ship(ShipEnum.Battleship, 4);
+                    return new Ship("Battleship", 4);
                 default:
-                    return new Ship(ShipEnum.Carrier, 5);
+                    return new Ship("Carrier", 5);
             }
         }
     }

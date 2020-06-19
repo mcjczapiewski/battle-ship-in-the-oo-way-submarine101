@@ -40,8 +40,6 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                 for (int i = coordY; i < maxY; i++)
 
                     //check if coordinates is valid
-
-
                     Square.UpdateOccupationToShip(i, coordY);
             }
             else
