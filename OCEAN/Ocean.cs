@@ -12,7 +12,6 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
         private string Name;
         static int CoordX;
         static int CoordY;
-
         public static Square[,] arrayOfSquares = new Square[10, 10];
         
         public Ocean(string name)
@@ -58,7 +57,6 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
 
             //Console.WriteLine(square.Sign);
         }
-        
         
         public static void DrawBoard()
         {
@@ -111,16 +109,6 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
 
             
         }
-     
-        public static bool IsItBorder()
-        {
-            if (CoordX < 0 && CoordX >10)
-            {
-                if (CoordY < 0 && CoordY > 10)
-                    return true;
-            }
-
-            return false;
-        }
+    
     }
 }
