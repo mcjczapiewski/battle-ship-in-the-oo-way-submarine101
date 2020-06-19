@@ -3,31 +3,47 @@ using System.Diagnostics;
 using System.IO;
 using battle_ship_in_the_oo_way_submarine101.OCEAN;
 using battle_ship_in_the_oo_way_submarine101.PLAYER;
+using battle_ship_in_the_oo_way_submarine101;
 
 namespace battle_ship_in_the_oo_way_submarine101
 {
     public class MainLogic
     {
-        public void Logic()
+
+        public static void Logic()
         {
-            while (isPlaying())
+            AsciiArt();
+            Console.WriteLine("PLAYER 1");
+            (var player1, var player1Board, var emptyPlayer1Board) = Player.CreateNewPlayer();
+            Console.WriteLine("PLAYER 2");
+            (var player2, var player2Board, var emptyPlayer2Board) = Player.CreateNewPlayer();
+            Console.Clear();
+            //Player currentPlayer = player1;
+
+            do
             {
-                Test();
-                Player.CreateNewPlayer();
-                Player.PlayerMove();
-                SwitchPlayer(1);
+                AsciiArt();
+                Console.WriteLine($"This is {player1.Name} turn.");
+                Ocean.PrintBoard(player1Board);
+                Ocean.PrintBoard(emptyPlayer2Board);
+                //Player.PlayerMove(player1, player1Board, emptyPlayer2Board);
+                Console.WriteLine("Press any button to switch players.");
+                Console.ReadKey();
                 Console.Clear();
-                Test();
-                Player.CreateNewPlayer();
-                Player.PlayerMove();
-                SwitchPlayer(2);
+                AsciiArt();
+                Console.WriteLine($"This is {player2.Name} turn.");
+                Ocean.PrintBoard(player2Board);
+                Ocean.PrintBoard(emptyPlayer1Board);
+                Player.PlayerMove(player2);
+                Console.WriteLine("Press any button to switch players.");
+                Console.ReadKey();
                 Console.Clear();
-            }
+            } while (IsPlaying());
 
             Environment.Exit(0);
         }
 
-        public bool isPlaying()
+        public static bool IsPlaying()
         {
             while (Console.ReadKey().Key != ConsoleKey.Escape)
             {
@@ -37,42 +53,18 @@ namespace battle_ship_in_the_oo_way_submarine101
             return false;
         }
 
-        public void SwitchPlayer(int player)
-        {
-            Ocean EnemyBoard = new Ocean("Enemy Board");
-            Ocean MyBoard = new Ocean("My board");
-            Ocean EmptyMyBoard = new Ocean("Empty My Board");
-            Ocean EmptyEnemyBoard = new Ocean("Empty My Board");
-            
-            if (player == 1)
-            {
-                Ocean.PrintBoard(MyBoard);
-                Ocean.PrintBoard(EmptyEnemyBoard);
-                player = 2;
-            }
-            else if (player == 2)
-            {
-                Ocean.PrintBoard(EnemyBoard);
-                Ocean.PrintBoard(EmptyMyBoard);
-                player = 1;
-            }
-        }
-        
-
-        public static void Test()
+        public static void AsciiArt()
         {
             try
             {
                 // Open the text file using a stream reader.
-                using (StreamReader sr =
-                    new StreamReader("/home/pat/homework/c#/battle-ship-in-the-oo-way-submarine101/NewFile1.txt"))
-                {
-                    // Read the stream to a string, and write the string to the console.
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    String line = sr.ReadToEnd();
-                    Console.WriteLine(line);
-                    Console.ForegroundColor = ConsoleColor.White;
-                }
+                using StreamReader sr =
+                    new StreamReader("NewFile1.txt");
+                // Read the stream to a string, and write the string to the console.
+                Console.ForegroundColor = ConsoleColor.Green;
+                String line = sr.ReadToEnd();
+                Console.WriteLine(line);
+                Console.ForegroundColor = ConsoleColor.White;
             }
             catch (IOException e)
             {
