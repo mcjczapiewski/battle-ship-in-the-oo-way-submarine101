@@ -50,15 +50,18 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
         {
             Square square = Ocean.arrayOfSquares[coordX, coordY];
             int maxX = coordX + life;
-            if (square.IsItFree == true)
+            for (int i = coordX; i < maxX; i++)
             {
-                for (int i = coordX; i < maxX; i++)
-                    //check if coordinates is valid
-                    Square.UpdateOccupationToShip(coordX, i);
-            }
-            else
-            {
-                Console.Write("Cant place there is ship");
+                if (square.IsItFree == true)
+                {
+                    for (int j = coordX; j < maxX; j++)
+                        //check if coordinates is valid
+                        Square.UpdateOccupationToShip(coordX, i);
+                }
+                else
+                {
+                    Console.Write("Cant place there is ship");
+                }
             }
         }
         public static void PlaceShip(int coordX, int coordY, int life, bool Horizontal)
