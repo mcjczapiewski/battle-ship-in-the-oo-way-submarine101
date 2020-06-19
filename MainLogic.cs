@@ -1,33 +1,63 @@
 using System;
+using System.Diagnostics;
 using System.IO;
 using battle_ship_in_the_oo_way_submarine101.OCEAN;
+using battle_ship_in_the_oo_way_submarine101.PLAYER;
 
 namespace battle_ship_in_the_oo_way_submarine101
 {
     public class MainLogic
     {
-        Ocean EnemyBoard = new Ocean("Enemy Board");
-        Ocean MyBoard = new Ocean("My board");
-        Ocean EmptyMyBoard = new Ocean("Empty My Board");
-        Ocean EmptyEnemyBoard = new Ocean("Empty My Board");
-
-        public static void Logic()
+        public void Logic()
         {
-            void switchPlayer(int player)
+            while (isPlaying())
             {
-                if (player == 1)
-                {
-                    Ocean.PrintBoard(MyBoard);
-                    Ocean.PrintBoard(EmptyEnemyBoard);
-                }
-                else if (player == 2)
-                {
-                    Ocean.PrintBoard(EnemyBoard);
-                    Ocean.PrintBoard(EmptyMyBoard);
-                }
+                Test();
+                Player.CreateNewPlayer();
+                Player.PlayerMove();
+                SwitchPlayer(1);
+                Console.Clear();
+                Test();
+                Player.CreateNewPlayer();
+                Player.PlayerMove();
+                SwitchPlayer(2);
+                Console.Clear();
             }
+
+            Environment.Exit(0);
         }
 
+        public bool isPlaying()
+        {
+            while (Console.ReadKey().Key != ConsoleKey.Escape)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public void SwitchPlayer(int player)
+        {
+            Ocean EnemyBoard = new Ocean("Enemy Board");
+            Ocean MyBoard = new Ocean("My board");
+            Ocean EmptyMyBoard = new Ocean("Empty My Board");
+            Ocean EmptyEnemyBoard = new Ocean("Empty My Board");
+            
+            if (player == 1)
+            {
+                Ocean.PrintBoard(MyBoard);
+                Ocean.PrintBoard(EmptyEnemyBoard);
+                player = 2;
+            }
+            else if (player == 2)
+            {
+                Ocean.PrintBoard(EnemyBoard);
+                Ocean.PrintBoard(EmptyMyBoard);
+                player = 1;
+            }
+        }
+        
 
         public static void Test()
         {
