@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\igorn\\source\\repos\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj": {}
+    "C:\\Users\\Maciej\\Documents\\c-sharp\\CODE\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj": {}
   },
   "projects": {
-    "C:\\Users\\igorn\\source\\repos\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj": {
+    "C:\\Users\\Maciej\\Documents\\c-sharp\\CODE\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\igorn\\source\\repos\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj",
+        "projectUniqueName": "C:\\Users\\Maciej\\Documents\\c-sharp\\CODE\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj",
         "projectName": "battle-ship-in-the-oo-way-submarine101",
-        "projectPath": "C:\\Users\\igorn\\source\\repos\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj",
-        "packagesPath": "C:\\Users\\igorn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\igorn\\source\\repos\\battle-ship-in-the-oo-way-submarine101\\obj\\",
+        "projectPath": "C:\\Users\\Maciej\\Documents\\c-sharp\\CODE\\battle-ship-in-the-oo-way-submarine101\\battle-ship-in-the-oo-way-submarine101.csproj",
+        "packagesPath": "C:\\Users\\Maciej\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Maciej\\Documents\\c-sharp\\CODE\\battle-ship-in-the-oo-way-submarine101\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\igorn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Maciej\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -52,7 +52,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

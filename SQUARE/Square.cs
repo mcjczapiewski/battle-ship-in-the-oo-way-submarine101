@@ -25,26 +25,28 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
         }
 
         public static void UpdateOccupationToShip(int coordX,
-                                int coordY)
+                                int coordY, Square[,] playerArray)
         {
-            Square square = Ocean.arrayOfSquares[coordX, coordY];
+            Square square = playerArray[coordX, coordY];
             square.Sign = "S "; // please leave this space after sign
             square.IsItFree = false;
         }
 
-        public static void Shoot(int coordX,
-                          int coordY)
+        public static bool Shoot(int coordX,
+                          int coordY, Square[,] enemyEmptyBoard, Square[,] enemyShipsBoard)
         {
-            Square square = Ocean.arrayOfSquares[coordX, coordY];
-            
-            if (square.Sign == "S ") // please leave this space after sign
+            Square square = enemyEmptyBoard[coordX, coordY];
+            Square enemySquare = enemyShipsBoard[coordX, coordY];
+
+            if (enemySquare.Sign == "S ") // please leave this space after sign
             {
                 square.Sign = "X ";// please leave this space after sign
-                
+                return true;
             }
             else
             {
                 square.Sign = "O ";// please leave this space after sign
+                return false;
             }
         }
     }
