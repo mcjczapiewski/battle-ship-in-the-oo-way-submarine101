@@ -5,10 +5,23 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
 {
     public class Ship
     {
-        public string Name;
-        public int Life;
         public int CoordX;
         public int CoordY;
+        public int Life;
+        public string Name;
+        public bool Sunk;
+        public string ShipSign;
+
+        public Ship(string name,
+                    int life,
+                    string shipSign,
+                    bool sunk = false)
+        {
+            Name = name;
+            Life = life;
+            ShipSign = shipSign;
+            Sunk = sunk;
+        }
 
         public bool IsSunk
         {
@@ -18,26 +31,53 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
             }
         }
 
-        public Ship(string name, int life)
+        public static Ship CreateShip(int shipNumber)
         {
-            this.Name = name;
-            this.Life = life;
+            return shipNumber switch
+            {
+                1 => new Ship("Destroyer", 2, "D ", false),
+                2 => new Ship("Cruiser", 3, "C ", false),
+                3 => new Ship("Submarine", 3, "S ", false),
+                4 => new Ship("Battleship", 4, "B ", false),
+                5 => new Ship("Carrier", 5, "R ", false),
+                _ => throw new Exception("Wrong ship number. Select one from list."),
+            };
         }
 
-        //instances of ships and their corresponding lifes
-        //Ship Ship1 = new Ship("Destroyer", 2);
-        //Ship Ship2 = new Ship("Cruiser", 3);
-        //Ship Ship3 = new Ship("Submarine", 3);
-        //Ship Ship4 = new Ship("Battleship", 4);
-        //Ship Ship5 = new Ship("Carrier", 5);
+        public static bool PlaceShip(int coordX,
+                                     int coordY,
+                                     int shipNumber,
+                                     bool Horizontal,
+                                     Square[,] playerArray,
+                                     Ship newShip)
+        {
+            if (Horizontal == true)
+            {
+                return PlaceShipHorizontal(coordX,
+                                           coordY,
+                                           shipNumber,
+                                           playerArray,
+                                           newShip);
+            }
+            else
+            {
+                return PlaceShipVertical(coordX,
+                                         coordY,
+                                         shipNumber,
+                                         playerArray,
+                                         newShip);
+            }
+        }
 
         public static bool PlaceShipHorizontal(int coordX,
                                                int coordY,
-                                               int life,
-                                               Square[,] playerArray)
+                                               int shipNumber,
+                                               Square[,] playerArray,
+                                               Ship newShip)
         {
             Square[,] square = playerArray;
-            int maxX = coordX + life;
+
+            int maxX = coordX + newShip.Life;
             bool allFree = true;
             if (maxX > 1 && maxX <= 10)
             {
@@ -53,7 +93,10 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                 {
                     for (int j = coordX; j < maxX; j++)
                     {
-                        Square.UpdateOccupationToShip(j, coordY, playerArray);
+                        Square.UpdateOccupationToShip(j,
+                                                      coordY,
+                                                      playerArray,
+                                                      newShip.ShipSign);
                     }
                     return true;
                 }
@@ -74,10 +117,11 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
         public static bool PlaceShipVertical(int coordX,
                                              int coordY,
                                              int life,
-                                             Square[,] playerArray)
+                                             Square[,] playerArray,
+                                             Ship newShip)
         {
             Square[,] square = playerArray;
-            int maxY = coordY + life;
+            int maxY = coordY + newShip.Life;
             bool allFree = true;
             if (maxY > 1 && maxY <= 10)
             {
@@ -93,7 +137,10 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                 {
                     for (int j = coordY; j < maxY; j++)
                     {
-                        Square.UpdateOccupationToShip(coordX, j, playerArray);
+                        Square.UpdateOccupationToShip(coordX,
+                                                      j,
+                                                      playerArray,
+                                                      newShip.ShipSign);
                     }
                     return true;
                 }
@@ -107,22 +154,6 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
             {
                 Console.WriteLine("Cant place, border");
                 return false;
-            }
-        }
-
-        public static bool PlaceShip(int coordX,
-                                     int coordY,
-                                     int life,
-                                     bool Horizontal,
-                                     Square[,] playerArray)
-        {
-            if (Horizontal == true)
-            {
-                return PlaceShipHorizontal(coordX, coordY, life, playerArray);
-            }
-            else
-            {
-                return PlaceShipVertical(coordX, coordY, life, playerArray);
             }
         }
     }

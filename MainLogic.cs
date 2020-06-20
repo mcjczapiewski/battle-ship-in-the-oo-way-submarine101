@@ -24,7 +24,7 @@ namespace battle_ship_in_the_oo_way_submarine101
                 Ocean.PrintBoard(player1Board, emptyPlayer2Board);
                 player1.Move(player1Board,
                                   emptyPlayer2Board,
-                                  player2Board);
+                                  player2Board, player2.PlayerShips);
                 Console.WriteLine("Press any button to switch players.");
                 Console.ReadKey();
                 Console.Clear();
@@ -33,7 +33,7 @@ namespace battle_ship_in_the_oo_way_submarine101
                 Ocean.PrintBoard(player2Board, emptyPlayer1Board);
                 player2.Move(player2Board,
                                   emptyPlayer1Board,
-                                  player1Board);
+                                  player1Board, player1.PlayerShips);
                 Console.WriteLine("Press any button to switch players.");
                 Console.ReadKey();
                 Console.Clear();
