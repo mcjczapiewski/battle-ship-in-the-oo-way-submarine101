@@ -73,7 +73,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                                  coordY,
                                  enemyEmptyBoard.ArrayOfSquares,
                                  enemyShipsBoard.ArrayOfSquares);
-                    Ocean.PrintBoard(enemyEmptyBoard);
+                    //Ocean.PrintBoard(enemyEmptyBoard);
                 } while (wasItHit is true);
             }
         }
