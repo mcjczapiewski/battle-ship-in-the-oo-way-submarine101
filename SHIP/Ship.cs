@@ -31,22 +31,22 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
             }
         }
 
-        public static Ship CreateShip(int shipNumber)
+        public static Ship CreateShip(string shipNumber)
         {
             return shipNumber switch
             {
-                1 => new Ship("Destroyer", 2, "D ", false),
-                2 => new Ship("Cruiser", 3, "C ", false),
-                3 => new Ship("Submarine", 3, "S ", false),
-                4 => new Ship("Battleship", 4, "B ", false),
-                5 => new Ship("Carrier", 5, "R ", false),
-                _ => throw new Exception("Wrong ship number. Select one from list."),
+                "D" => new Ship("Destroyer", 2, "D ", false),
+                "C" => new Ship("Cruiser", 3, "C ", false),
+                "S" => new Ship("Submarine", 3, "S ", false),
+                "B" => new Ship("Battleship", 4, "B ", false),
+                "R" => new Ship("Carrier", 5, "R ", false),
+                _ => throw new Exception("Wrong ship type. Select one from list."),
             };
         }
 
         public static bool PlaceShip(int coordX,
                                      int coordY,
-                                     int shipNumber,
+                                     string shipType,
                                      bool Horizontal,
                                      Square[,] playerArray,
                                      Ship newShip)
@@ -55,7 +55,6 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
             {
                 return PlaceShipHorizontal(coordX,
                                            coordY,
-                                           shipNumber,
                                            playerArray,
                                            newShip);
             }
@@ -63,7 +62,6 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
             {
                 return PlaceShipVertical(coordX,
                                          coordY,
-                                         shipNumber,
                                          playerArray,
                                          newShip);
             }
@@ -71,7 +69,6 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
 
         public static bool PlaceShipHorizontal(int coordX,
                                                int coordY,
-                                               int shipNumber,
                                                Square[,] playerArray,
                                                Ship newShip)
         {
@@ -116,7 +113,6 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
 
         public static bool PlaceShipVertical(int coordX,
                                              int coordY,
-                                             int life,
                                              Square[,] playerArray,
                                              Ship newShip)
         {

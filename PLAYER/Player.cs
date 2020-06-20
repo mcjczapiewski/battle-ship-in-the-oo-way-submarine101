@@ -10,22 +10,11 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
     public class Player
     {
         public string Name;
-        public List<int> AvailableShipsNumbers;
         public Dictionary<string, Ship> PlayerShips;
 
         public Player(string name)
         {
             Name = name;
-            List<int> availableShipsNumbers = new List<int> { 1, 2, 3, 4, 5 };
-            //Dictionary<int, int> ships = new Dictionary<int, int>
-            //{
-            //    // { lengthOfShip, availableShipsOfThatLength }
-            //    { 2, 1 },
-            //    { 3, 2 },
-            //    { 4, 1 },
-            //    { 5, 1 }
-            //};
-            AvailableShipsNumbers = availableShipsNumbers;
             Dictionary<string, Ship> playerShips = new Dictionary<string, Ship>();
             PlayerShips = playerShips;
         }
@@ -54,7 +43,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                          Ocean enemyShipsBoard,
                          Dictionary<string, Ship> enemyShips)
         {
-            if (this.AvailableShipsNumbers.Count != 0)
+            if (this.PlayerShips.Count != 5)
             {
                 for (int i = 0; i < 5; i++)
                 {
@@ -62,19 +51,15 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     do
                     {
                         var (coordX, coordY) = GetTheCoords();
-                        (int shipNumber, Ship newShip) = ShipNumber();
+                        (string shipType, Ship newShip) = ShipNumber();
                         this.PlayerShips.Add(newShip.ShipSign, newShip);
                         bool direction = ShipDirection();
                         placed = SHIP.Ship.PlaceShip(coordX,
                                                      coordY,
-                                                     shipNumber,
+                                                     shipType,
                                                      direction,
                                                      playerBoard.ArrayOfSquares,
                                                      newShip);
-                        if (placed)
-                        {
-                            this.AvailableShipsNumbers.Remove(shipNumber);
-                        }
                     } while (placed is false);
                     Console.Clear();
                     MainLogic.AsciiArt();
@@ -99,7 +84,9 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     Ocean.PrintBoard(playerBoard, enemyEmptyBoard);
                     if (isItSunk)
                     {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("THIS ONE IS DOWN!");
+                        Console.ResetColor();
                     }
                 } while (wasItHit is true);
             }
@@ -121,8 +108,17 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                 {
                     continue;
                 }
-                string userInputX = regex.Split(userInput)[1];
-                string userInputY = regex.Split(userInput)[2];
+                string userInputX;
+                string userInputY;
+                try
+                {
+                    userInputX = regex.Split(userInput)[1];
+                    userInputY = regex.Split(userInput)[2];
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    continue;
+                }
                 coordX = UTILS.Utils.LetterToNumber(userInputX);
                 validInput = int.TryParse(userInputY, out coordY);
                 coordY--;
@@ -160,31 +156,31 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
             return direction;
         }
 
-        private (int, Ship) ShipNumber()
+        private (string, Ship) ShipNumber()
         {
             bool validInput = false;
 
             while (!validInput)
             {
                 Console.WriteLine("\nShips list (only one per each available):\n" +
-                    "(1)  [D] Destroyer - 2 squares\n" +
-                    "(2)  [C] Cruiser - 3 squares\n" +
-                    "(3)  [S] Submarine - 3 squares\n" +
-                    "(4)  [B] Battleship - 4 squares\n" +
-                    "(5)  [R] Carrier - 5 squares\n");
-                string userInput = GetTheInput("Choose ship number:");
-                if (userInput.Length > 1)
+                    "(D)  Destroyer - 2 squares\n" +
+                    "(C)  Cruiser - 3 squares\n" +
+                    "(S)  Submarine - 3 squares\n" +
+                    "(B)  Battleship - 4 squares\n" +
+                    "(R)  Carrier - 5 squares\n");
+                string shipType = GetTheInput("Choose ship number:").ToUpper();
+                if (shipType.Length > 1)
                 {
                     continue;
                 }
-                _ = int.TryParse(userInput, out int shipNumber);
-                if (!this.AvailableShipsNumbers.Contains(shipNumber))
+                if (this.PlayerShips.ContainsKey(shipType)
+                    || !(new[] { "D", "C", "S", "B", "R" }.Contains(shipType)))
                 {
                     validInput = false;
-                    Console.WriteLine("The ship has unavailable number.");
+                    Console.WriteLine("Unavailable choice.");
                     continue;
                 }
-                return (shipNumber, Ship.CreateShip(shipNumber));
+                return (shipType, Ship.CreateShip(shipType));
             }
             throw new Exception("Something went bad...");
         }
