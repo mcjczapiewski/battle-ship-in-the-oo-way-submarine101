@@ -1,5 +1,6 @@
 using battle_ship_in_the_oo_way_submarine101.SQUARE;
 using System;
+using System.Collections.Generic;
 
 namespace battle_ship_in_the_oo_way_submarine101.SHIP
 {
@@ -46,97 +47,108 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
 
         public static bool PlaceShip(int coordX,
                                      int coordY,
-                                     string shipType,
                                      bool Horizontal,
                                      Square[,] playerArray,
                                      Ship newShip)
         {
             if (Horizontal == true)
             {
-                return PlaceShipHorizontal(coordX,
+                return PlaceShipOnBoard(coordX,
                                            coordY,
                                            playerArray,
-                                           newShip);
+                                           newShip,
+                                           coordX,
+                                           Horizontal);
             }
             else
             {
-                return PlaceShipVertical(coordX,
-                                         coordY,
-                                         playerArray,
-                                         newShip);
+                return PlaceShipOnBoard(coordX,
+                                           coordY,
+                                           playerArray,
+                                           newShip,
+                                           coordY,
+                                           Horizontal);
             }
         }
 
-        public static bool PlaceShipHorizontal(int coordX,
-                                               int coordY,
-                                               Square[,] playerArray,
-                                               Ship newShip)
-        {
-            Square[,] square = playerArray;
-
-            int maxX = coordX + newShip.Life;
-            bool allFree = true;
-            if (maxX > 1 && maxX <= 10)
-            {
-                for (int i = coordX; i < maxX; i++)
-                {
-                    if (square[i, coordY].IsItFree != true)
-                    {
-                        allFree = false;
-                        break;
-                    }
-                }
-                if (allFree == true)
-                {
-                    for (int j = coordX; j < maxX; j++)
-                    {
-                        Square.UpdateOccupationToShip(j,
-                                                      coordY,
-                                                      playerArray,
-                                                      newShip.ShipSign);
-                    }
-                    return true;
-                }
-                //check if coordinates is valid
-                else
-                {
-                    Console.WriteLine("Cant place there is ship");
-                    return false;
-                }
-            }
-            else
-            {
-                Console.WriteLine("Cant place, border");
-                return false;
-            }
-        }
-
-        public static bool PlaceShipVertical(int coordX,
+        public static bool PlaceShipOnBoard(int coordX,
                                              int coordY,
                                              Square[,] playerArray,
-                                             Ship newShip)
+                                             Ship newShip,
+                                             int mainCoord,
+                                             bool horizontal)
         {
             Square[,] square = playerArray;
-            int maxY = coordY + newShip.Life;
+            int maxValue = mainCoord + newShip.Life;
             bool allFree = true;
-            if (maxY > 1 && maxY <= 10)
+            if (maxValue > 1 && maxValue <= 9)
             {
-                for (int i = coordY; i < maxY; i++)
+                if (mainCoord == 0)
                 {
-                    if (square[coordX, i].IsItFree != true)
+                    mainCoord++;
+                }
+                for (int i = mainCoord - 1; i > -1 && i < maxValue + 1 && i < 10; i++)
+                {
+                    if (horizontal)
                     {
-                        allFree = false;
+                        for (int j = coordY - 1; j > -1 && j < coordY + 2 && j < 10; j++)
+                        {
+                            if (square[i, j].IsItFree != true)
+                            {
+                                allFree = false;
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (int j = coordX - 1; j > -1 && j < coordX + 2 && j < 10; j++)
+                        {
+                            if (square[j, i].IsItFree != true)
+                            {
+                                allFree = false;
+                                break;
+                            }
+                        }
+                    }
+                    if (!allFree)
+                    {
                         break;
                     }
+                        //{
+                        //    if (square[i, coordY].IsItFree != true)
+                        //    {
+                        //        allFree = false;
+                        //        break;
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    if (square[coordX, i].IsItFree != true)
+                        //    {
+                        //        allFree = false;
+                        //        break;
+                        //    }
+                        //}
                 }
                 if (allFree == true)
                 {
-                    for (int j = coordY; j < maxY; j++)
+                    for (int i = mainCoord; i < maxValue; i++)
                     {
-                        Square.UpdateOccupationToShip(coordX,
-                                                      j,
-                                                      playerArray,
-                                                      newShip.ShipSign);
+                        if (horizontal)
+                        {
+                            Square.UpdateOccupationToShip(i,
+                                                          coordY,
+                                                          playerArray,
+                                                          newShip.ShipSign);
+                        }
+                        else
+                        {
+                            Square.UpdateOccupationToShip(coordX,
+                                                          i,
+                                                          playerArray,
+                                                          newShip.ShipSign);
+                        }
                     }
                     return true;
                 }
