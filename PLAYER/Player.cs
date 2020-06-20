@@ -43,25 +43,40 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
             Console.Write("> ");
             return Console.ReadLine();
         }
-        public static void PlayerMove(Player player,
-                                      Ocean playerBoard,
-                                      Ocean enemyEmptyBoard,
-                                      Ocean enemyShipsBoard)
+
+        public void Move(Ocean playerBoard,
+                         Ocean enemyEmptyBoard,
+                         Ocean enemyShipsBoard)
         {
-            if (player.Ships.Count != 0)
+            if (this.Ships.Count != 0)
             {
-                bool placed;
-                do
+                for (int i = 0; i < 5; i++)
                 {
-                    var (coordX, coordY) = GetTheCoords();
-                    int shipLength = ShipLength(player.Ships);
-                    bool direction = ShipDirection();
-                    placed = SHIP.Ship.PlaceShip(coordX,
-                                        coordY,
-                                        shipLength,
-                                        direction,
-                                        playerBoard.ArrayOfSquares);
-                } while (placed is false);
+                    bool placed;
+                    do
+                    {
+                        var (coordX, coordY) = GetTheCoords();
+                        int shipLength = ShipLength();
+                        bool direction = ShipDirection();
+                        placed = SHIP.Ship.PlaceShip(coordX,
+                                                     coordY,
+                                                     shipLength,
+                                                     direction,
+                                                     playerBoard.ArrayOfSquares);
+                        if (placed)
+                        {
+                            this.Ships[shipLength]--;
+                            if (this.Ships[shipLength] == 0)
+                            {
+                                this.Ships.Remove(shipLength);
+                            }
+                        }
+                    } while (placed is false);
+                    Console.Clear();
+                    MainLogic.AsciiArt();
+                    Console.WriteLine($"This is {this.Name} turn.");
+                    Ocean.PrintBoard(playerBoard, enemyEmptyBoard);
+                }
             }
             else
             {
@@ -70,10 +85,12 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                 {
                     var (coordX, coordY) = GetTheCoords();
                     wasItHit = Square.Shoot(coordX,
-                                 coordY,
-                                 enemyEmptyBoard.ArrayOfSquares,
-                                 enemyShipsBoard.ArrayOfSquares);
-                    //Ocean.PrintBoard(enemyEmptyBoard);
+                                            coordY,
+                                            enemyEmptyBoard.ArrayOfSquares,
+                                            enemyShipsBoard.ArrayOfSquares);
+                    Console.Clear();
+                    MainLogic.AsciiArt();
+                    Ocean.PrintBoard(playerBoard, enemyEmptyBoard);
                 } while (wasItHit is true);
             }
         }
@@ -133,9 +150,8 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
             return direction;
         }
 
-        private static int ShipLength(Dictionary<int, int> availableShips)
+        private int ShipLength()
         {
-            Dictionary<int, int> remainingShips = availableShips;
             bool validInput = false;
             var lengthRange = Enumerable.Range(2, 4);
 
@@ -146,24 +162,16 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                 {
                     continue;
                 }
-                validInput = int.TryParse(userInput, out int shipLength);
-                if (!remainingShips.ContainsKey(shipLength)
+                _ = int.TryParse(userInput, out int shipLength);
+                if (!this.Ships.ContainsKey(shipLength)
                     || !lengthRange.Contains(shipLength)
-                    || remainingShips[shipLength] == 0)
+                    || this.Ships[shipLength] == 0)
                 {
                     validInput = false;
                     Console.WriteLine("The ship has unavailable length.");
                     continue;
                 }
-                else if (remainingShips[shipLength] > 0)
-                {
-                    remainingShips[shipLength]--;
-                    if (remainingShips[shipLength] == 0)
-                    {
-                        remainingShips.Remove(shipLength);
-                    }
-                    return shipLength;
-                }
+                return shipLength;
             }
             return 0;
         }
