@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace battle_ship_in_the_oo_way_submarine101.UTILS
+﻿namespace battle_ship_in_the_oo_way_submarine101.UTILS
 {
-    class Utils
+    internal class Utils
     {
         public static int LetterToNumber(string letter)
         {
@@ -23,35 +19,23 @@ namespace battle_ship_in_the_oo_way_submarine101.UTILS
                 _ => 10,
             };
         }
+
         public static string NumberToLetter(int number)
         {
-            string result = "";
-            switch (number)
+            return number switch
             {
-                case 1:
-                    return "A";
-                case 2:
-                    return "B";
-                case 3:
-                    return "C";
-                case 4:
-                    return "D";
-                case 5:
-                    return "E";
-                case 6:
-                    return "F";
-                case 7:
-                    return "G";
-                case 8:
-                    return "H";
-                case 9:
-                    return "I";
-                case 10:
-                    return "J";
-                default:
-                    break;
-            }
-            return result;
+                1 => "A",
+                2 => "B",
+                3 => "C",
+                4 => "D",
+                5 => "E",
+                6 => "F",
+                7 => "G",
+                8 => "H",
+                9 => "I",
+                10 => "J",
+                _ => "A",
+            };
         }
     }
 }

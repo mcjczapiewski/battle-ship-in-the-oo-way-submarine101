@@ -1,15 +1,12 @@
-using System;
-using System.Diagnostics;
-using System.IO;
 using battle_ship_in_the_oo_way_submarine101.OCEAN;
 using battle_ship_in_the_oo_way_submarine101.PLAYER;
-using battle_ship_in_the_oo_way_submarine101;
+using System;
+using System.IO;
 
 namespace battle_ship_in_the_oo_way_submarine101
 {
     public class MainLogic
     {
-
         public static void Logic()
         {
             AsciiArt();

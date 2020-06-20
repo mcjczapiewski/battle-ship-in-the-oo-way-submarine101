@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace battle_ship_in_the_oo_way_submarine101.PLAYER
 {
@@ -19,12 +17,14 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                 return "v";
             }
         }
+
         public static int AiGenerateShipLenght()
         {
             Random random = new Random();
             int randomInt = random.Next(0, 6);
             return randomInt;
         }
+
         public static (int coordX, int coordY) AiGetCoords()
         {
             Random random = new Random();

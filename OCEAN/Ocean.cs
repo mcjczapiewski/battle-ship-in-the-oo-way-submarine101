@@ -1,19 +1,15 @@
 using battle_ship_in_the_oo_way_submarine101.SQUARE;
 using System;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
-using battle_ship_in_the_oo_way_submarine101.UTILS;
 
 namespace battle_ship_in_the_oo_way_submarine101.OCEAN
 {
     public class Ocean
     {
         private string Name;
-        static int CoordX;
-        static int CoordY;
+        private static int CoordX;
+        private static int CoordY;
         public Square[,] ArrayOfSquares = new Square[10, 10];
-        
+
         public Ocean(string name, Square[,] arrayOfSquares)
         {
             if (name != null) Name = name;
@@ -26,11 +22,10 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
                 }
             }
             this.ArrayOfSquares = arrayOfSquares;
-
         }
 
         public static void PrintBoard(Ocean ocean, Ocean secondOcean)
-        
+
         {
             string space = new string(' ', 15);
             Console.WriteLine("    " + ocean.Name + space + space + secondOcean.Name);
@@ -55,7 +50,6 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
                     Console.Write(" "
                                   + ocean.ArrayOfSquares[CoordX, CoordY].Sign);
                     Console.ForegroundColor = ConsoleColor.White;
-
                 }
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write(space + (CoordY + 1));
@@ -70,11 +64,10 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
                     Console.Write(" "
                                   + secondOcean.ArrayOfSquares[CoordX, CoordY].Sign);
                     Console.ForegroundColor = ConsoleColor.White;
-
                 }
                 Console.WriteLine();
             }
             Console.Write("\n\n");
-        }    
+        }
     }
 }

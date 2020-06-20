@@ -1,6 +1,3 @@
-using System;
-using battle_ship_in_the_oo_way_submarine101.OCEAN;
-
 namespace battle_ship_in_the_oo_way_submarine101.SQUARE
 {
     public class Square

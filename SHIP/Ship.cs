@@ -1,6 +1,5 @@
-using System;
-using battle_ship_in_the_oo_way_submarine101.OCEAN;
 using battle_ship_in_the_oo_way_submarine101.SQUARE;
+using System;
 
 namespace battle_ship_in_the_oo_way_submarine101.SHIP
 {
@@ -10,6 +9,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
         public int Life;
         public int CoordX;
         public int CoordY;
+
         public bool IsSunk
         {
             get
@@ -17,11 +17,13 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                 return Life == 0;
             }
         }
+
         public Ship(string name, int life)
         {
             this.Name = name;
             this.Life = life;
         }
+
         //instances of ships and their corresponding lifes
         //Ship Ship1 = new Ship("Destroyer", 2);
         //Ship Ship2 = new Ship("Cruiser", 3);
@@ -123,6 +125,5 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                 return PlaceShipVertical(coordX, coordY, life, playerArray);
             }
         }
-
     }
 }
