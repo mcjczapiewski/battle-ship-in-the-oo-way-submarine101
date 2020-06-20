@@ -39,17 +39,21 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
                 {
                     enemyShips[enemySquare.Sign].Sunk = true;
                     List<(int, int)> thoseWereMarked = new List<(int, int)>();
+                    enemySquare.Sign = "X ";
                     MarkAroundSunkShip(coordX - 1,
                                        coordY - 1,
                                        enemyEmptyBoard,
+                                       enemyShipsBoard,
                                        thoseWereMarked);
                     return (true, true);
                 }
+                enemySquare.Sign = "X ";
                 return (true, false);
             }
             else
             {
                 square.Sign = "O ";// please leave this space after sign
+                enemySquare.Sign = "O ";
                 return (false, false);
             }
         }
@@ -67,6 +71,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
         private static void MarkAroundSunkShip(int coordX,
                                                int coordY,
                                                Square[,] enemyEmptyBoard,
+                                               Square[,] enemyShipsBoard,
                                                List<(int, int)> thoseWereMarked)
         {
             for (int i = coordX; i < (coordX + 3); i++)
@@ -81,6 +86,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
                             {
                                 thoseWereMarked.Add((i, j));
                                 enemyEmptyBoard[i, j].Sign = "O ";
+                                enemyShipsBoard[i, j].Sign = "O ";
                             }
                             else if (enemyEmptyBoard[i, j].Sign == "X "
                                      && !thoseWereMarked.Contains((i, j)))
@@ -89,6 +95,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
                                 MarkAroundSunkShip(i - 1,
                                                    j - 1,
                                                    enemyEmptyBoard,
+                                                   enemyShipsBoard,
                                                    thoseWereMarked);
                             }
                         }

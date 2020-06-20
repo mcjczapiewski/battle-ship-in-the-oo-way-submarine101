@@ -24,14 +24,6 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
             Sunk = sunk;
         }
 
-        public bool IsSunk
-        {
-            get
-            {
-                return Life == 0;
-            }
-        }
-
         public static Ship CreateShip(string shipNumber)
         {
             return shipNumber switch
@@ -81,11 +73,13 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
             Square[,] square = playerArray;
             int maxValue = mainCoord + newShip.Life;
             bool allFree = true;
+            bool reverseMainCoord = false;
             if (maxValue > 1 && maxValue <= 9)
             {
                 if (mainCoord == 0)
                 {
                     mainCoord++;
+                    reverseMainCoord = true;
                 }
                 for (int i = mainCoord - 1; i > -1 && i < maxValue + 1 && i < 10; i++)
                 {
@@ -115,24 +109,13 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                     {
                         break;
                     }
-                        //{
-                        //    if (square[i, coordY].IsItFree != true)
-                        //    {
-                        //        allFree = false;
-                        //        break;
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    if (square[coordX, i].IsItFree != true)
-                        //    {
-                        //        allFree = false;
-                        //        break;
-                        //    }
-                        //}
                 }
                 if (allFree == true)
                 {
+                    if (reverseMainCoord)
+                    {
+                        mainCoord--;
+                    }
                     for (int i = mainCoord; i < maxValue; i++)
                     {
                         if (horizontal)
