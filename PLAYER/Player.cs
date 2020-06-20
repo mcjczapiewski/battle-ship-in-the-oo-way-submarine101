@@ -52,14 +52,16 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     {
                         var (coordX, coordY) = GetTheCoords();
                         (string shipType, Ship newShip) = ShipNumber();
-                        this.PlayerShips.Add(newShip.ShipSign, newShip);
                         bool direction = ShipDirection();
                         placed = SHIP.Ship.PlaceShip(coordX,
                                                      coordY,
-                                                     shipType,
                                                      direction,
                                                      playerBoard.ArrayOfSquares,
                                                      newShip);
+                        if (placed)
+                        {
+                            this.PlayerShips.Add(newShip.ShipSign, newShip);
+                        }
                     } while (placed is false);
                     Console.Clear();
                     MainLogic.AsciiArt();
@@ -168,7 +170,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     "(S)  Submarine - 3 squares\n" +
                     "(B)  Battleship - 4 squares\n" +
                     "(R)  Carrier - 5 squares\n");
-                string shipType = GetTheInput("Choose ship number:").ToUpper();
+                string shipType = GetTheInput("Choose ship type:").ToUpper();
                 if (shipType.Length > 1)
                 {
                     continue;
