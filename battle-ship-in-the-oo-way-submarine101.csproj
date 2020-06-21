@@ -6,4 +6,8 @@
         <RootNamespace>battle_ship_in_the_oo_way_submarine101</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <None Remove="aaaa.ahk" />
+    </ItemGroup>
+
 </Project>

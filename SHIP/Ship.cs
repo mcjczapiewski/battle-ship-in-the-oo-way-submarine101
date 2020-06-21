@@ -75,7 +75,6 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
         {
             Square[,] square = playerArray;
             int maxValue = mainCoord + newShip.Life;
-            bool allFree = true;
             bool reverseMainCoord = false;
             if (maxValue > 1 && maxValue <= 9)
             {
@@ -84,35 +83,12 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                     mainCoord++;
                     reverseMainCoord = true;
                 }
-                for (int i = mainCoord - 1; i > -1 && i < maxValue + 1 && i < 10; i++)
-                {
-                    if (horizontal)
-                    {
-                        for (int j = coordY - 1; j > -1 && j < coordY + 2 && j < 10; j++)
-                        {
-                            if (square[i, j].IsItFree != true)
-                            {
-                                allFree = false;
-                                break;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        for (int j = coordX - 1; j > -1 && j < coordX + 2 && j < 10; j++)
-                        {
-                            if (square[j, i].IsItFree != true)
-                            {
-                                allFree = false;
-                                break;
-                            }
-                        }
-                    }
-                    if (!allFree)
-                    {
-                        break;
-                    }
-                }
+                bool allFree = AreAllSquaresFree(coordX,
+                                                 coordY,
+                                                 mainCoord,
+                                                 horizontal,
+                                                 square,
+                                                 maxValue);
                 if (allFree == true)
                 {
                     if (reverseMainCoord)
@@ -149,6 +125,34 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                 Console.WriteLine("Cant place, border");
                 return false;
             }
+        }
+
+        private static bool AreAllSquaresFree(int coordX, int coordY, int mainCoord, bool horizontal, Square[,] square, int maxValue)
+        {
+            for (int i = mainCoord - 1; i > -1 && i < maxValue + 1 && i < 10; i++)
+            {
+                if (horizontal)
+                {
+                    for (int j = coordY - 1; j > -1 && j < coordY + 2 && j < 10; j++)
+                    {
+                        if (square[i, j].IsItFree != true)
+                        {
+                            return false;
+                        }
+                    }
+                }
+                else
+                {
+                    for (int j = coordX - 1; j > -1 && j < coordX + 2 && j < 10; j++)
+                    {
+                        if (square[j, i].IsItFree != true)
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return false;
         }
     }
 }
