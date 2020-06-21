@@ -28,7 +28,7 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
         public static void PrintBoard(Ocean ocean, Ocean secondOcean)
 
         {
-            Console.WriteLine("    " + ocean.Name + space + space + secondOcean.Name);
+            Console.WriteLine("    " + ocean.Name + space + space + space + secondOcean.Name);
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("   A  B  C  D  E  F  G  H  I  J"
                               + space
