@@ -13,6 +13,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
     {
         public string Name;
         public Dictionary<string, Ship> PlayerShips;
+        public bool FirstStage = true;
 
         public Player(string name)
         {
@@ -71,6 +72,8 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                 coordY--;
                 if (playerEmptyBoard.ArrayOfSquares[coordX, coordY].AlreadyShooted)
                 {
+                    validInput = false;
+                    Console.WriteLine("Already shooted...");
                     continue;
                 }
                 else if (coordX == 10 || !coordsRange.Contains(coordY))
@@ -98,7 +101,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
         {
             int coordX = 0;
             int coordY = 0;
-            if (this.PlayerShips.Count != 5 && AI.ShipTypes.Count != 0)
+            if (FirstStage)
             {
                 for (int i = 0; i < 5; i++)
                 {
@@ -130,6 +133,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                             if (this.Name == "AI")
                             {
                                 AI.ShipTypes.Remove(newShip.ShipSign.Trim());
+
                             }
                         }
                     } while (placed is false);
@@ -141,6 +145,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                         Ocean.PrintBoard(playerBoard, playerEmptyBoard);
                     }
                 }
+                FirstStage = false;
             }
             else
             {
@@ -151,7 +156,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                 {
                     if (this.Name != "AI")
                     {
-                        (coordX, coordY) = GetTheCoords("FIRE!");
+                        (coordX, coordY) = GetTheCoords("FIRE!", playerEmptyBoard);
                     }
                     else
                     {

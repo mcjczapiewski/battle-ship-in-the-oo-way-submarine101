@@ -134,7 +134,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                 {
                     for (int j = coordY - 1; j > -1 && j < coordY + 2 && j < 10; j++)
                     {
-                        if (square[i, j].IsItFree != true)
+                        if (!square[i, j].IsItFree)
                         {
                             return false;
                         }
@@ -144,7 +144,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                 {
                     for (int j = coordX - 1; j > -1 && j < coordX + 2 && j < 10; j++)
                     {
-                        if (square[j, i].IsItFree != true)
+                        if (!square[j, i].IsItFree)
                         {
                             return false;
                         }
