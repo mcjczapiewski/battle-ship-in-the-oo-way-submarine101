@@ -5,7 +5,7 @@
         private static void Main()
         {
             MainLogic.Logic();
-            MainLogic.AsciiArt();
+            UTILS.AsciiArt.Battleship();
         }
     }
 }

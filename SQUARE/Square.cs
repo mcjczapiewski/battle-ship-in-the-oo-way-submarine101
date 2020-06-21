@@ -1,3 +1,4 @@
+using battle_ship_in_the_oo_way_submarine101.SHIP;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -34,9 +35,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
             Square enemySquare = enemyShipsBoard[coordX, coordY];
             if (enemyShips.ContainsKey(enemySquare.Sign))
             {
-                square.Sign = "X ";// please leave this space after sign
-                square.AlreadyShooted = true;
-                enemyShips[enemySquare.Sign].Life--;
+                MarkAsHit(enemyShips, square, enemySquare);
                 if (enemyShips[enemySquare.Sign].Life == 0)
                 {
                     enemyShips.Remove(enemySquare.Sign);
@@ -71,43 +70,6 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
             square.IsItFree = false;
         }
 
-        private static void MarkAroundSunkShip(int coordX,
-                                               int coordY,
-                                               Square[,] playerEmptyBoard,
-                                               Square[,] enemyShipsBoard,
-                                               List<(int, int)> thoseWereMarked)
-        {
-            for (int i = coordX; i < (coordX + 3); i++)
-            {
-                for (int j = coordY; j < (coordY + 3); j++)
-                {
-                    if (Enumerable.Range(0, 10).Contains(i)
-                        && Enumerable.Range(0, 10).Contains(j)
-                        && !thoseWereMarked.Contains((i, j)))
-                    {
-                        if (playerEmptyBoard[i, j].Sign == ". ")
-                        {
-                            thoseWereMarked.Add((i, j));
-                            ChangeSignAndAlreadyShooted(playerEmptyBoard,
-                                                        enemyShipsBoard,
-                                                        i,
-                                                        j);
-                        }
-                        else if (playerEmptyBoard[i, j].Sign == "X "
-                                 && !thoseWereMarked.Contains((i, j)))
-                        {
-                            thoseWereMarked.Add((i, j));
-                            MarkAroundSunkShip(i - 1,
-                                               j - 1,
-                                               playerEmptyBoard,
-                                               enemyShipsBoard,
-                                               thoseWereMarked);
-                        }
-                    }
-                }
-            }
-        }
-
         private static void ChangeSignAndAlreadyShooted(Square[,] playerEmptyBoard,
                                                         Square[,] enemyShipsBoard,
                                                         int i,
@@ -116,6 +78,52 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
             playerEmptyBoard[i, j].Sign = "O ";
             playerEmptyBoard[i, j].AlreadyShooted = true;
             enemyShipsBoard[i, j].Sign = "O ";
+        }
+
+        private static void MarkAroundSunkShip(int coordX,
+                                               int coordY,
+                                               Square[,] playerEmptyBoard,
+                                               Square[,] enemyShipsBoard,
+                                               List<(int, int)> thoseWereMarked)
+        {
+            for (int i = coordX; i < coordX + 3; i++)
+            {
+                for (int j = coordY; j < coordY + 3; j++)
+                {
+                    if (Enumerable.Range(0, 10).Contains(i)
+                        && Enumerable.Range(0, 10).Contains(j)
+                        && !thoseWereMarked.Contains((i, j)))
+                    {
+                        switch (playerEmptyBoard[i, j].Sign)
+                        {
+                            case ". ":
+                                thoseWereMarked.Add((i, j));
+                                ChangeSignAndAlreadyShooted(playerEmptyBoard,
+                                                            enemyShipsBoard,
+                                                            i,
+                                                            j);
+                                break;
+                            case "X " when !thoseWereMarked.Contains((i, j)):
+                                thoseWereMarked.Add((i, j));
+                                MarkAroundSunkShip(i - 1,
+                                                   j - 1,
+                                                   playerEmptyBoard,
+                                                   enemyShipsBoard,
+                                                   thoseWereMarked);
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+
+        private static void MarkAsHit(Dictionary<string, Ship> enemyShips,
+                                      Square square,
+                                      Square enemySquare)
+        {
+            square.Sign = "X ";// please leave this space after sign
+            square.AlreadyShooted = true;
+            enemyShips[enemySquare.Sign].Life--;
         }
     }
 }

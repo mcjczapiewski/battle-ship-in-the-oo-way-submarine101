@@ -1,5 +1,6 @@
 using battle_ship_in_the_oo_way_submarine101.SQUARE;
 using System;
+using System.Linq;
 
 namespace battle_ship_in_the_oo_way_submarine101.SHIP
 {
@@ -22,9 +23,6 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
             ShipSign = shipSign;
             Sunk = sunk;
         }
-
-        public Ship()
-        { }
 
         public static Ship CreateShip(string shipNumber)
         {
@@ -94,24 +92,13 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                     {
                         mainCoord--;
                     }
-                    for (int i = mainCoord; i < maxValue; i++)
-                    {
-                        if (horizontal)
-                        {
-                            Square.UpdateOccupationToShip(i,
-                                                          coordY,
-                                                          playerArray,
-                                                          newShip.ShipSign);
-                        }
-                        else
-                        {
-                            Square.UpdateOccupationToShip(coordX,
-                                                          i,
-                                                          playerArray,
-                                                          newShip.ShipSign);
-                        }
-                    }
-                    return true;
+                    return ChangeSquareMarkToShipMark(coordX,
+                                                      coordY,
+                                                      playerArray,
+                                                      newShip,
+                                                      mainCoord,
+                                                      horizontal,
+                                                      maxValue);
                 }
                 else
                 {
@@ -126,13 +113,19 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
             }
         }
 
-        private static bool AreAllSquaresFree(int coordX, int coordY, int mainCoord, bool horizontal, Square[,] square, int maxValue)
+        private static bool AreAllSquaresFree(int coordX,
+                                              int coordY,
+                                              int mainCoord,
+                                              bool horizontal,
+                                              Square[,] square,
+                                              int maxValue)
         {
-            for (int i = mainCoord - 1; i > -1 && i < maxValue + 1 && i < 10; i++)
+            var maxBoardRange = Enumerable.Range(0, 10);
+            for (int i = mainCoord - 1; maxBoardRange.Contains(i) && i < maxValue + 1; i++)
             {
                 if (horizontal)
                 {
-                    for (int j = coordY - 1; j > -1 && j < coordY + 2 && j < 10; j++)
+                    for (int j = coordY - 1; maxBoardRange.Contains(j) && j < coordY + 2; j++)
                     {
                         if (!square[i, j].IsItFree)
                         {
@@ -142,13 +135,41 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                 }
                 else
                 {
-                    for (int j = coordX - 1; j > -1 && j < coordX + 2 && j < 10; j++)
+                    for (int j = coordX - 1; maxBoardRange.Contains(j) && j < coordX + 2; j++)
                     {
                         if (!square[j, i].IsItFree)
                         {
                             return false;
                         }
                     }
+                }
+            }
+            return true;
+        }
+
+        private static bool ChangeSquareMarkToShipMark(int coordX,
+                                                       int coordY,
+                                                       Square[,] playerArray,
+                                                       Ship newShip,
+                                                       int mainCoord,
+                                                       bool horizontal,
+                                                       int maxValue)
+        {
+            for (int i = mainCoord; i < maxValue; i++)
+            {
+                if (horizontal)
+                {
+                    Square.UpdateOccupationToShip(i,
+                                                  coordY,
+                                                  playerArray,
+                                                  newShip.ShipSign);
+                }
+                else
+                {
+                    Square.UpdateOccupationToShip(coordX,
+                                                  i,
+                                                  playerArray,
+                                                  newShip.ShipSign);
                 }
             }
             return true;

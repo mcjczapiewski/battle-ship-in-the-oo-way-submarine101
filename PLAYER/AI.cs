@@ -7,11 +7,15 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
 {
     public class AI
     {
-        public static List<string> ShipTypes
-            = new List<string> { "D", "C", "S", "B", "R" };
         public static List<(int, int)> AiSinkShipHits;
+
         public static int CoordX;
+
         public static int CoordY;
+
+        public static List<string> ShipTypes
+                                    = new List<string> { "D", "C", "S", "B", "R" };
+
         public static bool WasItHit = false;
 
         public static bool AiGenerateShipDirection()
