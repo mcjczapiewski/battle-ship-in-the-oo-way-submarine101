@@ -29,12 +29,18 @@ namespace battle_ship_in_the_oo_way_submarine101
                 Console.Clear();
                 AsciiArt();
                 Console.WriteLine($"This is {player2.Name} turn.");
-                Ocean.PrintBoard(player2Board, emptyPlayer1Board);
+                if (player2.Name != "AI")
+                {
+                    Ocean.PrintBoard(player2Board, emptyPlayer1Board);
+                }
                 player2.Move(player2Board,
                                   emptyPlayer1Board,
                                   player1Board, player1.PlayerShips);
-                Console.WriteLine("Press any button to switch players.");
-                Console.ReadKey();
+                if (player2.Name != "AI")
+                {
+                    Console.WriteLine("Press any button to switch players.");
+                    Console.ReadKey();
+                }
                 Console.Clear();
             } while (IsPlaying());
 

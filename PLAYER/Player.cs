@@ -51,6 +51,11 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                          Ocean enemyShipsBoard,
                          Dictionary<string, Ship> enemyShips)
         {
+            int coordX = 0;
+            int coordY = 0;
+            Ship newShip = new Ship();
+            bool direction = false;
+
             if (this.PlayerShips.Count != 5)
             {
                 for (int i = 0; i < 5; i++)
@@ -58,11 +63,18 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     bool placed;
                     do
                     {
-                        var (coordX, coordY) = GetTheCoords();
-                        var (coordX, coordY) = AI.AiGetCoords();
-                        (string shipType, Ship newShip) = ShipType();
-                        bool direction = ShipDirection();
-                        bool direction = AI.AiGenerateShipDirection();
+                        if (this.Name != "AI")
+                        {
+                            (coordX, coordY) = GetTheCoords();
+                            newShip = ShipType();
+                            direction = ShipDirection();
+                        }
+                        else
+                        {
+                            (coordX, coordY) = AI.AiGetCoords();
+                            newShip = AI.AiGetShipType(this.PlayerShips);
+                            direction = AI.AiGenerateShipDirection();
+                        }
                         placed = SHIP.Ship.PlaceShip(coordX,
                                                      coordY,
                                                      direction,
@@ -71,6 +83,10 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                         if (placed)
                         {
                             this.PlayerShips.Add(newShip.ShipSign, newShip);
+                            if (this.Name == "AI")
+                            {
+                                AI.shipTypes.Remove(newShip.ShipSign.Trim());
+                            }
                         }
                     } while (placed is false);
                     Console.Clear();
@@ -85,7 +101,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                 bool isItSunk;
                 do
                 {
-                    var (coordX, coordY) = GetTheCoords();
+                    (coordX, coordY) = GetTheCoords();
                     (wasItHit, isItSunk) = Square.Shoot(coordX,
                                             coordY,
                                             enemyEmptyBoard.ArrayOfSquares,
@@ -104,7 +120,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
             }
         }
 
-        private static (int coordX, int coordY) GetTheCoords()
+        public static (int coordX, int coordY) GetTheCoords()
         {
             int coordX = 0;
             int coordY = 0;
@@ -168,7 +184,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
             return direction;
         }
 
-        private (string, Ship) ShipType()
+        private Ship ShipType()
         {
             bool validInput = false;
 
@@ -192,7 +208,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     Console.WriteLine("Unavailable choice.");
                     continue;
                 }
-                return (shipType, Ship.CreateShip(shipType));
+                return Ship.CreateShip(shipType);
             }
             throw new Exception("Something went bad...");
         }
