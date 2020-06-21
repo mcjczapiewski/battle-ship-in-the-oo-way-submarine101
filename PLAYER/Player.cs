@@ -3,6 +3,7 @@ using battle_ship_in_the_oo_way_submarine101.SHIP;
 using battle_ship_in_the_oo_way_submarine101.SQUARE;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 
 namespace battle_ship_in_the_oo_way_submarine101.PLAYER
@@ -21,14 +22,28 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
 
         public static (Player, Ocean, Ocean) CreateNewPlayer()
         {
-            Square[,] ArrayOfSquares = new Square[10, 10];
-            Square[,] EmptyArrayOfSquares = new Square[10, 10];
-            string userInput = GetTheInput("Type in your name:");
-            Ocean playerBoard = new Ocean($"{userInput} Board",
-                                          ArrayOfSquares);
-            Ocean emptyPlayerBoard = new Ocean($"Empty {userInput} Board",
-                                               EmptyArrayOfSquares);
-            return (new Player(userInput), playerBoard, emptyPlayerBoard);
+            string AI = new Player("AI");
+            if (Player != AI)
+            {
+                Square[,] ArrayOfSquares = new Square[10, 10];
+                Square[,] EmptyArrayOfSquares = new Square[10, 10];
+                string userInput = GetTheInput("Type in your name:");
+                Ocean playerBoard = new Ocean($"{userInput} Board",
+                    ArrayOfSquares);
+                Ocean emptyPlayerBoard = new Ocean($"Empty {userInput} Board",
+                    EmptyArrayOfSquares);
+                return (new Player(userInput), playerBoard, emptyPlayerBoard);
+            }
+            else
+            {
+                Square[,] ArrayOfSquares = new Square[10, 10];
+                Square[,] EmptyArrayOfSquares = new Square[10, 10];
+                Ocean playerBoard = new Ocean($" COMP Board",
+                    ArrayOfSquares);
+                Ocean emptyPlayerBoard = new Ocean($"Empty COMP Board",
+                    EmptyArrayOfSquares);
+                return (new Player(AI), playerBoard, emptyPlayerBoard);
+            }
         }
 
         public static string GetTheInput(string message)
