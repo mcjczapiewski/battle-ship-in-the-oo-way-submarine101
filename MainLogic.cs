@@ -38,17 +38,15 @@ namespace battle_ship_in_the_oo_way_submarine101
             }
             return true;
         }
-
+        
         public static void Logic()
         {
-            AsciiArt();
-            string playerName = Player.GetTheInput("PLAYER 1 - Type in your name");
-            (var player1, var player1Board, var emptyPlayer1Board) = Player.CreateNewPlayer(playerName);
-            MainPlayer = player1;
-            playerName = Player.GetTheInput("PLAYER 2 - Type in your name or hit ENTER to play with computer");
-            (var player2, var player2Board, var emptyPlayer2Board) = Player.CreateNewPlayer(playerName);
-            EnemyPlayer = player2;
-            Console.Clear();
+            CreatePlayersWithBoards(out Player player1,
+                                    out Ocean player1Board,
+                                    out Ocean emptyPlayer1Board,
+                                    out Player player2,
+                                    out Ocean player2Board,
+                                    out Ocean emptyPlayer2Board);
 
             do
             {
@@ -58,12 +56,32 @@ namespace battle_ship_in_the_oo_way_submarine101
                                emptyPlayer1Board,
                                player2Board);
                 PlayerMovement(player2,
-                                            player1,
-                                            player2Board,
-                                            emptyPlayer2Board,
-                                            player1Board);
+                               player1,
+                               player2Board,
+                               emptyPlayer2Board,
+                               player1Board);
             } while (IsPlaying());
+            //if (emptyPlayer1Board.ArrayOfSquares.All())
+            DoesAnyoneWin(player1, player2);
+            Console.WriteLine("Press any button to exit.");
+            Console.ReadKey();
+            Environment.Exit(1);
+        }
 
+        private static void CreatePlayersWithBoards(out Player player1, out Ocean player1Board, out Ocean emptyPlayer1Board, out Player player2, out Ocean player2Board, out Ocean emptyPlayer2Board)
+        {
+            AsciiArt();
+            string playerName = Player.GetTheInput("PLAYER 1 - Type in your name");
+            (player1, player1Board, emptyPlayer1Board) = Player.CreateNewPlayer(playerName);
+            MainPlayer = player1;
+            playerName = Player.GetTheInput("PLAYER 2 - Type in your name or hit ENTER to play with computer");
+            (player2, player2Board, emptyPlayer2Board) = Player.CreateNewPlayer(playerName);
+            EnemyPlayer = player2;
+            Console.Clear();
+        }
+
+        private static void DoesAnyoneWin(Player player1, Player player2)
+        {
             AsciiArt();
             if (EnemyPlayer.PlayerShips.Count == 0)
             {
@@ -73,9 +91,6 @@ namespace battle_ship_in_the_oo_way_submarine101
             {
                 Console.WriteLine($"\n{player2.Name} wins!\n");
             }
-            Console.WriteLine("Press any button to exit.");
-            Console.ReadKey();
-            Environment.Exit(1);
         }
 
         private static void PlayerMovement(Player mainPlayer,
@@ -84,7 +99,6 @@ namespace battle_ship_in_the_oo_way_submarine101
                                            Ocean mainPlayerEmptyBoard,
                                            Ocean enemyPlayerBoard)
         {
-            bool firstRound;
             AsciiArt();
             Console.WriteLine($"This is {mainPlayer.Name} turn.");
             if (mainPlayer.Name != "AI")
@@ -94,7 +108,6 @@ namespace battle_ship_in_the_oo_way_submarine101
             mainPlayer.Move(mainPlayerBoard,
                               mainPlayerEmptyBoard,
                               enemyPlayerBoard, enemyPlayer.PlayerShips);
-            firstRound = false;
             if (mainPlayer.Name != "AI")
             {
                 Console.WriteLine("Press any button to switch players.");
