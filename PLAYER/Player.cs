@@ -86,13 +86,13 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
         }
 
         public void Move(Ocean playerBoard,
-                         Ocean enemyEmptyBoard,
+                         Ocean playerEmptyBoard,
                          Ocean enemyShipsBoard,
                          Dictionary<string, Ship> enemyShips)
         {
             int coordX;
             int coordY;
-            if (this.PlayerShips.Count != 5)
+            if (this.PlayerShips.Count != 5 && AI.shipTypes.Count != 0)
             {
                 for (int i = 0; i < 5; i++)
                 {
@@ -132,7 +132,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     Console.WriteLine($"This is {this.Name} turn.");
                     if (this.Name != "AI")
                     {
-                        Ocean.PrintBoard(playerBoard, enemyEmptyBoard);
+                        Ocean.PrintBoard(playerBoard, playerEmptyBoard);
                     }
                 }
             }
@@ -152,14 +152,14 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     }
                     (wasItHit, isItSunk) = Square.Shoot(coordX,
                                                         coordY,
-                                                        enemyEmptyBoard.ArrayOfSquares,
+                                                        playerEmptyBoard.ArrayOfSquares,
                                                         enemyShipsBoard.ArrayOfSquares,
                                                         enemyShips);
                     Console.Clear();
                     MainLogic.AsciiArt();
                     if (this.Name != "AI")
                     {
-                        Ocean.PrintBoard(playerBoard, enemyEmptyBoard);
+                        Ocean.PrintBoard(playerBoard, playerEmptyBoard);
                         if (isItSunk)
                         {
                             Console.ForegroundColor = ConsoleColor.Yellow;

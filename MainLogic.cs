@@ -49,36 +49,20 @@ namespace battle_ship_in_the_oo_way_submarine101
             (var player2, var player2Board, var emptyPlayer2Board) = Player.CreateNewPlayer(playerName);
             EnemyPlayer = player2;
             Console.Clear();
-            bool firstRound = true;
 
-            while (IsPlaying() || firstRound)
+            do
             {
-                AsciiArt();
-                Console.WriteLine($"This is {player1.Name} turn.");
-                Ocean.PrintBoard(player1Board, emptyPlayer2Board);
-                player1.Move(player1Board,
-                                  emptyPlayer2Board,
-                                  player2Board, player2.PlayerShips);
-                Console.WriteLine("Press any button to switch players.");
-                Console.ReadKey();
-                Console.Clear();
-                AsciiArt();
-                Console.WriteLine($"This is {player2.Name} turn.");
-                if (player2.Name != "AI")
-                {
-                    Ocean.PrintBoard(player2Board, emptyPlayer1Board);
-                }
-                player2.Move(player2Board,
-                                  emptyPlayer1Board,
-                                  player1Board, player1.PlayerShips);
-                firstRound = false;
-                if (player2.Name != "AI")
-                {
-                    Console.WriteLine("Press any button to switch players.");
-                    Console.ReadKey();
-                }
-                Console.Clear();
-            }
+                PlayerMovement(player1,
+                               player2,
+                               player1Board,
+                               emptyPlayer1Board,
+                               player2Board);
+                PlayerMovement(player2,
+                                            player1,
+                                            player2Board,
+                                            emptyPlayer2Board,
+                                            player1Board);
+            } while (IsPlaying());
 
             AsciiArt();
             if (EnemyPlayer.PlayerShips.Count == 0)
@@ -92,6 +76,31 @@ namespace battle_ship_in_the_oo_way_submarine101
             Console.WriteLine("Press any button to exit.");
             Console.ReadKey();
             Environment.Exit(1);
+        }
+
+        private static void PlayerMovement(Player mainPlayer,
+                                           Player enemyPlayer,
+                                           Ocean mainPlayerBoard,
+                                           Ocean mainPlayerEmptyBoard,
+                                           Ocean enemyPlayerBoard)
+        {
+            bool firstRound;
+            AsciiArt();
+            Console.WriteLine($"This is {mainPlayer.Name} turn.");
+            if (mainPlayer.Name != "AI")
+            {
+                Ocean.PrintBoard(mainPlayerBoard, mainPlayerEmptyBoard);
+            }
+            mainPlayer.Move(mainPlayerBoard,
+                              mainPlayerEmptyBoard,
+                              enemyPlayerBoard, enemyPlayer.PlayerShips);
+            firstRound = false;
+            if (mainPlayer.Name != "AI")
+            {
+                Console.WriteLine("Press any button to switch players.");
+                Console.ReadKey();
+            }
+            Console.Clear();
         }
     }
 }
