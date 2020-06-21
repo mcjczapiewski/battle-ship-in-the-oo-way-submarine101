@@ -51,11 +51,8 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                          Ocean enemyShipsBoard,
                          Dictionary<string, Ship> enemyShips)
         {
-            int coordX = 0;
-            int coordY = 0;
-            Ship newShip = new Ship();
-            bool direction = false;
-
+            int coordX;
+            int coordY;
             if (this.PlayerShips.Count != 5)
             {
                 for (int i = 0; i < 5; i++)
@@ -63,9 +60,11 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     bool placed;
                     do
                     {
+                        Ship newShip;
+                        bool direction;
                         if (this.Name != "AI")
                         {
-                            (coordX, coordY) = GetTheCoords();
+                            (coordX, coordY) = GetTheCoords("Place your ships!");
                             newShip = ShipType();
                             direction = ShipDirection();
                         }
@@ -92,7 +91,10 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     Console.Clear();
                     MainLogic.AsciiArt();
                     Console.WriteLine($"This is {this.Name} turn.");
-                    Ocean.PrintBoard(playerBoard, enemyEmptyBoard);
+                    if (this.Name != "AI")
+                    {
+                        Ocean.PrintBoard(playerBoard, enemyEmptyBoard);
+                    }
                 }
             }
             else
@@ -101,7 +103,14 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                 bool isItSunk;
                 do
                 {
-                    (coordX, coordY) = GetTheCoords();
+                    if (this.Name != "AI")
+                    {
+                        (coordX, coordY) = GetTheCoords("FIRE!");
+                    }
+                    else
+                    {
+                        (coordX, coordY) = AI.AiGetCoords();
+                    }
                     (wasItHit, isItSunk) = Square.Shoot(coordX,
                                             coordY,
                                             enemyEmptyBoard.ArrayOfSquares,
@@ -109,18 +118,21 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                                             enemyShips);
                     Console.Clear();
                     MainLogic.AsciiArt();
-                    Ocean.PrintBoard(playerBoard, enemyEmptyBoard);
-                    if (isItSunk)
+                    if (this.Name != "AI")
                     {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("THIS ONE IS DOWN!");
-                        Console.ResetColor();
+                        Ocean.PrintBoard(playerBoard, enemyEmptyBoard);
+                        if (isItSunk)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine("THIS ONE IS DOWN!");
+                            Console.ResetColor();
+                        }
                     }
                 } while (wasItHit is true);
             }
         }
 
-        public static (int coordX, int coordY) GetTheCoords()
+        public static (int coordX, int coordY) GetTheCoords(string message)
         {
             int coordX = 0;
             int coordY = 0;
@@ -131,7 +143,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
 
             while (!validInput)
             {
-                string userInput = GetTheInput("Give XY as letter + number:");
+                string userInput = GetTheInput(message + "\nGive XY as letter + number:");
                 if (userInput.Length > 3 || userInput.Length < 2)
                 {
                     continue;

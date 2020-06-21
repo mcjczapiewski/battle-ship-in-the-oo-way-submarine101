@@ -49,12 +49,12 @@ namespace battle_ship_in_the_oo_way_submarine101
 
         public static bool IsPlaying()
         {
-            while (Console.ReadKey().Key != ConsoleKey.Escape)
-            {
-                return true;
-            }
+            //while (Console.ReadKey().Key != ConsoleKey.Escape)
+            //{
+            //    return true;
+            //}
 
-            return false;
+            return true;
         }
 
         public static void AsciiArt()
