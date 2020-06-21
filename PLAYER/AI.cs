@@ -1,13 +1,18 @@
 ﻿using battle_ship_in_the_oo_way_submarine101.SHIP;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace battle_ship_in_the_oo_way_submarine101.PLAYER
 {
     public class AI
     {
-        public static List<string> shipTypes
+        public static List<string> ShipTypes
             = new List<string> { "D", "C", "S", "B", "R" };
+        public static List<(int, int)> AiSinkShipHits;
+        public static int CoordX;
+        public static int CoordY;
+        public static bool WasItHit = false;
 
         public static bool AiGenerateShipDirection()
         {
@@ -28,12 +33,27 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
             return (coordX, coordY);
         }
 
+        public static (int coordX, int coordY) AiGetCoordsToKill()
+        {
+            Random random = new Random();
+            int coordX;
+            int coordY;
+            do
+            {
+                int index = random.Next(AiSinkShipHits.Count);
+                (coordX, coordY) = AiSinkShipHits[index];
+                AiSinkShipHits.RemoveAt(index);
+            } while (!Enumerable.Range(0, 10).Contains(coordX)
+                     && !Enumerable.Range(0, 10).Contains(coordY));
+            return (coordX, coordY);
+        }
+
         public static Ship AiGetShipType()
         {
             Random random = new Random();
             string randomShip;
-            var randomIndex = random.Next(shipTypes.Count);
-            randomShip = shipTypes[randomIndex];
+            var randomIndex = random.Next(ShipTypes.Count);
+            randomShip = ShipTypes[randomIndex];
             return Ship.CreateShip(randomShip);
         }
     }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace battle_ship_in_the_oo_way_submarine101.SQUARE
 {
@@ -78,32 +79,42 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
             {
                 for (int j = coordY; j < (coordY + 3); j++)
                 {
-                    if (0 <= i && i <= 9 && 0 <= j && j <= 9)
+                    if (Enumerable.Range(0, 10).Contains(i)
+                        && Enumerable.Range(0, 10).Contains(j)
+                        && !thoseWereMarked.Contains((i, j)))
                     {
-                        if (!thoseWereMarked.Contains((i, j)))
+                        if (enemyEmptyBoard[i, j].Sign == ". ")
                         {
-                            if (enemyEmptyBoard[i, j].Sign == ". ")
-                            {
-                                thoseWereMarked.Add((i, j));
-                                enemyEmptyBoard[i, j].Sign = "O ";
-                                enemyEmptyBoard[i, j].IsItFree = false;
-                                enemyShipsBoard[i, j].Sign = "O ";
-                                enemyShipsBoard[i, j].IsItFree = false;
-                            }
-                            else if (enemyEmptyBoard[i, j].Sign == "X "
-                                     && !thoseWereMarked.Contains((i, j)))
-                            {
-                                thoseWereMarked.Add((i, j));
-                                MarkAroundSunkShip(i - 1,
-                                                   j - 1,
-                                                   enemyEmptyBoard,
-                                                   enemyShipsBoard,
-                                                   thoseWereMarked);
-                            }
+                            thoseWereMarked.Add((i, j));
+                            ChangeSignAndAlreadyShooted(enemyEmptyBoard,
+                                                        enemyShipsBoard,
+                                                        i,
+                                                        j);
+                        }
+                        else if (enemyEmptyBoard[i, j].Sign == "X "
+                                 && !thoseWereMarked.Contains((i, j)))
+                        {
+                            thoseWereMarked.Add((i, j));
+                            MarkAroundSunkShip(i - 1,
+                                               j - 1,
+                                               enemyEmptyBoard,
+                                               enemyShipsBoard,
+                                               thoseWereMarked);
                         }
                     }
                 }
             }
+        }
+
+        private static void ChangeSignAndAlreadyShooted(Square[,] enemyEmptyBoard,
+                                                        Square[,] enemyShipsBoard,
+                                                        int i,
+                                                        int j)
+        {
+            enemyEmptyBoard[i, j].Sign = "O ";
+            enemyEmptyBoard[i, j].AlreadyShooted = true;
+            enemyShipsBoard[i, j].Sign = "O ";
+            enemyShipsBoard[i, j].AlreadyShooted = true;
         }
     }
 }

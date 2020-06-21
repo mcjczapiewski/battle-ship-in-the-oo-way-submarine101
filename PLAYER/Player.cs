@@ -3,7 +3,9 @@ using battle_ship_in_the_oo_way_submarine101.SHIP;
 using battle_ship_in_the_oo_way_submarine101.SQUARE;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace battle_ship_in_the_oo_way_submarine101.PLAYER
 {
@@ -36,7 +38,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
             }
         }
 
-        public static (int coordX, int coordY) GetTheCoords(string message)
+        public static (int coordX, int coordY) GetTheCoords(string message, Ocean playerEmptyBoard)
         {
             int coordX = 0;
             int coordY = 0;
@@ -67,7 +69,11 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                 coordX = UTILS.Utils.LetterToNumber(userInputX);
                 validInput = int.TryParse(userInputY, out coordY);
                 coordY--;
-                if (coordX == 10 || !coordsRange.Contains(coordY))
+                if (playerEmptyBoard.ArrayOfSquares[coordX, coordY].AlreadyShooted)
+                {
+                    continue;
+                }
+                else if (coordX == 10 || !coordsRange.Contains(coordY))
                 {
                     validInput = false;
                     continue;
@@ -90,9 +96,9 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                          Ocean enemyShipsBoard,
                          Dictionary<string, Ship> enemyShips)
         {
-            int coordX;
-            int coordY;
-            if (this.PlayerShips.Count != 5 && AI.shipTypes.Count != 0)
+            int coordX = 0;
+            int coordY = 0;
+            if (this.PlayerShips.Count != 5 && AI.ShipTypes.Count != 0)
             {
                 for (int i = 0; i < 5; i++)
                 {
@@ -103,7 +109,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                         bool direction;
                         if (this.Name != "AI")
                         {
-                            (coordX, coordY) = GetTheCoords("Place your ships!");
+                            (coordX, coordY) = GetTheCoords("Place your ships!", playerEmptyBoard);
                             newShip = ShipType();
                             direction = ShipDirection();
                         }
@@ -123,7 +129,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                             this.PlayerShips.Add(newShip.ShipSign, newShip);
                             if (this.Name == "AI")
                             {
-                                AI.shipTypes.Remove(newShip.ShipSign.Trim());
+                                AI.ShipTypes.Remove(newShip.ShipSign.Trim());
                             }
                         }
                     } while (placed is false);
@@ -138,8 +144,9 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
             }
             else
             {
-                bool wasItHit;
-                bool isItSunk;
+                bool wasItHit = false;
+                bool isItSunk = false;
+                bool firstLoop = true;
                 do
                 {
                     if (this.Name != "AI")
@@ -148,13 +155,72 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     }
                     else
                     {
-                        (coordX, coordY) = AI.AiGetCoords();
+                        if (!AI.WasItHit || isItSunk)
+                        {
+                            AI.WasItHit = false;
+                            (coordX, coordY) = AI.AiGetCoords();
+                            (AI.CoordX, AI.CoordY) = (coordX, coordY);
+                        }
+                        else if ((wasItHit || AI.WasItHit) && !isItSunk)
+                        {
+                            if (!AI.WasItHit)
+                            {
+                                firstLoop = false;
+                            }
+                            (coordX, coordY) = AI.AiGetCoordsToKill();
+                        }
                     }
                     (wasItHit, isItSunk) = Square.Shoot(coordX,
                                                         coordY,
                                                         playerEmptyBoard.ArrayOfSquares,
                                                         enemyShipsBoard.ArrayOfSquares,
                                                         enemyShips);
+                    if (AI.WasItHit && wasItHit && !isItSunk && this.Name == "AI")
+                    {
+                        if (AI.CoordX < coordX)
+                        {
+                            AI.AiSinkShipHits.Clear();
+                            AI.AiSinkShipHits = new List<(int, int)>
+                                    {
+                                        (coordX + 1, coordY),
+                                    };
+                        }
+                        else if (AI.CoordX > coordX)
+                        {
+                            AI.AiSinkShipHits.Clear();
+                            AI.AiSinkShipHits = new List<(int, int)>
+                                    {
+                                        (coordX - 1, coordY),
+                                    };
+                        }
+                        else if (AI.CoordY < coordY)
+                        {
+                            AI.AiSinkShipHits.Clear();
+                            AI.AiSinkShipHits = new List<(int, int)>
+                                    {
+                                        (coordX, coordY + 1),
+                                    };
+                        }
+                        else
+                        {
+                            AI.AiSinkShipHits.Clear();
+                            AI.AiSinkShipHits = new List<(int, int)>
+                                    {
+                                        (coordX, coordY - 1),
+                                    };
+                        }
+                    }
+                    if (firstLoop && wasItHit && this.Name == "AI")
+                    {
+                        AI.WasItHit = true;
+                        AI.AiSinkShipHits = new List<(int, int)>
+                                    {
+                                        (coordX, coordY - 1),
+                                        (coordX - 1, coordY),
+                                        (coordX + 1, coordY),
+                                        (coordX, coordY + 1)
+                                    };
+                    }
                     Console.Clear();
                     MainLogic.AsciiArt();
                     if (this.Name != "AI")
@@ -167,7 +233,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                             Console.ResetColor();
                         }
                     }
-                } while (wasItHit is true && enemyShips.Count != 0);
+                } while (wasItHit && enemyShips.Count != 0);
             }
         }
 
