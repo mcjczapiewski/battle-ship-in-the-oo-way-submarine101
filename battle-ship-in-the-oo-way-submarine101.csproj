@@ -10,4 +10,10 @@
       <None Remove="aaaa.ahk" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="NewFile1.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
