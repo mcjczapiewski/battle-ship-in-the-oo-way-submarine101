@@ -10,12 +10,11 @@ namespace battle_ship_in_the_oo_way_submarine101
         public static void Logic()
         {
             AsciiArt();
-            Console.WriteLine("PLAYER 1");
-            (var player1, var player1Board, var emptyPlayer1Board) = Player.CreateNewPlayer();
-            Console.WriteLine("PLAYER 2");
-            (var player2, var player2Board, var emptyPlayer2Board) = Player.CreateNewPlayer();
+            string playerName = Player.GetTheInput("PLAYER 1 - Type in your name");
+            (var player1, var player1Board, var emptyPlayer1Board) = Player.CreateNewPlayer(playerName);
+            playerName = Player.GetTheInput("PLAYER 2 - Type in your name or hit ENTER to play with computer");
+            (var player2, var player2Board, var emptyPlayer2Board) = Player.CreateNewPlayer(playerName);
             Console.Clear();
-            //Player currentPlayer = player1;
 
             do
             {

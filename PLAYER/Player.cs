@@ -20,36 +20,29 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
             PlayerShips = playerShips;
         }
 
-        public static (Player, Ocean, Ocean) CreateNewPlayer()
+        public static (Player, Ocean, Ocean) CreateNewPlayer(string playerName)
         {
-            string AI = new Player("AI");
-            if (Player != AI)
             {
+                if (playerName == "")
+                {
+                    playerName = "AI";
+                }
                 Square[,] ArrayOfSquares = new Square[10, 10];
                 Square[,] EmptyArrayOfSquares = new Square[10, 10];
-                string userInput = GetTheInput("Type in your name:");
-                Ocean playerBoard = new Ocean($"{userInput} Board",
+                Ocean playerBoard = new Ocean($"{playerName} Board",
                     ArrayOfSquares);
-                Ocean emptyPlayerBoard = new Ocean($"Empty {userInput} Board",
+                Ocean emptyPlayerBoard = new Ocean($"Empty {playerName} Board",
                     EmptyArrayOfSquares);
-                return (new Player(userInput), playerBoard, emptyPlayerBoard);
-            }
-            else
-            {
-                Square[,] ArrayOfSquares = new Square[10, 10];
-                Square[,] EmptyArrayOfSquares = new Square[10, 10];
-                Ocean playerBoard = new Ocean($" COMP Board",
-                    ArrayOfSquares);
-                Ocean emptyPlayerBoard = new Ocean($"Empty COMP Board",
-                    EmptyArrayOfSquares);
-                return (new Player(AI), playerBoard, emptyPlayerBoard);
+                return (new Player(playerName), playerBoard, emptyPlayerBoard);
             }
         }
 
         public static string GetTheInput(string message)
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(message);
             Console.Write("> ");
+            Console.ResetColor();
             return Console.ReadLine();
         }
 
@@ -66,8 +59,10 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     do
                     {
                         var (coordX, coordY) = GetTheCoords();
-                        (string shipType, Ship newShip) = ShipNumber();
+                        var (coordX, coordY) = AI.AiGetCoords();
+                        (string shipType, Ship newShip) = ShipType();
                         bool direction = ShipDirection();
+                        bool direction = AI.AiGenerateShipDirection();
                         placed = SHIP.Ship.PlaceShip(coordX,
                                                      coordY,
                                                      direction,
@@ -173,7 +168,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
             return direction;
         }
 
-        private (string, Ship) ShipNumber()
+        private (string, Ship) ShipType()
         {
             bool validInput = false;
 

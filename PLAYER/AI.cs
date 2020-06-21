@@ -6,26 +6,23 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
 {
     public class AI
     {
-        public static string AiGenerateShipDirection()
+        public static bool AiGenerateShipDirection()
         {
             Random random = new Random();
             var randomBool = random.Next(2) == 1;
             if (randomBool == true)
             {
-                return "h";
+                return true;
             }
-            else
-            {
-                return "v";
-            }
+            return false;
         }
 
-        public static int AiGenerateShipLenght()
-        {
-            Random random = new Random();
-            int randomInt = random.Next(0, 6);
-            return randomInt;
-        }
+        //public static int AiGenerateShipLenght()
+        //{
+        //    Random random = new Random();
+        //    int randomInt = random.Next(0, 6);
+        //    return randomInt;
+        //}
 
         public static (int coordX, int coordY) AiGetCoords()
         {
