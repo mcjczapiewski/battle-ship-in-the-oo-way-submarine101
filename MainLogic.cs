@@ -2,18 +2,24 @@ using battle_ship_in_the_oo_way_submarine101.OCEAN;
 using battle_ship_in_the_oo_way_submarine101.PLAYER;
 using System;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
 namespace battle_ship_in_the_oo_way_submarine101
 {
     public class MainLogic
     {
+        public static Player MainPlayer;
+        public static Player EnemyPlayer;
+
         public static void Logic()
         {
             AsciiArt();
             string playerName = Player.GetTheInput("PLAYER 1 - Type in your name");
             (var player1, var player1Board, var emptyPlayer1Board) = Player.CreateNewPlayer(playerName);
+            MainPlayer = player1;
             playerName = Player.GetTheInput("PLAYER 2 - Type in your name or hit ENTER to play with computer");
             (var player2, var player2Board, var emptyPlayer2Board) = Player.CreateNewPlayer(playerName);
+            EnemyPlayer = player2;
             Console.Clear();
 
             do
@@ -43,12 +49,23 @@ namespace battle_ship_in_the_oo_way_submarine101
                 }
                 Console.Clear();
             } while (IsPlaying());
-
+            if (EnemyPlayer.PlayerShips.Count == 0)
+            {
+                Console.WriteLine($"{player1.Name} wins!");
+            }
+            else
+            {
+                Console.WriteLine($"{player2.Name} wins!");
+            }
             Environment.Exit(0);
         }
 
         public static bool IsPlaying()
         {
+            if (EnemyPlayer.PlayerShips.Count == 0 || MainPlayer.PlayerShips.Count == 0)
+            {
+                return false;
+            }
             //while (Console.ReadKey().Key != ConsoleKey.Escape)
             //{
             //    return true;

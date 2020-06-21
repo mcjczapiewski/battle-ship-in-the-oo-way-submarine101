@@ -37,7 +37,8 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
                 enemyShips[enemySquare.Sign].Life--;
                 if (enemyShips[enemySquare.Sign].Life == 0)
                 {
-                    enemyShips[enemySquare.Sign].Sunk = true;
+                    enemyShips.Remove(enemySquare.Sign.Trim());
+                    //enemyShips[enemySquare.Sign].Sunk = true;
                     List<(int, int)> thoseWereMarked = new List<(int, int)>();
                     enemySquare.Sign = "X ";
                     MarkAroundSunkShip(coordX - 1,
