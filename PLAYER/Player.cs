@@ -128,7 +128,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                             Console.ResetColor();
                         }
                     }
-                } while (wasItHit is true);
+                } while (wasItHit is true && enemyShips.Count != 0);
             }
         }
 
