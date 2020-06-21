@@ -3,7 +3,6 @@ using battle_ship_in_the_oo_way_submarine101.SHIP;
 using battle_ship_in_the_oo_way_submarine101.SQUARE;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.Linq;
 
 namespace battle_ship_in_the_oo_way_submarine101.PLAYER
@@ -35,6 +34,46 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     EmptyArrayOfSquares);
                 return (new Player(playerName), playerBoard, emptyPlayerBoard);
             }
+        }
+
+        public static (int coordX, int coordY) GetTheCoords(string message)
+        {
+            int coordX = 0;
+            int coordY = 0;
+            bool validInput = false;
+            string pattern = @"([a-zA-Z])([0-9].*)";
+            var regex = new System.Text.RegularExpressions.Regex(pattern);
+            var coordsRange = Enumerable.Range(0, 10);
+
+            while (!validInput)
+            {
+                string userInput = GetTheInput(message
+                    + "\nGive XY as letter + number:");
+                if (!(new[] { 2, 3 }.Contains(userInput.Length)))
+                {
+                    continue;
+                }
+                string userInputX;
+                string userInputY;
+                try
+                {
+                    userInputX = regex.Split(userInput)[1];
+                    userInputY = regex.Split(userInput)[2];
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    continue;
+                }
+                coordX = UTILS.Utils.LetterToNumber(userInputX);
+                validInput = int.TryParse(userInputY, out coordY);
+                coordY--;
+                if (coordX == 10 || !coordsRange.Contains(coordY))
+                {
+                    validInput = false;
+                    continue;
+                }
+            }
+            return (coordX, coordY);
         }
 
         public static string GetTheInput(string message)
@@ -71,7 +110,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                         else
                         {
                             (coordX, coordY) = AI.AiGetCoords();
-                            newShip = AI.AiGetShipType(this.PlayerShips);
+                            newShip = AI.AiGetShipType();
                             direction = AI.AiGenerateShipDirection();
                         }
                         placed = SHIP.Ship.PlaceShip(coordX,
@@ -112,10 +151,10 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                         (coordX, coordY) = AI.AiGetCoords();
                     }
                     (wasItHit, isItSunk) = Square.Shoot(coordX,
-                                            coordY,
-                                            enemyEmptyBoard.ArrayOfSquares,
-                                            enemyShipsBoard.ArrayOfSquares,
-                                            enemyShips);
+                                                        coordY,
+                                                        enemyEmptyBoard.ArrayOfSquares,
+                                                        enemyShipsBoard.ArrayOfSquares,
+                                                        enemyShips);
                     Console.Clear();
                     MainLogic.AsciiArt();
                     if (this.Name != "AI")
@@ -130,45 +169,6 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     }
                 } while (wasItHit is true && enemyShips.Count != 0);
             }
-        }
-
-        public static (int coordX, int coordY) GetTheCoords(string message)
-        {
-            int coordX = 0;
-            int coordY = 0;
-            bool validInput = false;
-            string pattern = @"([a-zA-Z])([0-9].*)";
-            var regex = new System.Text.RegularExpressions.Regex(pattern);
-            var coordsRange = Enumerable.Range(0, 10);
-
-            while (!validInput)
-            {
-                string userInput = GetTheInput(message + "\nGive XY as letter + number:");
-                if (userInput.Length > 3 || userInput.Length < 2)
-                {
-                    continue;
-                }
-                string userInputX;
-                string userInputY;
-                try
-                {
-                    userInputX = regex.Split(userInput)[1];
-                    userInputY = regex.Split(userInput)[2];
-                }
-                catch (IndexOutOfRangeException)
-                {
-                    continue;
-                }
-                coordX = UTILS.Utils.LetterToNumber(userInputX);
-                validInput = int.TryParse(userInputY, out coordY);
-                coordY--;
-                if (coordX == 10 || !coordsRange.Contains(coordY))
-                {
-                    validInput = false;
-                    continue;
-                }
-            }
-            return (coordX, coordY);
         }
 
         private static bool ShipDirection()

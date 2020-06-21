@@ -6,7 +6,8 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
 {
     public class AI
     {
-        public static List<string> shipTypes = new List<string> { "D", "C", "S", "B", "R" };
+        public static List<string> shipTypes
+            = new List<string> { "D", "C", "S", "B", "R" };
 
         public static bool AiGenerateShipDirection()
         {
@@ -27,7 +28,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
             return (coordX, coordY);
         }
 
-        public static Ship AiGetShipType(Dictionary<string, Ship> AiShips)
+        public static Ship AiGetShipType()
         {
             Random random = new Random();
             string randomShip;

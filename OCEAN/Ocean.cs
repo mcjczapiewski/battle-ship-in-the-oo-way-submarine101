@@ -5,10 +5,11 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
 {
     public class Ocean
     {
-        private string Name;
+        public Square[,] ArrayOfSquares = new Square[10, 10];
+        private static readonly string space = new string(' ', 15);
         private static int CoordX;
         private static int CoordY;
-        public Square[,] ArrayOfSquares = new Square[10, 10];
+        private string Name;
 
         public Ocean(string name, Square[,] arrayOfSquares)
         {
@@ -27,47 +28,41 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
         public static void PrintBoard(Ocean ocean, Ocean secondOcean)
 
         {
-            string space = new string(' ', 15);
             Console.WriteLine("    " + ocean.Name + space + space + secondOcean.Name);
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("   A  B  C  D  E  F  G  H  I  J"
                               + space
                               + "    A  B  C  D  E  F  G  H  I  J");
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ResetColor();
             for (CoordY = 0; CoordY < 10; CoordY++)
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write((CoordY + 1));
-                Console.ForegroundColor = ConsoleColor.White;
-                if (CoordY != 9)
-                {
-                    Console.Write(" ");
-                }
-                Console.ForegroundColor = ConsoleColor.White;
-                for (CoordX = 0; CoordX < 10; CoordX++)
-                {
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write(" "
-                                  + ocean.ArrayOfSquares[CoordX, CoordY].Sign);
-                    Console.ForegroundColor = ConsoleColor.White;
-                }
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write(space + (CoordY + 1));
-                if (CoordY != 9)
-                {
-                    Console.Write(" ");
-                }
-                Console.ResetColor();
-                for (CoordX = 0; CoordX < 10; CoordX++)
-                {
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write(" "
-                                  + secondOcean.ArrayOfSquares[CoordX, CoordY].Sign);
-                    Console.ForegroundColor = ConsoleColor.White;
-                }
+                PrintBoardLegendInYellow((CoordY + 1).ToString());
+                PrintOcean(ocean);
+                PrintBoardLegendInYellow(space + (CoordY + 1).ToString());
+                PrintOcean(secondOcean);
                 Console.WriteLine();
             }
             Console.Write("\n\n");
+        }
+
+        private static void PrintBoardLegendInYellow(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write(message);
+            Console.ResetColor();
+            if (CoordY != 9)
+            {
+                Console.Write(" ");
+            }
+        }
+
+        private static void PrintOcean(Ocean oceanToPrint)
+        {
+            for (CoordX = 0; CoordX < 10; CoordX++)
+            {
+                Console.Write(" "
+                              + oceanToPrint.ArrayOfSquares[CoordX, CoordY].Sign);
+            }
         }
     }
 }

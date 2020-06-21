@@ -24,10 +24,10 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
         }
 
         public static (bool, bool) Shoot(int coordX,
-                                 int coordY,
-                                 Square[,] enemyEmptyBoard,
-                                 Square[,] enemyShipsBoard,
-                                 Dictionary<string, SHIP.Ship> enemyShips)
+                                         int coordY,
+                                         Square[,] enemyEmptyBoard,
+                                         Square[,] enemyShipsBoard,
+                                         Dictionary<string, SHIP.Ship> enemyShips)
         {
             Square square = enemyEmptyBoard[coordX, coordY];
             Square enemySquare = enemyShipsBoard[coordX, coordY];
@@ -38,9 +38,8 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
                 if (enemyShips[enemySquare.Sign].Life == 0)
                 {
                     enemyShips.Remove(enemySquare.Sign);
-                    //enemyShips[enemySquare.Sign].Sunk = true;
-                    List<(int, int)> thoseWereMarked = new List<(int, int)>();
                     enemySquare.Sign = "X ";
+                    List<(int, int)> thoseWereMarked = new List<(int, int)>();
                     MarkAroundSunkShip(coordX - 1,
                                        coordY - 1,
                                        enemyEmptyBoard,
@@ -60,12 +59,12 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
         }
 
         public static void UpdateOccupationToShip(int coordX,
-                                                          int coordY,
+                                                  int coordY,
                                                   Square[,] playerArray,
                                                   string shipSign)
         {
             Square square = playerArray[coordX, coordY];
-            square.Sign = shipSign; // please leave this space after sign
+            square.Sign = shipSign;
             square.IsItFree = false;
         }
 

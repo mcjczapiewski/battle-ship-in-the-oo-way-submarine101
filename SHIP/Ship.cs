@@ -1,6 +1,5 @@
 using battle_ship_in_the_oo_way_submarine101.SQUARE;
 using System;
-using System.Collections.Generic;
 
 namespace battle_ship_in_the_oo_way_submarine101.SHIP
 {
@@ -10,8 +9,8 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
         public int CoordY;
         public int Life;
         public string Name;
-        public bool Sunk;
         public string ShipSign;
+        public bool Sunk;
 
         public Ship(string name,
                     int life,
@@ -26,7 +25,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
 
         public Ship()
         { }
-        
+
         public static Ship CreateShip(string shipNumber)
         {
             return shipNumber switch
@@ -49,29 +48,29 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
             if (Horizontal == true)
             {
                 return PlaceShipOnBoard(coordX,
-                                           coordY,
-                                           playerArray,
-                                           newShip,
-                                           coordX,
-                                           Horizontal);
+                                        coordY,
+                                        playerArray,
+                                        newShip,
+                                        coordX,
+                                        Horizontal);
             }
             else
             {
                 return PlaceShipOnBoard(coordX,
-                                           coordY,
-                                           playerArray,
-                                           newShip,
-                                           coordY,
-                                           Horizontal);
+                                        coordY,
+                                        playerArray,
+                                        newShip,
+                                        coordY,
+                                        Horizontal);
             }
         }
 
         public static bool PlaceShipOnBoard(int coordX,
-                                             int coordY,
-                                             Square[,] playerArray,
-                                             Ship newShip,
-                                             int mainCoord,
-                                             bool horizontal)
+                                            int coordY,
+                                            Square[,] playerArray,
+                                            Ship newShip,
+                                            int mainCoord,
+                                            bool horizontal)
         {
             Square[,] square = playerArray;
             int maxValue = mainCoord + newShip.Life;
@@ -89,7 +88,7 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                                                  horizontal,
                                                  square,
                                                  maxValue);
-                if (allFree == true)
+                if (allFree)
                 {
                     if (reverseMainCoord)
                     {
@@ -116,13 +115,13 @@ namespace battle_ship_in_the_oo_way_submarine101.SHIP
                 }
                 else
                 {
-                    Console.WriteLine("Cant place there is ship");
+                    Console.WriteLine("Can't place ship there. The field is taken.");
                     return false;
                 }
             }
             else
             {
-                Console.WriteLine("Cant place, border");
+                Console.WriteLine("Can't place there, the ship would be out of border.");
                 return false;
             }
         }
