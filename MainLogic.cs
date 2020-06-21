@@ -1,5 +1,6 @@
 using battle_ship_in_the_oo_way_submarine101.OCEAN;
 using battle_ship_in_the_oo_way_submarine101.PLAYER;
+using battle_ship_in_the_oo_way_submarine101.SQUARE;
 using System;
 using System.IO;
 
@@ -61,7 +62,6 @@ namespace battle_ship_in_the_oo_way_submarine101
                                emptyPlayer2Board,
                                player1Board);
             } while (IsPlaying());
-            //if (emptyPlayer1Board.ArrayOfSquares.All())
             DoesAnyoneWin(player1, player2);
             Console.WriteLine("Press any button to exit.");
             Console.ReadKey();

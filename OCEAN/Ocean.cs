@@ -9,7 +9,7 @@ namespace battle_ship_in_the_oo_way_submarine101.OCEAN
         private static readonly string space = new string(' ', 15);
         private static int CoordX;
         private static int CoordY;
-        private string Name;
+        private readonly string Name;
 
         public Ocean(string name, Square[,] arrayOfSquares)
         {

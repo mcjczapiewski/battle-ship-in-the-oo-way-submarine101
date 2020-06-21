@@ -86,7 +86,9 @@ namespace battle_ship_in_the_oo_way_submarine101.SQUARE
                             {
                                 thoseWereMarked.Add((i, j));
                                 enemyEmptyBoard[i, j].Sign = "O ";
+                                enemyEmptyBoard[i, j].IsItFree = false;
                                 enemyShipsBoard[i, j].Sign = "O ";
+                                enemyShipsBoard[i, j].IsItFree = false;
                             }
                             else if (enemyEmptyBoard[i, j].Sign == "X "
                                      && !thoseWereMarked.Contains((i, j)))
