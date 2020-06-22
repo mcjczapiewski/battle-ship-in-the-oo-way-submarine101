@@ -152,7 +152,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
         {
             if (Name == "AI")
             {
-                (coordX, coordY) = AI.AiGetCoords();
+                (coordX, coordY) = AI.AiGetCoords(playerEmptyBoard);
                 newShip = AI.AiGetShipType();
                 horizontal = AI.AiGenerateShipDirection();
             }
@@ -245,16 +245,18 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                     if (!AI.WasItHit || isItSunk)
                     {
                         AI.WasItHit = false;
-                        (coordX, coordY) = AI.AiGetCoords();
-                        (AI.CoordX, AI.CoordY) = (coordX, coordY);
+                        firstLoop = true;
+                        (coordX, coordY) = AI.AiGetCoords(playerEmptyBoard);
+                        (AI.CoordXFirstHit, AI.CoordYFirstHit) = (coordX, coordY);
                     }
                     else if ((wasItHit || AI.WasItHit) && !isItSunk)
                     {
-                        if (!AI.WasItHit)
+                        if (AI.WasItHit)
                         {
                             firstLoop = false;
                         }
-                        (coordX, coordY) = AI.AiGetCoordsToKill();
+                        (coordX, coordY) = AI.AiGetCoordsToKill(playerEmptyBoard,
+                                                                isItSunk);
                     }
                 }
                 else
@@ -266,41 +268,7 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                                                     playerEmptyBoard.ArrayOfSquares,
                                                     enemyShipsBoard.ArrayOfSquares,
                                                     enemyShips);
-                if (AI.WasItHit && wasItHit && !isItSunk && this.Name == "AI")
-                {
-                    if (AI.CoordX < coordX)
-                    {
-                        AI.AiSinkShipHits.Clear();
-                        AI.AiSinkShipHits = new List<(int, int)>
-                                    {
-                                        (coordX + 1, coordY),
-                                    };
-                    }
-                    else if (AI.CoordX > coordX)
-                    {
-                        AI.AiSinkShipHits.Clear();
-                        AI.AiSinkShipHits = new List<(int, int)>
-                                    {
-                                        (coordX - 1, coordY),
-                                    };
-                    }
-                    else if (AI.CoordY < coordY)
-                    {
-                        AI.AiSinkShipHits.Clear();
-                        AI.AiSinkShipHits = new List<(int, int)>
-                                    {
-                                        (coordX, coordY + 1),
-                                    };
-                    }
-                    else
-                    {
-                        AI.AiSinkShipHits.Clear();
-                        AI.AiSinkShipHits = new List<(int, int)>
-                                    {
-                                        (coordX, coordY - 1),
-                                    };
-                    }
-                }
+
                 if (firstLoop && wasItHit && this.Name == "AI")
                 {
                     AI.WasItHit = true;
@@ -312,6 +280,52 @@ namespace battle_ship_in_the_oo_way_submarine101.PLAYER
                                         (coordX, coordY + 1)
                                     };
                 }
+                else if (AI.WasItHit && wasItHit && !isItSunk && this.Name == "AI")
+                {
+                    if (AI.CoordXFirstHit < coordX && AI.CoordYFirstHit == coordY)
+                    {
+                        AI.AiSinkShipHits.Clear();
+                        AI.AiSinkShipHits = new List<(int, int)>
+                                    {
+                                        (coordX + 1, coordY),
+                                        (AI.CoordXFirstHit - 1, coordY)
+                                    };
+                    }
+                    else if (AI.CoordXFirstHit > coordX && AI.CoordYFirstHit == coordY)
+                    {
+                        AI.AiSinkShipHits.Clear();
+                        AI.AiSinkShipHits = new List<(int, int)>
+                                    {
+                                        (coordX - 1, coordY),
+                                        (AI.CoordXFirstHit + 1, coordY)
+                                    };
+                    }
+                    else if (AI.CoordYFirstHit < coordY && AI.CoordXFirstHit == coordX)
+                    {
+                        AI.AiSinkShipHits.Clear();
+                        AI.AiSinkShipHits = new List<(int, int)>
+                                    {
+                                        (coordX, coordY + 1),
+                                        (coordX, AI.CoordYFirstHit - 1)
+                                    };
+                    }
+                    else
+                    {
+                        AI.AiSinkShipHits.Clear();
+                        AI.AiSinkShipHits = new List<(int, int)>
+                                    {
+                                        (coordX, coordY - 1),
+                                        (coordX, AI.CoordYFirstHit + 1)
+                                    };
+                    }
+                }
+                if (!wasItHit && AI.WasItHit && AI.AiSinkShipHits.Count == 0)
+                {
+                    AI.CoordXStored = coordX;
+                    AI.CoordYStored = coordY;
+                }
+                
+
                 Console.Clear();
                 UTILS.AsciiArt.Battleship();
                 if (this.Name != "AI")
